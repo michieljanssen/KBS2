@@ -25,21 +25,43 @@ namespace KBS2.views
 
         public double gemiddelde()
         {
-            return 0.0;
+            double sum = 0.0;
+            for (int i = 0; i < cijfers.Count; i++)
+            {
+                sum += cijfers[i].Cijfer;
+            }
+            double gemiddelde = sum / cijfers.Count;
+            return gemiddelde;
         }
 
         public int voldoendes()
         {
-            return 0;
+            int amount = 0;
+            for (int i = 0; i < cijfers.Count; i++)
+            {
+                if (cijfers[i].isVoldoende()) {
+                    amount++;
+                }
+            }
+            return amount;
         }
 
         public int onvoldoendes()
         {
-            return 0;
+            int amount = 0;
+            for (int i = 0; i < cijfers.Count; i++)
+            {
+                if (!cijfers[i].isVoldoende())
+                {
+                    amount++;
+                }
+            }
+            return amount;
         }
 
-        public int percentageVold() {
-            return 0;
+        public int percentageVold()
+        {
+            return (voldoendes() * 100) / (cijfers.Count );
         }
 
     }

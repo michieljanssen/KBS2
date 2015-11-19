@@ -12,6 +12,8 @@ namespace KBS2.cijfer
         private String leerlingnaam;
         private double cijfer;
 
+        public double Cijfer { get { return cijfer} }
+
         public ToetsCijfer(String leerlingid, String leerlingnaam, double cijfer) {
             this.leerlingid = leerlingid;
             this.leerlingnaam = leerlingnaam;
