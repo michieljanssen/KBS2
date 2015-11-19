@@ -10,13 +10,20 @@ namespace KBS2.views
 {
     class Toets
     {
+        private String naam;
         private String type;
         private String datum;
         private int ec;
         private List<ToetsCijfer> cijfers;
 
-        public Toets(String type, String datum, int ec, List<ToetsCijfer> cijfers)
+        public String Type { get { return type; } }
+        public String Datum { get { return datum; } }
+        public String Naam { get { return naam; } }
+        public List<ToetsCijfer> Cijfers { get { return cijfers; } }
+
+        public Toets(String naam, String type, String datum, int ec, List<ToetsCijfer> cijfers)
         {
+            this.naam = naam;
             this.type = type;
             this.datum = datum;
             this.ec = ec;
@@ -61,7 +68,13 @@ namespace KBS2.views
 
         public int percentageVold()
         {
-            return (voldoendes() * 100) / (cijfers.Count );
+            if (cijfers.Count != 0)
+            {
+                return (voldoendes() * 100) / (cijfers.Count);
+            }
+            else {
+                return 0;
+            }
         }
 
     }

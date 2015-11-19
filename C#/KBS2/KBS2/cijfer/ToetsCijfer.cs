@@ -13,6 +13,8 @@ namespace KBS2.cijfer
         private double cijfer;
 
         public double Cijfer { get { return cijfer; } }
+        public String naam { get { return leerlingnaam; } }
+        public String id { get { return leerlingid; } }
 
         public ToetsCijfer(String leerlingid, String leerlingnaam, double cijfer) {
             this.leerlingid = leerlingid;
@@ -21,7 +23,7 @@ namespace KBS2.cijfer
         }
 
         public Boolean isVoldoende() {
-            return false;
+            return cijfer >= 5.5;
         }
     }
 }
