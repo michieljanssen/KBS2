@@ -13,8 +13,8 @@ namespace KBS2.cijfer
         private double cijfer;
 
         public double Cijfer { get { return cijfer; } }
-        public String naam { get { return leerlingnaam; } }
-        public String id { get { return leerlingid; } }
+        public String Naam { get { return leerlingnaam; } }
+        public String ID { get { return leerlingid; } }
 
         public ToetsCijfer(String leerlingid, String leerlingnaam, double cijfer) {
             this.leerlingid = leerlingid;

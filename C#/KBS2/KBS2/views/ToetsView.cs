@@ -42,7 +42,7 @@ namespace KBS2.views
                 this.lbl_gemiddelde.Text = "Gemiddelde: " + toets.gemiddelde();
                 this.lbl_afname.Text = "Afname: " + toets.Datum;
                 for(int i = 0; i < toets.Cijfers.Count;i++){
-                    object[] row = { toets.Cijfers[i].id, toets.Cijfers[i].naam, toets.Cijfers[i].Cijfer };
+                    object[] row = { toets.Cijfers[i].ID, toets.Cijfers[i].Naam, toets.Cijfers[i].Cijfer };
                     this.dgv_toets.Rows.Add(row);          
                 }
             }
