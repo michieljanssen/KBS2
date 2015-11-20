@@ -18,13 +18,13 @@ namespace KBS2.views
         private ProgressBar testprb_gehaald;
         private Label lbl_totaalEC;
         private DataGridView dgv_gemisteEC;
-        private DataGridViewTextBoxColumn Vak;
-        private DataGridViewTextBoxColumn Cijfer;
-        private DataGridViewTextBoxColumn EC;
+        private DataGridViewTextBoxColumn vakgemist;
+        private DataGridViewTextBoxColumn Cijfergemist;
+        private DataGridViewTextBoxColumn ECgemist;
         private DataGridView dgv_behaaldeEC;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn vakgehaald;
+        private DataGridViewTextBoxColumn cijfergehaald;
+        private DataGridViewTextBoxColumn ECgehaald;
         private Label lbl_gehaald;
         private Label lbl_gemist;
 
@@ -76,13 +76,13 @@ namespace KBS2.views
             this.testprb_gehaald = new ProgressBar();
             this.lbl_totaalEC = new Label();
             this.dgv_gemisteEC = new DataGridView();
-            this.Vak = new DataGridViewTextBoxColumn();
-            this.Cijfer = new DataGridViewTextBoxColumn();
-            this.EC = new DataGridViewTextBoxColumn();
+            this.vakgemist = new DataGridViewTextBoxColumn();
+            this.Cijfergemist = new DataGridViewTextBoxColumn();
+            this.ECgemist = new DataGridViewTextBoxColumn();
             this.dgv_behaaldeEC = new DataGridView();
-            this.dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            this.vakgehaald = new DataGridViewTextBoxColumn();
+            this.cijfergehaald = new DataGridViewTextBoxColumn();
+            this.ECgehaald = new DataGridViewTextBoxColumn();
             this.lbl_gehaald = new Label();
             this.lbl_gemist = new Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_gemisteEC)).BeginInit();
@@ -133,50 +133,50 @@ namespace KBS2.views
             this.dgv_gemisteEC.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_gemisteEC.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_gemisteEC.Columns.AddRange(new DataGridViewColumn[] {
-            this.Vak,
-            this.Cijfer,
-            this.EC});
+            this.vakgemist,
+            this.Cijfergemist,
+            this.ECgemist});
             this.dgv_gemisteEC.Location = new System.Drawing.Point(100, 234);
             this.dgv_gemisteEC.Name = "dgv_gemisteEC";
             this.dgv_gemisteEC.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgv_gemisteEC.Size = new System.Drawing.Size(1089, 230);
             this.dgv_gemisteEC.TabIndex = 7;
             // Vak
-            this.Vak.HeaderText = "Vak";
-            this.Vak.Name = "Vak";
-            this.Vak.ReadOnly = true;
+            this.vakgemist.HeaderText = "Vak";
+            this.vakgemist.Name = "Vak";
+            this.vakgemist.ReadOnly = true;
             // Cijfer
-            this.Cijfer.HeaderText = "Cijfer";
-            this.Cijfer.Name = "Cijfer";
-            this.Cijfer.ReadOnly = true;
+            this.Cijfergemist.HeaderText = "Cijfer";
+            this.Cijfergemist.Name = "Cijfer";
+            this.Cijfergemist.ReadOnly = true;
             // EC
-            this.EC.HeaderText = "EC\'s";
-            this.EC.Name = "EC";
-            this.EC.ReadOnly = true;
+            this.ECgemist.HeaderText = "EC\'s";
+            this.ECgemist.Name = "EC";
+            this.ECgemist.ReadOnly = true;
             // dgv_behaaldeEC
             this.dgv_behaaldeEC.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_behaaldeEC.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_behaaldeEC.Columns.AddRange(new DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
+            this.vakgehaald,
+            this.cijfergehaald,
+            this.ECgehaald});
             this.dgv_behaaldeEC.Location = new System.Drawing.Point(100, 516);
             this.dgv_behaaldeEC.Name = "dgv_behaaldeEC";
             this.dgv_behaaldeEC.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgv_behaaldeEC.Size = new System.Drawing.Size(1089, 230);
             this.dgv_behaaldeEC.TabIndex = 8;
             // dataGridViewTextBoxColumn1
-            this.dataGridViewTextBoxColumn1.HeaderText = "Vak";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.vakgehaald.HeaderText = "Vak";
+            this.vakgehaald.Name = "dataGridViewTextBoxColumn1";
+            this.vakgehaald.ReadOnly = true;
             // dataGridViewTextBoxColumn2
-            this.dataGridViewTextBoxColumn2.HeaderText = "Cijfer";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.cijfergehaald.HeaderText = "Cijfer";
+            this.cijfergehaald.Name = "dataGridViewTextBoxColumn2";
+            this.cijfergehaald.ReadOnly = true;
             // dataGridViewTextBoxColumn3
-            this.dataGridViewTextBoxColumn3.HeaderText = "EC\'s";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.ECgehaald.HeaderText = "EC\'s";
+            this.ECgehaald.Name = "dataGridViewTextBoxColumn3";
+            this.ECgehaald.ReadOnly = true;
             // lbl_gehaald
             this.lbl_gehaald.AutoSize = true;
             this.lbl_gehaald.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);

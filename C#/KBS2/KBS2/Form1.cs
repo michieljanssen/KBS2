@@ -47,11 +47,11 @@ namespace KBS2
 
             Student student = new Student("Jan Jansen", "123456789",c);
 
-            p = new ToetsView(toets);
+           // p = new ToetsView(toets);
 
 
 
-          //  p = new StudentView(student);
+             p = new StudentView(student);
             p.Parent = this;
         }
     }
