@@ -12,6 +12,10 @@ namespace KBS2.cijfer
         private int ec;
         private double cijfer;
 
+        public String VakNaam { get { return vaknaam; } }
+        public int EC { get { return ec; } }
+        public double Cijfer { get { return cijfer; } }
+
         public VakCijfer(String vaknaam, int ec, double cijfer) {
             this.vaknaam = vaknaam;
             this.ec = ec;
@@ -20,7 +24,7 @@ namespace KBS2.cijfer
 
         public Boolean isVoldoende()
         {
-            return false;
+            return cijfer >= 5.5;
         }
     }
 }

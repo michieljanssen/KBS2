@@ -32,15 +32,26 @@ namespace KBS2
             
             
             List<ToetsCijfer> cijfers = new List<ToetsCijfer>();
-            cijfers.Add(new ToetsCijfer("1234567890", "Jan Jansen", 5.0));
-            cijfers.Add(new ToetsCijfer("0987654321", "Piet Peters", 4.0));
-            cijfers.Add(new ToetsCijfer("1235789075", "Paul Bakker", 6.0));
-            cijfers.Add(new ToetsCijfer("0998763456", "Thijme de Boer", 7.0));
+            cijfers.Add(new ToetsCijfer("1234567890", "Jan Jansen", 5.0, "11/11/2015"));
+            cijfers.Add(new ToetsCijfer("0987654321", "Piet Peters", 4.0, "11/11/2015"));
+            cijfers.Add(new ToetsCijfer("1235789075", "Paul Bakker", 6.0, "11/11/2015"));
+            cijfers.Add(new ToetsCijfer("0998763456", "Thijme de Boer", 7.0, "20/11/2015"));
 
 
-            Toets toets = new Toets("Scrum", "Multiplechoice", "11/11/2015", 5, cijfers);
+            Toets toets = new Toets("Scrum", "Multiplechoice", "11/11/2015",  cijfers);
+
+            List<VakCijfer> c = new List<VakCijfer>();
+            c.Add(new VakCijfer("Scrum", 5, 5.5));
+            c.Add(new VakCijfer("UML", 5, 9.0));
+            c.Add(new VakCijfer("c#", 5, 4.0));
+
+            Student student = new Student("Jan Jansen", "123456789",c);
 
             p = new ToetsView(toets);
+
+
+
+          //  p = new StudentView(student);
             p.Parent = this;
         }
     }

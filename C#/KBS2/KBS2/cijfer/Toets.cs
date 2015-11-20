@@ -6,27 +6,22 @@ using System.Threading.Tasks;
 
 using KBS2.cijfer;
 
-namespace KBS2.views
+namespace KBS2.cijfer
 {
     class Toets
     {
         private String naam;
         private String type;
-        private String datum;
-        private int ec;
         private List<ToetsCijfer> cijfers;
 
         public String Type { get { return type; } }
-        public String Datum { get { return datum; } }
         public String Naam { get { return naam; } }
         public List<ToetsCijfer> Cijfers { get { return cijfers; } }
 
-        public Toets(String naam, String type, String datum, int ec, List<ToetsCijfer> cijfers)
+        public Toets(String naam, String type, String datum,List<ToetsCijfer> cijfers)
         {
             this.naam = naam;
             this.type = type;
-            this.datum = datum;
-            this.ec = ec;
             this.cijfers = cijfers;
         }
 

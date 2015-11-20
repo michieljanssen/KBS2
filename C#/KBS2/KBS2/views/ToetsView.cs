@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
+using KBS2.cijfer;
+
 namespace KBS2.views
 {
     class ToetsView : Panel
@@ -20,11 +22,11 @@ namespace KBS2.views
         private ProgressBar prb_gehaald;
         private Label lbl_gemiddelde;
         private Label lbl_toetsType;
-        private Label lbl_afname;
         private DataGridView dgv_toets;
         private DataGridViewTextBoxColumn Leerlingnr;
         private DataGridViewTextBoxColumn naam;
         private DataGridViewTextBoxColumn Cijfer;
+        private DataGridViewTextBoxColumn datum;
 
         public ToetsView(Toets toets)
             : base()
@@ -40,9 +42,8 @@ namespace KBS2.views
                 this.lbl_toetsType.Text = "Toetstype: " + toets.Type ;
                 this.prb_gehaald.Value = toets.percentageVold();
                 this.lbl_gemiddelde.Text = "Gemiddelde: " + toets.gemiddelde();
-                this.lbl_afname.Text = "Afname: " + toets.Datum;
                 for(int i = 0; i < toets.Cijfers.Count;i++){
-                    object[] row = { toets.Cijfers[i].ID, toets.Cijfers[i].Naam, toets.Cijfers[i].Cijfer };
+                    object[] row = { toets.Cijfers[i].ID, toets.Cijfers[i].Naam, toets.Cijfers[i].Cijfer , toets.Cijfers[i].Datum};
                     this.dgv_toets.Rows.Add(row);          
                 }
             }
@@ -54,7 +55,6 @@ namespace KBS2.views
                 this.lbl_toetsType.Text = "Toetstype:";
                 this.prb_gehaald.Value = 80;
                 this.lbl_gemiddelde.Text = "Gemiddelde:";
-                this.lbl_afname.Text = "Afname:";
                 object[] rows = { "1", "2", "3" };
                 this.dgv_toets.Rows.Add(rows);          
             }
@@ -69,11 +69,11 @@ namespace KBS2.views
             this.prb_gehaald = new ProgressBar();
             this.lbl_gemiddelde = new Label();
             this.lbl_toetsType = new Label();
-            this.lbl_afname = new Label();
             this.dgv_toets = new DataGridView();
             this.Leerlingnr = new DataGridViewTextBoxColumn();
             this.naam = new DataGridViewTextBoxColumn();
             this.Cijfer = new DataGridViewTextBoxColumn();
+            this.datum = new DataGridViewTextBoxColumn();
             this.SuspendLayout();
 
             this.lbl_toetsnaam.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Left)
@@ -125,13 +125,6 @@ namespace KBS2.views
             this.lbl_toetsType.Name = "testlbl_toetsType";
             this.lbl_toetsType.Size = new Size(112, 26);
             this.lbl_toetsType.TabIndex = 8;
-            // lbl_afname
-            this.lbl_afname.AutoSize = true;
-            this.lbl_afname.Font = new Font("Microsoft Sans Serif", 16F);
-            this.lbl_afname.Location = new Point(821, 204);
-            this.lbl_afname.Name = "testlbl_afname";
-            this.lbl_afname.Size = new Size(94, 26);
-            this.lbl_afname.TabIndex = 9;
             // dgv_toets
             DataGridViewCellStyle dgvcs = new DataGridViewCellStyle();
             dgvcs.NullValue = null;
@@ -141,7 +134,7 @@ namespace KBS2.views
             this.dgv_toets.Columns.AddRange(new DataGridViewColumn[] {
             this.Leerlingnr,
             this.naam,
-            this.Cijfer});
+            this.Cijfer, this.datum});
             this.dgv_toets.Location = new Point(100, 246);
             this.dgv_toets.Name = "dgv_toets";
             this.dgv_toets.Size = new Size(1089, 454);
@@ -151,20 +144,28 @@ namespace KBS2.views
             this.Leerlingnr.DefaultCellStyle = dgvcs;
             this.Leerlingnr.HeaderText = "Leerlingnr.";
             this.Leerlingnr.Name = "Leerlingnr";
+            this.Leerlingnr.ReadOnly = true;
             // naam
             this.naam.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
             this.naam.DefaultCellStyle = dgvcs;
             this.naam.HeaderText = "Naam";
             this.naam.Name = "naam";
+            this.naam.ReadOnly = true;
             // Cijfer
             this.Cijfer.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
             this.Cijfer.DefaultCellStyle = dgvcs;
             this.Cijfer.HeaderText = "Cijfer";
             this.Cijfer.Name = "Cijfer";
+            this.Cijfer.ReadOnly = true;
+            // Datum
+            this.datum.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
+            this.datum.DefaultCellStyle = dgvcs;
+            this.datum.HeaderText = "Behaald op";
+            this.datum.Name = "datum";
+            this.datum.ReadOnly = true;
 
             this.ClientSize = new Size(1264, 761);
             this.Controls.Add(this.dgv_toets);
-            this.Controls.Add(this.lbl_afname);
             this.Controls.Add(this.lbl_toetsType);
             this.Controls.Add(this.lbl_gemiddelde);
             this.Controls.Add(this.prb_gehaald);

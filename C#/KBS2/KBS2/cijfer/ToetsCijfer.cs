@@ -11,12 +11,15 @@ namespace KBS2.cijfer
         private String leerlingid;
         private String leerlingnaam;
         private double cijfer;
+        private String datum;
 
         public double Cijfer { get { return cijfer; } }
+        public String Datum { get { return datum; } }
         public String Naam { get { return leerlingnaam; } }
         public String ID { get { return leerlingid; } }
 
-        public ToetsCijfer(String leerlingid, String leerlingnaam, double cijfer) {
+        public ToetsCijfer(String leerlingid, String leerlingnaam, double cijfer, String datum) {
+            this.datum = datum;
             this.leerlingid = leerlingid;
             this.leerlingnaam = leerlingnaam;
             this.cijfer = cijfer;

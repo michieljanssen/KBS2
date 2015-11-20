@@ -21,5 +21,20 @@ namespace KBS2
         {
 
         }
+
+        private void testlbl_aantalvoldoendes_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgv_behaaldeEC_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
