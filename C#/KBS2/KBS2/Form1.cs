@@ -10,17 +10,18 @@ using System.Windows.Forms;
 
 using KBS2.views;
 using KBS2.cijfer;
-
+using KBS2.data;
 namespace KBS2
 {
     public partial class Form1 : Form
     {
         Panel p;
+        Sql sql;
 
         public Form1()
         {
             InitializeComponent();
-           
+            sql = new Sql();
             
 
         }
