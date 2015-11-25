@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using KBS2.cijfer;
+using KBS2.model.cijfer;
 
-namespace KBS2.cijfer
+namespace KBS2.model
 {
     class Toets
     {
@@ -18,7 +18,7 @@ namespace KBS2.cijfer
         public String Naam { get { return naam; } }
         public List<ToetsCijfer> Cijfers { get { return cijfers; } }
 
-        public Toets(String naam, String type, String datum,List<ToetsCijfer> cijfers)
+        public Toets(String naam, String type,List<ToetsCijfer> cijfers)
         {
             this.naam = naam;
             this.type = type;

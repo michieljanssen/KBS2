@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using KBS2.cijfer;
+using KBS2.model.cijfer;
 
-namespace KBS2.cijfer
+namespace KBS2.model
 {
     class Student
     {

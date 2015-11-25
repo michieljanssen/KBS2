@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Windows.Forms;
-using KBS2.cijfer;
+using KBS2.model.cijfer;
+using KBS2.model;
 namespace KBS2.views
 {
     class StudentView : Panel
