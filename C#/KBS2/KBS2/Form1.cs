@@ -22,6 +22,7 @@ namespace KBS2
         {
             InitializeComponent();
             ToetsSql.connect();
+            StudentSql.connect();
         }
 
         private void btn_zoek_Click(object sender, EventArgs e)
@@ -29,7 +30,6 @@ namespace KBS2
             txb_zoek.Location = new Point(txb_zoek.Location.X, 20);
             btn_zoek.Location = new Point(btn_zoek.Location.X, 20);
             
-         
             if (ToetsSql.ToetExists("MUL.Pr"))
             {
                 Toets toets = ToetsSql.getToets("MUL.Pr");
