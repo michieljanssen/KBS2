@@ -37,18 +37,12 @@ namespace KBS2
                 //beweegt de zoekbalk +knop omhoog
                 txb_zoek.Location = new Point(txb_zoek.Location.X, 20);
                 btn_zoek.Location = new Point(btn_zoek.Location.X, 20);
-                //checkt of het paneel bestaat
-                if (p != null)
-                {
-                    //verwijdert het paneel
-                    p.Parent = null;
-                    p = null;
-                }
+                
                 //krijgt de toets uit de database
                 Toets toets = ToetsSql.getToets(txb_zoek.Text);
                 //maakt het paneel aan met de toets en voegt deze toe aan het scherm
-                p = new ToetsView(toets);
-                p.Parent = this;
+                ToetsView panel = new ToetsView(toets);
+                setPanel(panel);
             }
             else
             {
@@ -57,6 +51,19 @@ namespace KBS2
             }
 
 
+        }
+        //vervangt het paneel op het scherm
+        public void setPanel(Panel panel) {
+                //checkt of het paneel bestaat
+            if (p != null)
+            {
+                //verwijdert het paneel
+                p.Parent = null;
+                p = null;
+            }
+            //voegt het paneel toe
+            p = panel;
+            p.Parent = this;
         }
     }
 }
