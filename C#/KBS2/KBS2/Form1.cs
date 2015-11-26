@@ -9,51 +9,54 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using KBS2.views;
-using KBS2.cijfer;
+using KBS2.model.cijfer;
+using KBS2.model;
 using KBS2.data;
 namespace KBS2
 {
     public partial class Form1 : Form
     {
+        //het paneel voor alle opgehaalde gegevens
         Panel p;
-        Sql sql;
 
+        //initalizatie
         public Form1()
         {
             InitializeComponent();
-            sql = new Sql();
-            
-
+            //database connecties worden opgezet
+            ToetsSql.connect();
+            StudentSql.connect();
         }
 
+        //zoek knop ingedrukt event
         private void btn_zoek_Click(object sender, EventArgs e)
         {
-            txb_zoek.Location = new Point(txb_zoek.Location.X, 20);
-            btn_zoek.Location = new Point(btn_zoek.Location.X, 20);
-            
-            
-            List<ToetsCijfer> cijfers = new List<ToetsCijfer>();
-            cijfers.Add(new ToetsCijfer("1234567890", "Jan Jansen", 5.0, "11/11/2015"));
-            cijfers.Add(new ToetsCijfer("0987654321", "Piet Peters", 4.0, "11/11/2015"));
-            cijfers.Add(new ToetsCijfer("1235789075", "Paul Bakker", 6.0, "11/11/2015"));
-            cijfers.Add(new ToetsCijfer("0998763456", "Thijme de Boer", 7.0, "20/11/2015"));
+            //checkt of de toets bestaat
+            if (ToetsSql.ToetExists(txb_zoek.Text))
+            {
+                //beweegt de zoekbalk +knop omhoog
+                txb_zoek.Location = new Point(txb_zoek.Location.X, 20);
+                btn_zoek.Location = new Point(btn_zoek.Location.X, 20);
+                //checkt of het paneel bestaat
+                if (p != null)
+                {
+                    //verwijdert het paneel
+                    p.Parent = null;
+                    p = null;
+                }
+                //krijgt de toets uit de database
+                Toets toets = ToetsSql.getToets(txb_zoek.Text);
+                //maakt het paneel aan met de toets en voegt deze toe aan het scherm
+                p = new ToetsView(toets);
+                p.Parent = this;
+            }
+            else
+            {
+                //anders als de toets neit bestaat laat een popup komen
+                var result = MessageBox.Show("Deze toets bestaat niet: \"" + txb_zoek.Text+"\"","Niet bestaande toets", MessageBoxButtons.OK);
+            }
 
 
-            Toets toets = new Toets("Scrum", "Multiplechoice", "11/11/2015",  cijfers);
-
-            List<VakCijfer> c = new List<VakCijfer>();
-            c.Add(new VakCijfer("Scrum", 5, 5.5));
-            c.Add(new VakCijfer("UML", 5, 9.0));
-            c.Add(new VakCijfer("c#", 5, 4.0));
-
-            Student student = new Student("Jan Jansen", "123456789",c);
-
-           // p = new ToetsView(toets);
-
-
-
-             p = new StudentView(student);
-            p.Parent = this;
         }
     }
 }

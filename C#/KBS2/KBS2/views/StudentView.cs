@@ -5,12 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Windows.Forms;
-using KBS2.cijfer;
+using KBS2.model.cijfer;
+using KBS2.model;
 namespace KBS2.views
 {
     class StudentView : Panel
     {
+        //Student variabelen
         private Student student;
+        //Ui variablenen
         private Label lbl_naam;
         private Label lbl_id;
         private Label lbl_gemisteEC;
@@ -33,23 +36,28 @@ namespace KBS2.views
         {
             this.student = student;
             init();
+            //checked of het student niet null is
             if (student != null)
             {
+                //zet alle variablen in de UI elementen
                 this.lbl_naam.Text = student.Naam;
                 this.lbl_id.Text = student.ID;
                 this.lbl_gemisteEC.Text = "Gemiste EC\'s: " + student.gemisteEC();
                 this.lbl_gehaaldeEC.Text = "Behaalde EC\'s dit jaar: " + student.gehaaldeEC();
                 this.testprb_gehaald.Value = student.gehaaldeEC() * 100 / student.totaalEC();
                 this.lbl_totaalEC.Text = "Van: " + student.totaalEC();
-
+                //gaat door alle cijfers heen
                 for (int i = 0; i < student.Cijfers.Count; i++)
                 {
+                    //checked of het voldoende is
                     if (student.Cijfers[i].isVoldoende()) {
+                        //zet het cijfer in de behaalde ec's tabel
                         object[] c = { student.Cijfers[i].VakNaam, student.Cijfers[i].Cijfer, student.Cijfers[i].EC};
                         dgv_behaaldeEC.Rows.Add(c);
                     }
                     else
                     {
+                        //anders zet het cijfer in het behaalde ec's tabel
                         object[] c = { student.Cijfers[i].VakNaam, student.Cijfers[i].Cijfer, student.Cijfers[i].EC };
                         dgv_gemisteEC.Rows.Add(c);
                     }
@@ -58,6 +66,7 @@ namespace KBS2.views
             }
             else
             {
+                //als Student null is dan zet standaart waardes in de UI
                 this.lbl_naam.Text = "Naam";
                 this.lbl_id.Text = "ID";
                 this.lbl_gemisteEC.Text = "Gemiste EC\'s:";
@@ -66,7 +75,7 @@ namespace KBS2.views
                 this.lbl_totaalEC.Text = "Van:";
             }
         }
-
+        //maakt ui aan
         public void init()
         {
             this.lbl_naam = new Label();

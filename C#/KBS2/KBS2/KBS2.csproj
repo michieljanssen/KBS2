@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{4FA87421-A7B1-4ECC-AB54-E18BA27FDF08}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KBS2</RootNamespace>
     <AssemblyName>KBS2</AssemblyName>
@@ -50,6 +50,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -62,10 +63,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cijfer\Gradable.cs" />
-    <Compile Include="cijfer\ToetsCijfer.cs" />
-    <Compile Include="cijfer\VakCijfer.cs" />
-    <Compile Include="data\Sql.cs" />
+    <Compile Include="model\cijfer\Gradable.cs" />
+    <Compile Include="model\cijfer\ToetsCijfer.cs" />
+    <Compile Include="model\cijfer\VakCijfer.cs" />
+    <Compile Include="data\StudentSql.cs" />
+    <Compile Include="data\ToetsSql.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,8 +76,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="cijfer\Student.cs" />
-    <Compile Include="cijfer\Toets.cs" />
+    <Compile Include="model\Student.cs" />
+    <Compile Include="model\Toets.cs" />
     <Compile Include="views\StudentView.cs">
       <SubType>Component</SubType>
     </Compile>
