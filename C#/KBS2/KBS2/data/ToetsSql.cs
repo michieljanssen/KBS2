@@ -13,8 +13,9 @@ namespace KBS2.data
 {
     static class ToetsSql
     {
+        //connectie variable
         private static SqlConnection con;
-
+        //connectie maken
         public static Boolean connect()
         {
             try
@@ -29,14 +30,12 @@ namespace KBS2.data
                 return false;
             }
         }
-
+        //connectie sluiten
         public  static void close() {
 
             con.Close();
         }
-
-
-
+        //toets ophalen uit database
         public static Toets getToets(String toetsnaam)
         {
             String query = "select type from Toets where Id = '" + toetsnaam + "'";
@@ -58,10 +57,11 @@ namespace KBS2.data
                 ToetsCijfer cijfer = new ToetsCijfer(reader.GetValue(0)  +"", (String)reader.GetValue(1), Convert.ToDouble(reader.GetValue(2)),reader.GetValue(3) + "");
                 cijfers.Add(cijfer);
             }
+            reader.Close();
             Toets toets = new Toets(toetsnaam, toetstype, cijfers);
             return toets;
         }
-
+        //kijken of toets bestaat in database
         public static Boolean ToetExists(String toetsnaam)
         {
             String query = "select * from Toets where Id = '" + toetsnaam+"'";

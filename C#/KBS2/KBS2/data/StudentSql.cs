@@ -10,9 +10,10 @@ namespace KBS2.data
 {
     static class StudentSql
     {
-
+        //connectie variable
         private static SqlConnection con;
-
+        
+        // connectie maken
         public static Boolean connect()
         {
             try
@@ -23,17 +24,16 @@ namespace KBS2.data
             }
             catch (SqlException e)
             {
-
                 return false;
             }
         }
-
+        //connectie afsluiten
         public static void close()
         {
 
             con.Close();
         }
-
+        //student ophalen uit database
         public static Student getStudent(String naam)
         {
 

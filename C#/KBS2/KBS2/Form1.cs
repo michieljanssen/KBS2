@@ -16,28 +16,44 @@ namespace KBS2
 {
     public partial class Form1 : Form
     {
+        //het paneel voor alle opgehaalde gegevens
         Panel p;
 
+        //initalizatie
         public Form1()
         {
             InitializeComponent();
+            //database connecties worden opgezet
             ToetsSql.connect();
             StudentSql.connect();
         }
 
+        //zoek knop ingedrukt event
         private void btn_zoek_Click(object sender, EventArgs e)
         {
-            txb_zoek.Location = new Point(txb_zoek.Location.X, 20);
-            btn_zoek.Location = new Point(btn_zoek.Location.X, 20);
-            
-            if (ToetsSql.ToetExists("MUL.Pr"))
+            //checkt of de toets bestaat
+            if (ToetsSql.ToetExists(txb_zoek.Text))
             {
-                Toets toets = ToetsSql.getToets("MUL.Pr");
+                //beweegt de zoekbalk +knop omhoog
+                txb_zoek.Location = new Point(txb_zoek.Location.X, 20);
+                btn_zoek.Location = new Point(btn_zoek.Location.X, 20);
+                //checkt of het paneel bestaat
+                if (p != null)
+                {
+                    //verwijdert het paneel
+                    p.Parent = null;
+                    p = null;
+                }
+                //krijgt de toets uit de database
+                Toets toets = ToetsSql.getToets(txb_zoek.Text);
+                //maakt het paneel aan met de toets en voegt deze toe aan het scherm
                 p = new ToetsView(toets);
                 p.Parent = this;
             }
-            else {
-                Console.WriteLine("bestaat niet");
+            else
+            {
+                //anders als de toets neit bestaat laat een popup komen
+                var result = MessageBox.Show("Deze toets bestaat niet: \"" + txb_zoek.Text+"\"","Niet bestaande toets", MessageBoxButtons.OK);
             }
 
 

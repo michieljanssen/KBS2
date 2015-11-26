@@ -12,9 +12,10 @@ namespace KBS2.views
 {
     class ToetsView : Panel
     {
+        //Toets variabele
         private Toets toets;
 
-        //components
+        //ui componenten
         private Label lbl_toetsnaam;
         private Label lbl_aantalvoldoendes;
         private Label lbl_aantalonvoldoendes;
@@ -33,8 +34,10 @@ namespace KBS2.views
         {
             this.toets = toets;
             init();
+            //checked of eht student niet null is
             if (toets != null)
             {
+                //zet alle variabelen in de UI elementen
                 this.lbl_toetsnaam.Text = "Toets: " + toets.Naam;
                 this.lbl_aantalonvoldoendes.Text = "Aantal onvoldoendes: "+  toets.onvoldoendes();
                 this.lbl_percentage.Text = "Percentages gehaald: "+ toets.percentageVold() +"%";
@@ -42,24 +45,27 @@ namespace KBS2.views
                 this.lbl_toetsType.Text = "Toetstype: " + toets.Type ;
                 this.prb_gehaald.Value = toets.percentageVold();
                 this.lbl_gemiddelde.Text = "Gemiddelde: " + toets.gemiddelde();
+                //gaat door alle cijfers heen
                 for(int i = 0; i < toets.Cijfers.Count;i++){
+                    //zet de cijfers in de tabel
                     object[] row = { toets.Cijfers[i].ID, toets.Cijfers[i].Naam, toets.Cijfers[i].Cijfer , toets.Cijfers[i].Datum};
                     this.dgv_toets.Rows.Add(row);          
                 }
             }
             else { 
+                //anders als toets null is zet de standaart waardes in de ui elementen
                 this.lbl_toetsnaam.Text = "ToetAantal voldoendes:";
                 this.lbl_aantalonvoldoendes.Text = "Aantal onvoldoendes:";
                 this.lbl_percentage.Text = "Percentagesnaam";
                 this.lbl_aantalvoldoendes.Text = "gehaald: %";
                 this.lbl_toetsType.Text = "Toetstype:";
-                this.prb_gehaald.Value = 80;
+                this.prb_gehaald.Value = 0;
                 this.lbl_gemiddelde.Text = "Gemiddelde:";
                 object[] rows = { "1", "2", "3" };
                 this.dgv_toets.Rows.Add(rows);          
             }
         }
-
+        //maakt ui aan
         public void init()
         {
             this.lbl_toetsnaam = new Label();
