@@ -8,7 +8,7 @@ namespace KBS2.model.cijfer
 {
     class VakCijfer:Gradable
     {
-        //variablen van vak en cijfer + mogelijk ecs
+        //variablen van vak en cijfer + mogelijk EC's
         private String vaknaam;
         private int ec;
         private double cijfer;
@@ -23,7 +23,7 @@ namespace KBS2.model.cijfer
             this.ec = ec;
             this.cijfer = cijfer;
         }
-        //is cijfer voldoende check
+        //checkt of het cijfer een voldoende is
         public Boolean isVoldoende()
         {
             return cijfer >= 5.5;

@@ -32,26 +32,34 @@ namespace KBS2
         private void btn_zoek_Click(object sender, EventArgs e)
         {
             //checkt of de toets bestaat
-            if (ToetsSql.ToetExists(txb_zoek.Text))
+
+            if (txb_zoek.Text != "")
             {
-                //beweegt de zoekbalk +knop omhoog
-                txb_zoek.Location = new Point(txb_zoek.Location.X, 20);
-                btn_zoek.Location = new Point(btn_zoek.Location.X, 20);
-                
-                //krijgt de toets uit de database
-                Toets toets = ToetsSql.getToets(txb_zoek.Text);
-                //maakt het paneel aan met de toets en voegt deze toe aan het scherm
-                ToetsView panel = new ToetsView(toets);
-                setPanel(panel);
+                if (ToetsSql.ToetsExists(txb_zoek.Text))
+                {
+                    //beweegt de zoekbalk +knop omhoog
+                    txb_zoek.Location = new Point(txb_zoek.Location.X, 20);
+                    btn_zoek.Location = new Point(btn_zoek.Location.X, 20);
+
+                    //krijgt de toets uit de database
+                    Toets toets = ToetsSql.getToets(txb_zoek.Text);
+                    //maakt het paneel aan met de toets en voegt deze toe aan het scherm
+                    ToetsView panel = new ToetsView(toets);
+                    setPanel(panel);
+                }
+                else
+                {
+                    //anders als de toets neit bestaat laat een popup komen
+                    var result = MessageBox.Show("Deze toets bestaat niet: \"" + txb_zoek.Text + "\"", "Niet bestaande toets", MessageBoxButtons.OK);
+                }
             }
             else
             {
-                //anders als de toets neit bestaat laat een popup komen
-                var result = MessageBox.Show("Deze toets bestaat niet: \"" + txb_zoek.Text+"\"","Niet bestaande toets", MessageBoxButtons.OK);
+                //Geen een popup weer die zegt dat er wat moet worden ingevuld
+                var result = MessageBox.Show("Voer a.u.b. een toets in.", "Voer aub een toets in", MessageBoxButtons.OK);
             }
-
-
         }
+        
         //vervangt het paneel op het scherm
         public void setPanel(Panel panel) {
                 //checkt of het paneel bestaat
@@ -61,6 +69,7 @@ namespace KBS2
                 p.Parent = null;
                 p = null;
             }
+            
             //voegt het paneel toe
             p = panel;
             p.Parent = this;

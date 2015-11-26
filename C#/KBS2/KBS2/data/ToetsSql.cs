@@ -24,17 +24,20 @@ namespace KBS2.data
                 con.Open();
                 return true;
             }
+            //mogelijke error afvangen
             catch (SqlException e)
             {
 
                 return false;
             }
         }
+        
         //connectie sluiten
         public  static void close() {
 
             con.Close();
         }
+        
         //toets ophalen uit database
         public static Toets getToets(String toetsnaam)
         {
@@ -61,8 +64,9 @@ namespace KBS2.data
             Toets toets = new Toets(toetsnaam, toetstype, cijfers);
             return toets;
         }
+        
         //kijken of toets bestaat in database
-        public static Boolean ToetExists(String toetsnaam)
+        public static Boolean ToetsExists(String toetsnaam)
         {
             String query = "select * from Toets where Id = '" + toetsnaam+"'";
             SqlCommand com = new SqlCommand(query, con);

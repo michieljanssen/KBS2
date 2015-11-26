@@ -10,6 +10,5 @@ namespace KBS2.model.cijfer
     {
         //abstracte methode om te checken of een cijfer voldoende is
         Boolean isVoldoende();
-
     }
 }

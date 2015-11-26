@@ -19,6 +19,7 @@ namespace KBS2.model
         public String Type { get { return type; } }
         public String Naam { get { return naam; } }
         public List<ToetsCijfer> Cijfers { get { return cijfers; } }
+        
         //constructor
         public Toets(String naam, String type,List<ToetsCijfer> cijfers)
         {
@@ -26,6 +27,7 @@ namespace KBS2.model
             this.type = type;
             this.cijfers = cijfers;
         }
+        
         //berekent het gemiddelde
         public double gemiddelde()
         {
@@ -34,27 +36,31 @@ namespace KBS2.model
             {
                 //maakt een totaal variable toe
                 double sum = 0.0;
+                
                 //gaat door alle cijfers heen
                 for (int i = 0; i < cijfers.Count; i++)
                 {
                     //voegt het cijfer aan de variable toe
                     sum += cijfers[i].Cijfer;
                 }
+                
                 //maakt nieuwe variable aan die het totaal deelt door het aantal cijfers
                 double gemiddelde = sum / cijfers.Count;
                 //geeft het gemiddelde terug
                 return gemiddelde;
             }
             else {
-                //anders als er geen cijfers zijn geef 0.0 terug
+                //anders als er geen cijfers zijn: geef 0.0 terug
                 return 0.0;
             }
         }
+        
         //geeft het aantal voldoendes terug
         public int voldoendes()
         {
             //maakt variabele aan voor aantal voldoendes
             int amount = 0;
+            
             //gaat door alle cijfers heen
             for (int i = 0; i < cijfers.Count; i++)
             {
@@ -64,14 +70,17 @@ namespace KBS2.model
                     amount++;
                 }
             }
+            
             //geeft totaal terug
             return amount;
         }
+        
         //geeft aantal onvoldoendes terug
         public int onvoldoendes()
         {
             //maakt variabele aan voor aantal onvoldoendes
             int amount = 0;
+            
             //gaat door alle cijfers heen
             for (int i = 0; i < cijfers.Count; i++)
             {
@@ -82,9 +91,11 @@ namespace KBS2.model
                     amount++;
                 }
             }
+            
             //geeft totaal terug
             return amount;
         }
+        
         //berekent het percentage voldoendes terug
         public int percentageVold()
         {

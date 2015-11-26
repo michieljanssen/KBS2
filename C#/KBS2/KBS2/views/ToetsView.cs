@@ -12,10 +12,10 @@ namespace KBS2.views
 {
     class ToetsView : Panel
     {
-        //Toets variabele
+        //Nieuwe toets aanmaken
         private Toets toets;
 
-        //ui componenten
+        //UI componenten
         private Label lbl_toetsnaam;
         private Label lbl_aantalvoldoendes;
         private Label lbl_aantalonvoldoendes;
@@ -34,7 +34,7 @@ namespace KBS2.views
         {
             this.toets = toets;
             init();
-            //checked of eht student niet null is
+            //checkt of de toets gemaakt is
             if (toets != null)
             {
                 //zet alle variabelen in de UI elementen
@@ -53,7 +53,7 @@ namespace KBS2.views
                 }
             }
             else { 
-                //anders als toets null is zet de standaart waardes in de ui elementen
+                //als de toets niet gemaakt is worden de standaard waardes in de UI elementen gezet
                 this.lbl_toetsnaam.Text = "ToetAantal voldoendes:";
                 this.lbl_aantalonvoldoendes.Text = "Aantal onvoldoendes:";
                 this.lbl_percentage.Text = "Percentagesnaam";
@@ -65,7 +65,7 @@ namespace KBS2.views
                 this.dgv_toets.Rows.Add(rows);          
             }
         }
-        //maakt ui aan
+        //maakt UI aan
         public void init()
         {
             this.lbl_toetsnaam = new Label();
@@ -82,6 +82,7 @@ namespace KBS2.views
             this.datum = new DataGridViewTextBoxColumn();
             this.SuspendLayout();
 
+            //lbl_toetsnaam
             this.lbl_toetsnaam.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Left)
             | AnchorStyles.Right)));
             this.lbl_toetsnaam.AutoSize = true;
@@ -90,86 +91,100 @@ namespace KBS2.views
             this.lbl_toetsnaam.Name = "lbl_toetsnaam";
             this.lbl_toetsnaam.Size = new Size(178, 37);
             this.lbl_toetsnaam.TabIndex = 2;
-            // lbl_aantalvoldoendes
+           
+            //lbl_aantalvoldoendes
             this.lbl_aantalvoldoendes.AutoSize = true;
             this.lbl_aantalvoldoendes.Font = new Font("Microsoft Sans Serif", 16F);
             this.lbl_aantalvoldoendes.Location = new Point(95, 127);
             this.lbl_aantalvoldoendes.Name = "lbl_aantalvoldoendes";
             this.lbl_aantalvoldoendes.Size = new Size(197, 26);
             this.lbl_aantalvoldoendes.TabIndex = 3;
-            // lbl_aantalonvoldoendes
+            
+            //lbl_aantalonvoldoendes
             this.lbl_aantalonvoldoendes.AutoSize = true;
             this.lbl_aantalonvoldoendes.Font = new Font("Microsoft Sans Serif", 16F);
             this.lbl_aantalonvoldoendes.Location = new Point(532, 127);
             this.lbl_aantalonvoldoendes.Name = "lbl_aantalonvoldoendes";
             this.lbl_aantalonvoldoendes.Size = new Size(221, 26);
             this.lbl_aantalonvoldoendes.TabIndex = 4;
-            // lbl_percentage
+            
+            //lbl_percentage
             this.lbl_percentage.AutoSize = true;
             this.lbl_percentage.Font = new Font("Microsoft Sans Serif", 16F);
             this.lbl_percentage.Location = new Point(951, 127);
             this.lbl_percentage.Name = "lbl_percentage";
             this.lbl_percentage.Size = new Size(238, 26);
             this.lbl_percentage.TabIndex = 5;
-            // prb_gehaald
+            
+            //prb_gehaald
             this.prb_gehaald.ForeColor = Color.Lime;
             this.prb_gehaald.Location = new Point(100, 156);
             this.prb_gehaald.Name = "prb_gehaald";
             this.prb_gehaald.Size = new Size(1089, 23);
             this.prb_gehaald.TabIndex = 6;
-            // lbl_gemiddelde
+            
+            //lbl_gemiddelde
             this.lbl_gemiddelde.AutoSize = true;
             this.lbl_gemiddelde.Font = new Font("Microsoft Sans Serif", 16F);
             this.lbl_gemiddelde.Location = new Point(95, 204);
             this.lbl_gemiddelde.Name = "lbl_gemiddelde";
             this.lbl_gemiddelde.Size = new Size(136, 26);
             this.lbl_gemiddelde.TabIndex = 7;
-            // lbl_toetsType
+            
+            //lbl_toetsType
             this.lbl_toetsType.AutoSize = true;
             this.lbl_toetsType.Font = new Font("Microsoft Sans Serif", 16F);
             this.lbl_toetsType.Location = new Point(448, 204);
             this.lbl_toetsType.Name = "testlbl_toetsType";
             this.lbl_toetsType.Size = new Size(112, 26);
             this.lbl_toetsType.TabIndex = 8;
-            // dgv_toets
+            
+            //dgv_toets
             DataGridViewCellStyle dgvcs = new DataGridViewCellStyle();
             dgvcs.NullValue = null;
             this.dgv_toets.AlternatingRowsDefaultCellStyle = dgvcs;
             this.dgv_toets.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_toets.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+
             this.dgv_toets.Columns.AddRange(new DataGridViewColumn[] {
             this.Leerlingnr,
             this.naam,
             this.Cijfer, this.datum});
+
             this.dgv_toets.Location = new Point(100, 246);
             this.dgv_toets.Name = "dgv_toets";
             this.dgv_toets.Size = new Size(1089, 454);
             this.dgv_toets.TabIndex = 0;
-            // Leerlingnr
+            
+            //Leerlingnr
             this.Leerlingnr.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
             this.Leerlingnr.DefaultCellStyle = dgvcs;
             this.Leerlingnr.HeaderText = "Leerlingnr.";
             this.Leerlingnr.Name = "Leerlingnr";
             this.Leerlingnr.ReadOnly = true;
-            // naam
+            
+            //naam
             this.naam.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
             this.naam.DefaultCellStyle = dgvcs;
             this.naam.HeaderText = "Naam";
             this.naam.Name = "naam";
             this.naam.ReadOnly = true;
-            // Cijfer
+            
+            //Cijfer
             this.Cijfer.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
             this.Cijfer.DefaultCellStyle = dgvcs;
             this.Cijfer.HeaderText = "Cijfer";
             this.Cijfer.Name = "Cijfer";
             this.Cijfer.ReadOnly = true;
-            // Datum
+            
+            //datum
             this.datum.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
             this.datum.DefaultCellStyle = dgvcs;
             this.datum.HeaderText = "Behaald op";
             this.datum.Name = "datum";
             this.datum.ReadOnly = true;
 
+            //Alles toevoegen
             this.ClientSize = new Size(1264, 761);
             this.Controls.Add(this.dgv_toets);
             this.Controls.Add(this.lbl_toetsType);

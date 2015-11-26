@@ -13,7 +13,7 @@ namespace KBS2.data
         //connectie variable
         private static SqlConnection con;
         
-        // connectie maken
+        //connectie maken
         public static Boolean connect()
         {
             try
@@ -22,6 +22,7 @@ namespace KBS2.data
                 con.Open();
                 return true;
             }
+            //mogelijke error afvangen
             catch (SqlException e)
             {
                 return false;

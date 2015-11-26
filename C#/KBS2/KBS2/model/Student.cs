@@ -10,7 +10,7 @@ namespace KBS2.model
 {
     class Student
     {
-        //variablenen student
+        //variabelen student
         private String naam;
         private String id;
         //lijst van cijfers
@@ -26,23 +26,25 @@ namespace KBS2.model
             this.id = id;
             this.cijfers = cijfers;
         }
-        //geeft het totaal gehaalde ec's terug
+        
+        //geeft het totaal gehaalde EC's terug
         public int gehaaldeEC()
         {
             //maakt variabele aan
             int amount = 0;
             //gaat door alle cijfers heen
             for (int i = 0; i < cijfers.Count; i++) {
-                //checked of het cijfer voldoende is
+                //checkt of het cijfer een voldoende is
                 if (cijfers[i].isVoldoende()) {
-                    //voegt ecs toe
+                    //voegt EC's toe
                     amount += cijfers[i].EC;
                 }
             }
             //geeft variabele terug
             return amount;
         }
-        //geeft het totaal gemiste ec's terug
+        
+        //geeft het totaal gemiste EC's terug
         public int gemisteEC()
         {
             //maakt variabele aan
@@ -50,17 +52,18 @@ namespace KBS2.model
             //gaat door alle cijfers heen
             for (int i = 0; i < cijfers.Count; i++)
             {
-                //checked of het onvoldoende is
+                //checkt of het cijfer een onvoldoende is
                 if (!cijfers[i].isVoldoende())
                 {
-                    //voegt ec's toe
+                    //voegt EC's toe
                     amount += cijfers[i].EC;
                 }
             }
-            //geeft totaal terug
+            //geeft het totaal terug
             return amount;
         }
-        //geeft het totaal mogelijke ec's
+        
+        //geeft het totaal mogelijke EC's
         public int totaalEC() {
             //maakt variable aan
             int amount = 0;
