@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DacOrigin xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <PackageProperties>
+    <Version>3.1.0.0</Version>
+    <ContainsExportedData>false</ContainsExportedData>
+    <StreamVersions>
+      <Version StreamName="Data">2.0.0.0</Version>
+      <Version StreamName="DeploymentContributors">1.0.0.0</Version>
+    </StreamVersions>
+  </PackageProperties>
+  <Operation>
+    <Identity>86b6604b-5c95-4631-881f-4655127f72e8</Identity>
+    <Start>2015-11-30T13:07:19.1181618+01:00</Start>
+    <End>0001-01-01T00:00:00.0000000</End>
+    <ProductName>Microsoft.SqlServer.Dac, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</ProductName>
+    <ProductVersion>12.0.2743.1</ProductVersion>
+    <ProductSchema>http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02</ProductSchema>
+  </Operation>
+  <Server>
+    <ServerVersion>Microsoft SQL Server 2012 - 11.0.5058.0 (X64) 
+	May 14 2014 18:34:29 
+	Copyright (c) Microsoft Corporation
+	Express Edition (64-bit) on Windows NT 6.3 &lt;X64&gt; (Build 10240: )
+</ServerVersion>
+    <ObjectCounts>
+      <DatabaseOptions>1</DatabaseOptions>
+      <ForeignKeyConstraint>5</ForeignKeyConstraint>
+      <PrimaryKeyConstraint>5</PrimaryKeyConstraint>
+      <SimpleColumn>16</SimpleColumn>
+      <Table>5</Table>
+    </ObjectCounts>
+  </Server>
+  <Checksums>
+    <Checksum Uri="/model.xml">6C98D001FDD1DA0815DBED6E9C33D631B3BD95A67906E7B09A7177D83302C0A1</Checksum>
+  </Checksums>
+</DacOrigin>

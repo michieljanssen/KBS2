@@ -20,7 +20,7 @@ namespace KBS2.data
         {
             try
             {
-                con = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True");
+                con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True");
                 con.Open();
                 return true;
             }
@@ -54,7 +54,7 @@ namespace KBS2.data
                 + "where HeeftCijfer.toetsid = '" + toetsnaam + "'";
             com  = new SqlCommand(query, con);
             reader = com.ExecuteReader();
-            reader.Read();
+            
             while (reader.Read()) {
                 ToetsCijfer cijfer = new ToetsCijfer(reader.GetValue(0)  +"", (String)reader.GetValue(1), Convert.ToDouble(reader.GetValue(2)),reader.GetValue(3) + "");
                 cijfers.Add(cijfer);
