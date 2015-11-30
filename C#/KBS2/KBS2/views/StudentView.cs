@@ -32,9 +32,10 @@ namespace KBS2.views
         private Label lbl_gehaald;
         private Label lbl_gemist;
 
-        public StudentView(Student student)
+        public StudentView(Student student, Form form)
             : base()
         {
+            this.Parent = form;
             this.student = student;
             init();
             
