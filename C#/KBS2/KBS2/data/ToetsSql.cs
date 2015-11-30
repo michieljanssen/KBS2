@@ -40,11 +40,12 @@ namespace KBS2.data
         //toets ophalen uit database
         public static Toets getToets(String toetsnaam)
         {
-            String query = "select type from Toets where Id = '" + toetsnaam + "'";
+            String query = "select id,type from Toets where Id = '" + toetsnaam + "'";
             SqlCommand com = new SqlCommand(query, con);
             SqlDataReader reader = com.ExecuteReader();
             reader.Read();
-            String toetstype = (String)reader.GetValue(0);
+            String naam = (String)reader.GetValue(0);
+            String toetstype = (String)reader.GetValue(1);
             reader.Close();
             List<ToetsCijfer> cijfers = new List<ToetsCijfer>();
             query = "select Student.Id, Student.Naam, HeeftCijfer.cijfer, HeeftCijfer.Datum"
@@ -60,7 +61,7 @@ namespace KBS2.data
                 cijfers.Add(cijfer);
             }
             reader.Close();
-            Toets toets = new Toets(toetsnaam, toetstype, cijfers);
+            Toets toets = new Toets(naam, toetstype, cijfers);
             return toets;
         }
         
