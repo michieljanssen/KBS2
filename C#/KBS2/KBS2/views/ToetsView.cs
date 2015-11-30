@@ -47,6 +47,7 @@ namespace KBS2.views
                 this.prb_gehaald.Value = toets.percentageVold();
                 this.lbl_gemiddelde.Text = "Gemiddelde: " + toets.gemiddelde();
                 //checked of er cijfers instaan
+
                 if (toets.Cijfers.Count > 0)
                 {
                     //gaat door alle cijfers heen
