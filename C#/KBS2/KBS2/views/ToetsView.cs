@@ -29,9 +29,10 @@ namespace KBS2.views
         private DataGridViewTextBoxColumn Cijfer;
         private DataGridViewTextBoxColumn datum;
 
-        public ToetsView(Toets toets)
+        public ToetsView(Toets toets, Form form)
             : base()
         {
+            this.Parent = form;
             this.toets = toets;
             init();
             //checkt of de toets gemaakt is
@@ -45,11 +46,33 @@ namespace KBS2.views
                 this.lbl_toetsType.Text = "Toetstype: " + toets.Type ;
                 this.prb_gehaald.Value = toets.percentageVold();
                 this.lbl_gemiddelde.Text = "Gemiddelde: " + toets.gemiddelde();
-                //gaat door alle cijfers heen
-                for(int i = 0; i < toets.Cijfers.Count;i++){
-                    //zet de cijfers in de tabel
-                    object[] row = { toets.Cijfers[i].ID, toets.Cijfers[i].Naam, toets.Cijfers[i].Cijfer , toets.Cijfers[i].Datum};
-                    this.dgv_toets.Rows.Add(row);          
+                //checked of er cijfers instaan
+                if (toets.Cijfers.Count > 0)
+                {
+                    //gaat door alle cijfers heen
+                    for (int i = 0; i < toets.Cijfers.Count; i++)
+                    {
+                        //zet de cijfers in de tabel
+                        object[] row = { toets.Cijfers[i].ID, toets.Cijfers[i].Naam, toets.Cijfers[i].Cijfer, toets.Cijfers[i].Datum };
+                        this.dgv_toets.Rows.Add(row);
+
+
+                        //verandert de kleur van de text als voldoende is of niet
+                        if (toets.Cijfers[i].isVoldoende())
+                        {
+                            //groen voor voldoende
+                            this.dgv_toets.Rows[i].Cells[2].Style.ForeColor = Color.Green;
+                        }
+                        else
+                        {
+                            //rood voor onvoldoende
+                            this.dgv_toets.Rows[i].Cells[2].Style.ForeColor = Color.Red;
+                        }
+                    }
+                }
+                else { 
+                    //anders laat een melding zien
+                    var result = MessageBox.Show("Deze toets heeft geen cijfers.", "Geen cijfers", MessageBoxButtons.OK);
                 }
             }
             else { 

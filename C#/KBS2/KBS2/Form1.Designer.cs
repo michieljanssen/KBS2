@@ -50,6 +50,7 @@
             this.txb_zoek.Name = "txb_zoek";
             this.txb_zoek.Size = new System.Drawing.Size(628, 32);
             this.txb_zoek.TabIndex = 1;
+            this.txb_zoek.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_zoek_KeyPress);
             // 
             // Form1
             // 

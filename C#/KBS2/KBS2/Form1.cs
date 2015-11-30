@@ -44,7 +44,7 @@ namespace KBS2
                     //krijgt de toets uit de database
                     Toets toets = ToetsSql.getToets(txb_zoek.Text);
                     //maakt het paneel aan met de toets en voegt deze toe aan het scherm
-                    ToetsView panel = new ToetsView(toets);
+                    ToetsView panel = new ToetsView(toets, this);
                     setPanel(panel);
                 }
                 else
@@ -59,20 +59,30 @@ namespace KBS2
                 var result = MessageBox.Show("Voer a.u.b. een toets in.", "Voer aub een toets in", MessageBoxButtons.OK);
             }
         }
-        
+        //keypress event voor de zoekbalk
+        private void txb_zoek_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //checked of enter is ingedrukt
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                //voert de knop uit om te zoeken
+                btn_zoek.PerformClick();
+            }
+        }
         //vervangt het paneel op het scherm
-        public void setPanel(Panel panel) {
-                //checkt of het paneel bestaat
+        public void setPanel(Panel panel)
+        {
+            //checkt of het paneel bestaat
             if (p != null)
             {
                 //verwijdert het paneel
                 p.Parent = null;
                 p = null;
             }
-            
+
             //voegt het paneel toe
             p = panel;
-            p.Parent = this;
         }
+
     }
 }
