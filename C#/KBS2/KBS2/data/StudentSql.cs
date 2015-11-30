@@ -40,5 +40,10 @@ namespace KBS2.data
 
             return null;
         }
+
+        public static Boolean studentExists()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

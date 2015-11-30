@@ -34,7 +34,6 @@ namespace KBS2.data
         
         //connectie sluiten
         public  static void close() {
-
             con.Close();
         }
         
