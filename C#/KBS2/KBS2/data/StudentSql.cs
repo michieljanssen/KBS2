@@ -41,24 +41,9 @@ namespace KBS2.data
             return null;
         }
 
-        public static Boolean studentExists(String naam)
+        public static Boolean studentExists()
         {
-            String query = "select * from Student where naam = '" + naam + "'";
-            SqlCommand com = new SqlCommand(query, con);
-            SqlDataReader reader = com.ExecuteReader();
-            Boolean check = reader.HasRows;
-            reader.Close();
-            return check;
-        }
-
-        public static Boolean studentExists(int id)
-        {
-            String query = "select * from Student where id = "+id;
-            SqlCommand com = new SqlCommand(query, con);
-            SqlDataReader reader = com.ExecuteReader();
-            Boolean check = reader.HasRows;
-            reader.Close();
-            return check;
+            throw new System.NotImplementedException();
         }
     }
 }

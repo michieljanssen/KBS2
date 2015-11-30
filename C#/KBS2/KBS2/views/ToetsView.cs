@@ -8,7 +8,6 @@ using System.Drawing;
 
 using KBS2.model.cijfer;
 using KBS2.model;
-using KBS2.data;
 namespace KBS2.views
 {
     class ToetsView : Panel
@@ -169,7 +168,7 @@ namespace KBS2.views
             this.dgv_toets.AlternatingRowsDefaultCellStyle = dgvcs;
             this.dgv_toets.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_toets.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_toets.CellMouseDoubleClick +=dgv_toets_CellMouseDoubleClick;
+
             this.dgv_toets.Columns.AddRange(new DataGridViewColumn[] {
             this.Leerlingnr,
             this.naam,
@@ -220,14 +219,6 @@ namespace KBS2.views
             this.Controls.Add(this.lbl_toetsnaam);
         }
 
-
-        public void dgv_toets_CellMouseDoubleClick(Object sender, DataGridViewCellMouseEventArgs e) {  
-            if(StudentSql.studentExists(Convert.ToInt32(dgv_toets.Rows[e.RowIndex].Cells[0].Value))){
-                Console.WriteLine("Exisits");
-            }
- 
-        
-        }
     }
 }
 
