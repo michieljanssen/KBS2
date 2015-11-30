@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="model\cijfer\ToetsCijferTests.cs" />
     <Compile Include="model\cijfer\VakCijferTests.cs" />
     <Compile Include="model\StudentTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
