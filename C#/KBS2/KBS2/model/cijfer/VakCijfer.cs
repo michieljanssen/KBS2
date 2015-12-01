@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KBS2.model.cijfer
 {
-    class VakCijfer:Gradable
+    public class VakCijfer:Gradable
     {
         //variablen van vak en cijfer + mogelijk EC's
         private String vaknaam;

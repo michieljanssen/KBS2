@@ -47,7 +47,14 @@ namespace KBS2.views
                 this.lbl_id.Text = student.ID;
                 this.lbl_gemisteEC.Text = "Gemiste EC\'s: " + student.gemisteEC();
                 this.lbl_gehaaldeEC.Text = "Behaalde EC\'s dit jaar: " + student.gehaaldeEC();
-                this.testprb_gehaald.Value = student.gehaaldeEC() * 100 / student.totaalEC();
+
+                if (student.totaalEC() != 0)
+                {
+                    this.testprb_gehaald.Value = student.gehaaldeEC() * 100 / student.totaalEC();
+                }
+                else {
+                    this.testprb_gehaald.Value = 0;
+                }
                 this.lbl_totaalEC.Text = "Van: " + student.totaalEC();
                 
                 //gaat door alle cijfers heen
@@ -75,7 +82,7 @@ namespace KBS2.views
                 this.lbl_id.Text = "ID";
                 this.lbl_gemisteEC.Text = "Gemiste EC\'s:";
                 this.lbl_gehaaldeEC.Text = "Behaalde EC\'s dit jaar:";
-                this.testprb_gehaald.Value = 80;
+                this.testprb_gehaald.Value = 0;
                 this.lbl_totaalEC.Text = "Van:";
             }
         }

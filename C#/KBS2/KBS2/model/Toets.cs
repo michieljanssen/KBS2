@@ -8,7 +8,7 @@ using KBS2.model.cijfer;
 
 namespace KBS2.model
 {
-    class Toets
+    public class Toets
     {
         //toets variabele
         private String naam;
