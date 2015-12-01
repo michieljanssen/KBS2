@@ -40,6 +40,8 @@ namespace KBS2
                     //beweegt de zoekbalk +knop omhoog
                     txb_zoek.Location = new Point(txb_zoek.Location.X, 20);
                     btn_zoek.Location = new Point(btn_zoek.Location.X, 20);
+                    this.txb_zoek.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top);
+                    this.btn_zoek.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
 
                     //krijgt de toets uit de database
                     Toets toets = ToetsSql.getToets(txb_zoek.Text);
