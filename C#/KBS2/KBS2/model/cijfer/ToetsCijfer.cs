@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KBS2.model.cijfer
 {
-    class ToetsCijfer: Gradable
+    public class ToetsCijfer: Gradable
     {
         //data variabelen van de toets
         private String leerlingid;
