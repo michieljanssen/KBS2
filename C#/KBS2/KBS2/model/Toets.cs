@@ -47,7 +47,8 @@ namespace KBS2.model
                 //maakt nieuwe variable aan die het totaal deelt door het aantal cijfers
                 double gemiddelde = sum / cijfers.Count;
                 //geeft het gemiddelde terug
-                return gemiddelde;
+
+                return Math.Round(gemiddelde, 1);
             }
             else {
                 //anders als er geen cijfers zijn: geef 0.0 terug
@@ -99,11 +100,13 @@ namespace KBS2.model
         //berekent het percentage voldoendes terug
         public int percentageVold()
         {
+
             //checked of het aantal cijfers groter is dan 0
             if (cijfers.Count > 0)
             {
+
                 //geeft het percentage terug
-                return (voldoendes() * 100) / (cijfers.Count);
+                return (int)Math.Round((voldoendes() * 100.0) / (cijfers.Count));
             }
             else {
                 //anders geef 0 terug

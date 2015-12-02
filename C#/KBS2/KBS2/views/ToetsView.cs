@@ -44,9 +44,8 @@ namespace KBS2.views
                 this.lbl_aantalvoldoendes.Text = "Aantal voldoendes: " + toets.voldoendes();
                 this.lbl_toetsType.Text = "Toetstype: " + toets.Type;
                 this.prb_gehaald.Value = toets.percentageVold();
-                this.lbl_gemiddelde.Text = "Gemiddelde: " + toets.gemiddelde();
+                this.lbl_gemiddelde.Text = "Gemiddelde: " + toets.gemiddelde().ToString("0.0");
                 //checked of er cijfers instaan
-
                 if (toets.Cijfers.Count > 0)
                 {
                     //gaat door alle cijfers heen
@@ -55,7 +54,6 @@ namespace KBS2.views
                         //zet de cijfers in de tabel
                         object[] row = { toets.Cijfers[i].ID, toets.Cijfers[i].Naam, toets.Cijfers[i].Cijfer, toets.Cijfers[i].Datum };
                         this.dgv_toets.Rows.Add(row);
-
 
                         //verandert de kleur van de text als voldoende is of niet
                         if (toets.Cijfers[i].isVoldoende())
@@ -226,6 +224,7 @@ namespace KBS2.views
         private void dgv_toets_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int id = Convert.ToInt32(dgv_toets.Rows[e.RowIndex].Cells[0].Value);
+            /*
             if (StudentSql.studentExists(id))
             {
                 Student student = StudentSql.getStudent(id);
@@ -235,6 +234,7 @@ namespace KBS2.views
                 form.Show();
 
             }
+            */
         }
     }
 }
