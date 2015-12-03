@@ -227,7 +227,7 @@ namespace KBS2.views
             if (row >= 0)
             {
                 int id = Convert.ToInt32(dgv_toets.Rows[row].Cells[0].Value);
-                /*
+                
                 if (StudentSql.studentExists(id))
                 {
                     Student student = StudentSql.getStudent(id);
@@ -237,7 +237,7 @@ namespace KBS2.views
                     form.Show();
 
                 }
-                */
+                
             }
         }
     }
