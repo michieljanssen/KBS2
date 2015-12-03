@@ -223,18 +223,22 @@ namespace KBS2.views
 
         private void dgv_toets_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int id = Convert.ToInt32(dgv_toets.Rows[e.RowIndex].Cells[0].Value);
-            /*
-            if (StudentSql.studentExists(id))
+            int row = e.RowIndex;
+            if (row >= 0)
             {
-                Student student = StudentSql.getStudent(id);
-                Form form = new Form();
-                StudentView view = new StudentView(student, form);
-                form.SetBounds(this.form.Bounds.X +100, this.form.Bounds.Y + 100, this.form.Bounds.Width, this.form.Bounds.Height);
-                form.Show();
+                int id = Convert.ToInt32(dgv_toets.Rows[row].Cells[0].Value);
+                /*
+                if (StudentSql.studentExists(id))
+                {
+                    Student student = StudentSql.getStudent(id);
+                    Form form = new Form();
+                    StudentView view = new StudentView(student, form);
+                    form.SetBounds(this.form.Bounds.X +100, this.form.Bounds.Y + 100, this.form.Bounds.Width, this.form.Bounds.Height);
+                    form.Show();
 
+                }
+                */
             }
-            */
         }
     }
 }
