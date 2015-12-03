@@ -15,7 +15,7 @@ namespace KBS2.model.cijfer
 
         public String VakNaam { get { return vaknaam; } }
         public int EC { get { return ec; } }
-        public List<ToetsCijfer> Cijfer { get { return cijfers; } }
+        public List<ToetsCijfer> Cijfers { get { return cijfers; } }
 
         //constructor
         public VakCijfer(String vaknaam, int ec, List<ToetsCijfer> cijfers) {

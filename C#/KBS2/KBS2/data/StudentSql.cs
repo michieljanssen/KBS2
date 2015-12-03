@@ -46,15 +46,33 @@ namespace KBS2.data
             List<VakCijfer> cijfers = new List<VakCijfer>();
             String naam = (String)reader.GetValue(2);
             reader.Close();
-          //  query = "select ";
+            query = "SELECT  HeeftCijfer.toetsid, HeeftCijfer.cijfer, HeeftCijfer.datum, Toets.vakid, Vak.ec " +
+            "FROM Student " +
+            "INNER JOIN HeeftCijfer ON Student.Id = HeeftCijfer.studentid " +
+            "INNER JOIN Toets ON Toets.Id = HeeftCijfer.toetsid " +
+            "INNER JOIN Vak ON Vak.Id = Toets.vakid " +
+            "WHERE Student.Id = " + id + ";";
 
-           // com = new SqlCommand(query, con);
-          //  reader = com.ExecuteReader();
+            com = new SqlCommand(query, con);
+            reader = com.ExecuteReader();
 
-           // while (reader.Read())
-           // {
-                //VakCijfer cijfer =  new VakCijfer()
-           // }
+            while (reader.Read())
+            {
+                if (cijfers.Count > 0)
+                {
+                    for (int i = 0; i < cijfers.Count; i++)
+                    {
+                        if (cijfers[i].VakNaam == (String) reader.GetValue(3)) {
+                           ToetsCijfer cijfer = new ToetsCijfer(id+"", naam, Convert.ToDouble(reader.GetValue(1)), (String) reader.GetValue(2));
+
+                        }
+
+                    }
+
+
+                }
+
+            }
 
             Student student = new Student(naam, id + "", cijfers);
             return student;
