@@ -24,12 +24,13 @@ namespace KBS2.views
         private DataGridView dgv_vakken;
         private DataGridViewTextBoxColumn vak;
         private DataGridViewTextBoxColumn vakcijfer;
+        private DataGridViewTextBoxColumn gehaald;
         private DataGridViewTextBoxColumn EC;
 
         private DataGridView dgv_toetsen;
-        private DataGridViewTextBoxColumn vakgehaald;
-        private DataGridViewTextBoxColumn cijfergehaald;
-        private DataGridViewTextBoxColumn ECgehaald;
+        private DataGridViewTextBoxColumn toets;
+        private DataGridViewTextBoxColumn cijfer;
+        private DataGridViewTextBoxColumn toetsGehaald;
 
         private Label lbl_gehaald;
         private Label lbl_gemist;
@@ -103,9 +104,9 @@ namespace KBS2.views
             this.vakcijfer = new DataGridViewTextBoxColumn();
             this.EC = new DataGridViewTextBoxColumn();
             this.dgv_toetsen = new DataGridView();
-            this.vakgehaald = new DataGridViewTextBoxColumn();
-            this.cijfergehaald = new DataGridViewTextBoxColumn();
-            this.ECgehaald = new DataGridViewTextBoxColumn();
+            this.toets = new DataGridViewTextBoxColumn();
+            this.cijfer = new DataGridViewTextBoxColumn();
+            this.gehaald = new DataGridViewTextBoxColumn();
             this.lbl_gehaald = new Label();
             this.lbl_gemist = new Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_vakken)).BeginInit();
@@ -194,9 +195,9 @@ namespace KBS2.views
             this.dgv_toetsen.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
             this.dgv_toetsen.Columns.AddRange(new DataGridViewColumn[] {
-            this.vakgehaald,
-            this.cijfergehaald,
-            this.ECgehaald});
+            this.toets,
+            this.cijfer,
+            this.gehaald});
 
             this.dgv_toetsen.Location = new System.Drawing.Point(100, 516);
             this.dgv_toetsen.Name = "dgv_behaaldeEC";
@@ -205,19 +206,19 @@ namespace KBS2.views
             this.dgv_toetsen.TabIndex = 8;
             
             //vakgehaald
-            this.vakgehaald.HeaderText = "Vak";
-            this.vakgehaald.Name = "dataGridViewTextBoxColumn1";
-            this.vakgehaald.ReadOnly = true;
+            this.toets.HeaderText = "Vak";
+            this.toets.Name = "dataGridViewTextBoxColumn1";
+            this.toets.ReadOnly = true;
             
             //cijfergehaald
-            this.cijfergehaald.HeaderText = "Cijfer";
-            this.cijfergehaald.Name = "dataGridViewTextBoxColumn2";
-            this.cijfergehaald.ReadOnly = true;
+            this.cijfer.HeaderText = "Cijfer";
+            this.cijfer.Name = "dataGridViewTextBoxColumn2";
+            this.cijfer.ReadOnly = true;
             
             //ECgehaald
-            this.ECgehaald.HeaderText = "EC\'s";
-            this.ECgehaald.Name = "dataGridViewTextBoxColumn3";
-            this.ECgehaald.ReadOnly = true;
+            this.gehaald.HeaderText = "EC\'s";
+            this.gehaald.Name = "dataGridViewTextBoxColumn3";
+            this.gehaald.ReadOnly = true;
             
             //lbl_gehaald
             this.lbl_gehaald.AutoSize = true;
