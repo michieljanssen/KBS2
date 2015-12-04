@@ -30,7 +30,7 @@ namespace KBS2.views
         private DataGridView dgv_toetsen;
         private DataGridViewTextBoxColumn toets;
         private DataGridViewTextBoxColumn cijfer;
-        private DataGridViewTextBoxColumn toetsGehaald;
+        private DataGridViewTextBoxColumn toetsBehaald;
 
         private Label lbl_toets;
         private Label lbl_vak;
@@ -96,7 +96,7 @@ namespace KBS2.views
             this.toets = new DataGridViewTextBoxColumn();
             this.cijfer = new DataGridViewTextBoxColumn();
             this.behaald = new DataGridViewTextBoxColumn();
-            this.toetsGehaald = new DataGridViewTextBoxColumn();
+            this.toetsBehaald = new DataGridViewTextBoxColumn();
             this.lbl_toets = new Label();
             this.lbl_vak = new Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_vakken)).BeginInit();
@@ -193,7 +193,7 @@ namespace KBS2.views
             this.dgv_toetsen.Columns.AddRange(new DataGridViewColumn[] {
             this.toets,
             this.cijfer,
-            this.toetsGehaald});
+            this.toetsBehaald});
 
             this.dgv_toetsen.Location = new System.Drawing.Point(100, 516);
             this.dgv_toetsen.Name = "dgv_behaaldeEC";
@@ -211,9 +211,9 @@ namespace KBS2.views
             this.cijfer.Name = "dataGridViewTextBoxColumn2";
             this.cijfer.ReadOnly = true;
 
-            this.toetsGehaald.HeaderText = "Gehaald";
-            this.toetsGehaald.Name = "Gehaald";
-            this.toetsGehaald.ReadOnly = true;
+            this.toetsBehaald.HeaderText = "Behaald";
+            this.toetsBehaald.Name = "Behaald";
+            this.toetsBehaald.ReadOnly = true;
 
             //lbl_gehaald
             this.lbl_toets.AutoSize = true;
@@ -255,7 +255,7 @@ namespace KBS2.views
         {
             if (e.RowIndex >= 0) {
                 this.dgv_toetsen.Rows.Clear();
-                VakCijfer vak = student.Cijfers[e.RowIndex];
+                VakCijfer vak = student.getVakCijfer((String)dgv_vakken.Rows[e.RowIndex].Cells[0].Value);
 
                 for (int i = 0; i < vak.Cijfers.Count; i++)
                 {

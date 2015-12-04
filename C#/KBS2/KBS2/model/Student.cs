@@ -27,6 +27,16 @@ namespace KBS2.model
             this.cijfers = cijfers;
         }
         
+        public VakCijfer getVakCijfer(String vakNaam) {
+            for(int i =0; i < cijfers.Count; i++)
+            {
+                if (cijfers[i].VakNaam == vakNaam) {
+                    return cijfers[i];
+                }
+            }
+            return null;
+        }
+
         //geeft het totaal gehaalde EC's terug
         public int gehaaldeEC()
         {
