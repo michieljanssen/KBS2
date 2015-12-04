@@ -23,12 +23,12 @@
         <item-type stereotype="" type="ErdEntity" />
         <value>9</value>
       </counter>
+      <counter>
+        <item-type stereotype="" type="UmlCollaboration" />
+        <value>1</value>
+      </counter>
     </entity-names>
     <entity-ids>
-      <counter>
-        <item-type stereotype="" type="AbstractElementGroup" />
-        <value>185</value>
-      </counter>
       <counter>
         <item-type stereotype="" type="UmlActor" />
         <value>3</value>
@@ -51,7 +51,7 @@
       </counter>
       <counter>
         <item-type stereotype="" type="UmlRealization" />
-        <value>3</value>
+        <value>4</value>
       </counter>
       <counter>
         <item-type stereotype="" type="ErdEntity" />
@@ -60,6 +60,18 @@
       <counter>
         <item-type stereotype="" type="ErdRelation" />
         <value>30</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="AbstractElementGroup" />
+        <value>30</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="UmlCollaboration" />
+        <value>2</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="UmlInclude" />
+        <value>2</value>
       </counter>
     </entity-ids>
     <diagrams>
@@ -108,7 +120,7 @@
   </types>
   <filters />
   <items>
-    <item id="di820937834597966944" cid="ENT001" type="erd-entity" name="Student" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 13:13:28">
+    <item id="di820937834597966944" cid="ENT001" type="erd-entity" name="Student" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 13:13:28">
       <stereotypes />
       <associated-diagrams />
       <owned-items />
@@ -133,7 +145,7 @@
       </attributes>
       <indexes />
     </item>
-    <item id="di795741870590605770" cid="ENT002" type="erd-entity" name="Vak" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 13:13:57">
+    <item id="di795741870590605770" cid="ENT002" type="erd-entity" name="Vak" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 13:13:57">
       <stereotypes />
       <associated-diagrams />
       <owned-items />
@@ -143,7 +155,7 @@
         <attribute uid="a37dba378a1dd4476b57fef316d9c0ff6754" cid="EA005" name="vakID" type="String" type-id="Uml.String" type-size="" foreign-key="false" primary-key="true" nullable="false" description="" default-value="" auto-increment="false">
           <style class="default" />
         </attribute>
-        <attribute uid="a4ab6779cf71b430ab04f3da60e2f2f40594" cid="EA033" name="opleidingID" type-size="" foreign-key="true" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
+        <attribute uid="a4ab6779cf71b430ab04f3da60e2f2f40594" cid="EA033" name="opleidingID" type="" type-id="" type-size="" foreign-key="true" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
           <style class="default" />
         </attribute>
         <attribute uid="a1e51c45505af441bbf461efb6144853a100" cid="EA004" name="vaknaam" type="String" type-id="Uml.String" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
@@ -157,7 +169,7 @@
     </item>
   </items>
   <models>
-    <model id="p749230544924706020" name="Model 1" type="" namespace="" order-index="1">
+    <model id="p749230544924706020" name="Model 1" type="model" namespace="" order-index="1">
       <meta>
         <authors>
           <author> </author>
@@ -182,38 +194,38 @@
           </authors>
           <description />
           <creation-date>11/18/2015 12:54:25</creation-date>
-          <change-date>11/18/2015 13:01:15</change-date>
+          <change-date>12/03/2015 14:16:03</change-date>
           <revision-count>0</revision-count>
           <version />
         </meta>
         <abstract-items>
-          <item id="di155542933655428714" cid="AC001" type="actor" name="Docent" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 12:54:29">
+          <item id="di155542933655428714" cid="AC001" type="actor" name="Docent" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 12:54:29">
             <stereotypes />
             <associated-diagrams />
             <owned-items />
             <style class="default" />
           </item>
-          <item id="di471707343370459551" cid="SYS001" type="system-boundary" name="Programma" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 12:54:42">
+          <item id="di471707343370459551" cid="SYS001" type="system-boundary" name="Programma" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 12:54:42">
             <stereotypes />
             <associated-diagrams />
             <owned-items />
             <style class="default" />
           </item>
-          <item id="di439510998320783708" cid="UC001" type="use-case" name="Student selecteren" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 12:54:53">
-            <stereotypes />
-            <associated-diagrams />
-            <owned-items />
-            <style class="default" />
-            <use-case />
-          </item>
-          <item id="di685148577205885768" cid="UC002" type="use-case" name="Studentinformatie bekijken" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 12:55:14">
+          <item id="di439510998320783708" cid="UC001" type="use-case" name="Student selecteren" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 12:54:53">
             <stereotypes />
             <associated-diagrams />
             <owned-items />
             <style class="default" />
             <use-case />
           </item>
-          <item id="di721966073264011619" cid="REL002" type="relationship" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 12:55:55">
+          <item id="di685148577205885768" cid="UC002" type="use-case" name="Studentinformatie bekijken" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 12:55:14">
+            <stereotypes />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+            <use-case />
+          </item>
+          <item id="di721966073264011619" cid="REL002" type="relationship" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 12:55:55">
             <stereotypes />
             <associated-diagrams />
             <owned-items />
@@ -223,16 +235,15 @@
               <end-role id="" name="" navigability="" association-type="association" visibility="private" />
             </relation>
           </item>
-          <item id="di601427568767297372" cid="EX002" type="extend" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 13:01:12">
+          <item id="di607333850371433513" cid="INC001" type="include" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/03/2015 14:16:03">
             <stereotypes>
-              <stereotype name="extend" />
+              <stereotype name="include" />
             </stereotypes>
             <associated-diagrams />
             <owned-items />
             <style class="default" />
-            <extend extension-point="" />
           </item>
-          <item id="di934068656779571444" cid="REL005" type="relationship" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 12:56:05">
+          <item id="di934068656779571444" cid="REL005" type="relationship" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 12:56:05">
             <stereotypes />
             <associated-diagrams />
             <owned-items />
@@ -242,13 +253,13 @@
               <end-role id="" name="" navigability="" association-type="association" visibility="private" />
             </relation>
           </item>
-          <item id="di705424392517920239" cid="AC002" type="actor" name="Database" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 12:56:07">
+          <item id="di155869666379185334" cid="CL001" type="collaboration" name="Database" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/03/2015 14:12:13">
             <stereotypes />
             <associated-diagrams />
             <owned-items />
             <style class="default" />
           </item>
-          <item id="di134412602625311400" cid="REA002" type="realization" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 12:56:21">
+          <item id="di390577615122999608" cid="REA003" type="realization" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/03/2015 14:12:26">
             <stereotypes />
             <associated-diagrams />
             <owned-items />
@@ -257,24 +268,16 @@
         </abstract-items>
         <layer name="Default" visible="true" enabled="true" locked="false">
           <item id="di155542933655428714" iid="bf66369b49c04e8e8ad042d73ce098c8" creation-date="11/18/2015 12:54:29" order-index="0" type="entity">
-            <layout ax="204" ay="166.5" awidth="70" aheight="140" x="204" y="166.5" width="70" height="140" angle="0" />
+            <layout ax="231" ay="116.5" awidth="70" aheight="140" x="231" y="116.5" width="70" height="140" angle="0" />
           </item>
           <item id="di471707343370459551" iid="b295fc5c702449099cf4fcb245e74a6d" creation-date="11/18/2015 12:54:42" order-index="1" type="entity">
-            <layout ax="324" ay="36.5" awidth="300" aheight="400" x="324" y="36.5" width="300" height="400" angle="0" />
-          </item>
-          <item id="di439510998320783708" iid="713b2bbc25c64f96a6704a0fdbbf9697" container="di471707343370459551" container-iid="b295fc5c702449099cf4fcb245e74a6d" creation-date="11/18/2015 12:54:53" order-index="2" type="entity">
-            <layout ax="404" ay="91.5" awidth="120" aheight="75" x="404" y="91.5" width="120" height="75" angle="0" />
-            <use-case />
-          </item>
-          <item id="di685148577205885768" iid="0c0c16e59f9a4abd8d9c0471fd610d39" container="di471707343370459551" container-iid="b295fc5c702449099cf4fcb245e74a6d" creation-date="11/18/2015 12:55:14" order-index="3" type="entity">
-            <layout ax="404" ay="231.5" awidth="120" aheight="75" x="404" y="231.5" width="120" height="75" angle="0" />
-            <use-case />
+            <layout ax="324" ay="36.5" awidth="315" aheight="287" x="324" y="36.5" width="315" height="287" angle="0" />
           </item>
           <item id="di721966073264011619" iid="a5e6148ebbb54c1f92a06b76e1e0af87" creation-date="11/18/2015 12:55:55" order-index="4" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" name-position="10,-10" auto-path="" x1="274" y1="241" x2="405" y2="260" start-border-pos="0.383273805890765" end-border-pos="0.904333292643229">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" name-position="10,-10" auto-path="" x1="301" y1="202" x2="359" y2="219" start-border-pos="0.402772549220494" end-border-pos="0.966729329427083">
               <points>
-                <point x="274" y="241" />
-                <point x="405" y="260" />
+                <point x="301" y="202" />
+                <point x="359" y="219" />
               </points>
             </layout>
             <relation from="di155542933655428714" from-iid="bf66369b49c04e8e8ad042d73ce098c8" to="di685148577205885768" to-iid="0c0c16e59f9a4abd8d9c0471fd610d39" />
@@ -288,28 +291,36 @@
               </points>
             </layout>
             <relation />
-            <role-positions start-role="25,15" end-role="25,-15" start-multiplicity="25,-15" end-multiplicity="25,15" />
+            <role-positions start-role="25,15" end-role="55,0" start-multiplicity="20,0" end-multiplicity="25,15" />
           </item>
-          <item id="di705424392517920239" iid="f467a1b47df74c1ab04205ec9a82e1f0" creation-date="11/18/2015 12:56:07" order-index="7" type="entity">
-            <layout ax="697" ay="166.5" awidth="84" aheight="140" x="697" y="166.5" width="84" height="140" angle="0" />
-          </item>
-          <item id="di134412602625311400" iid="1446b6d857f44976808ae561f8a8f177" creation-date="11/18/2015 12:56:21" order-index="8" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" name-position="10,-10" auto-path="" x1="697" y1="241" x2="522" y2="262" start-border-pos="0.866892869131906" end-border-pos="0.350999959309896">
+          <item id="di390577615122999608" iid="4a6651b7096e4dbebb9791d8ebc776dc" creation-date="12/03/2015 14:12:26" order-index="11" type="relation">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" name-position="10,-10" auto-path="" x1="501" y1="243" x2="458" y2="244" start-border-pos="0.866334364149306" end-border-pos="0.36641103108724">
               <points>
-                <point x="697" y="241" />
-                <point x="522" y="262" />
+                <point x="501" y="243" />
+                <point x="458" y="244" />
               </points>
             </layout>
-            <relation from="di705424392517920239" from-iid="f467a1b47df74c1ab04205ec9a82e1f0" to="di685148577205885768" to-iid="0c0c16e59f9a4abd8d9c0471fd610d39" />
+            <relation from="di155869666379185334" from-iid="4af77017e7df4a20aa925588028dcdac" to="di685148577205885768" to-iid="0c0c16e59f9a4abd8d9c0471fd610d39" />
           </item>
-          <item id="di601427568767297372" iid="9b2abdba6ef44a5e8c8e220d8592026b" creation-date="11/18/2015 13:01:12" order-index="9" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" name-position="10,-10" auto-path="" x1="464" y1="231" x2="464" y2="166" start-border-pos="0.125" end-border-pos="0.625">
+          <item id="di607333850371433513" iid="5ce7f69180e747a4bacfdf87abea8c7c" creation-date="12/03/2015 14:16:03" order-index="12" type="relation">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" name-position="10,-10" auto-path="" x1="399" y1="144" x2="399" y2="209" start-border-pos="0.625" end-border-pos="0.125">
               <points>
-                <point x="464" y="231" />
-                <point x="464" y="166" />
+                <point x="399" y="144" />
+                <point x="399" y="209" />
               </points>
             </layout>
-            <relation from="di685148577205885768" from-iid="0c0c16e59f9a4abd8d9c0471fd610d39" to="di439510998320783708" to-iid="713b2bbc25c64f96a6704a0fdbbf9697" />
+            <relation from="di439510998320783708" from-iid="713b2bbc25c64f96a6704a0fdbbf9697" to="di685148577205885768" to-iid="0c0c16e59f9a4abd8d9c0471fd610d39" />
+          </item>
+          <item id="di439510998320783708" iid="713b2bbc25c64f96a6704a0fdbbf9697" container="di471707343370459551" container-iid="b295fc5c702449099cf4fcb245e74a6d" creation-date="11/18/2015 12:54:53" order-index="2" type="entity">
+            <layout ax="339" ay="69.5" awidth="120" aheight="75" x="339" y="69.5" width="120" height="75" angle="0" />
+            <use-case />
+          </item>
+          <item id="di155869666379185334" iid="4af77017e7df4a20aa925588028dcdac" container="di471707343370459551" container-iid="b295fc5c702449099cf4fcb245e74a6d" creation-date="12/03/2015 14:12:13" order-index="10" type="entity">
+            <layout ax="501.5881" ay="194.5" awidth="120" aheight="90" x="501.5881" y="194.5" width="120" height="90" angle="0" />
+          </item>
+          <item id="di685148577205885768" iid="0c0c16e59f9a4abd8d9c0471fd610d39" container="di471707343370459551" container-iid="b295fc5c702449099cf4fcb245e74a6d" creation-date="11/18/2015 12:55:14" order-index="3" type="entity">
+            <layout ax="339" ay="209.5" awidth="120" aheight="75" x="339" y="209.5" width="120" height="75" angle="0" />
+            <use-case />
           </item>
         </layer>
       </diagram>
@@ -325,23 +336,12 @@
           </authors>
           <description />
           <creation-date>11/18/2015 13:13:23</creation-date>
-          <change-date>11/18/2015 14:21:43</change-date>
+          <change-date>12/03/2015 14:01:26</change-date>
           <revision-count>0</revision-count>
           <version />
         </meta>
         <abstract-items>
-          <item id="di568282275831387241" cid="REL028" type="erd-relationship" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 14:21:36">
-            <stereotypes />
-            <associated-diagrams />
-            <owned-items />
-            <style class="default" />
-            <erd-relation type="Association" multiplicity-from="1" multiplicity-to="1..*">
-              <attribute-pairs>
-                <attribute-pair from-attribute="a4ab6779cf71b430ab04f3da60e2f2f40594" to-attribute="a0e8edc9077004571b46dc88aa8d33e19456" />
-              </attribute-pairs>
-            </erd-relation>
-          </item>
-          <item id="di297677381663872272" cid="ENT007" type="erd-entity" name="Opleiding" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 14:02:52">
+          <item id="di297677381663872272" cid="ENT007" type="erd-entity" name="Opleiding" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 14:02:52">
             <stereotypes />
             <associated-diagrams />
             <owned-items />
@@ -357,7 +357,7 @@
             </attributes>
             <indexes />
           </item>
-          <item id="di432759410115273099" cid="REL027" type="erd-relationship" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 14:15:09">
+          <item id="di432759410115273099" cid="REL027" type="erd-relationship" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 14:15:09">
             <stereotypes />
             <associated-diagrams />
             <owned-items />
@@ -368,7 +368,7 @@
               </attribute-pairs>
             </erd-relation>
           </item>
-          <item id="di291167408917430013" cid="REL022" type="erd-relationship" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 14:13:34">
+          <item id="di291167408917430013" cid="REL022" type="erd-relationship" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 14:13:34">
             <stereotypes />
             <associated-diagrams />
             <owned-items />
@@ -379,42 +379,7 @@
               </attribute-pairs>
             </erd-relation>
           </item>
-          <item id="di691804597389265175" cid="ENT004" type="erd-entity" name="Docent" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 13:29:17">
-            <stereotypes />
-            <associated-diagrams />
-            <owned-items />
-            <style class="default" />
-            <entity />
-            <attributes>
-              <attribute uid="aeea997ccc4394ba58fc6af135db013d0482" cid="EA014" name="Docent_ID" type="String" type-id="Uml.String" type-size="" foreign-key="false" primary-key="true" nullable="false" description="" default-value="" auto-increment="false">
-                <style class="default" />
-              </attribute>
-              <attribute uid="a626d4f3378204a61974706508aa1ffe9964" cid="EA015" name="naam" type="String" type-id="Uml.String" type-size="" foreign-key="false" primary-key="false" nullable="true" description="" default-value="" auto-increment="false">
-                <style class="default" />
-              </attribute>
-              <attribute uid="a1ad1fe2480a44d03ba1936e0660980cc8" cid="EA034" name="opleidingID" type-size="" foreign-key="true" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
-                <style class="default" />
-              </attribute>
-            </attributes>
-            <indexes />
-          </item>
-          <item id="di363495323357230818" cid="ENT009" type="erd-entity" name="Geeft les" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 14:20:45">
-            <stereotypes />
-            <associated-diagrams />
-            <owned-items />
-            <style class="default" />
-            <entity />
-            <attributes>
-              <attribute uid="a2e8f5580069d4589addbcd58c7d0822e430" cid="EA035" name="Docent_ID" type-size="" foreign-key="true" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
-                <style class="default" />
-              </attribute>
-              <attribute uid="a2a55f07f7615489095e372302d923945330" cid="EA036" name="vakID" type-size="" foreign-key="true" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
-                <style class="default" />
-              </attribute>
-            </attributes>
-            <indexes />
-          </item>
-          <item id="di868139000138355250" cid="REL026" type="erd-relationship" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 14:14:36">
+          <item id="di868139000138355250" cid="REL026" type="erd-relationship" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 14:14:36">
             <stereotypes />
             <associated-diagrams />
             <owned-items />
@@ -425,7 +390,7 @@
               </attribute-pairs>
             </erd-relation>
           </item>
-          <item id="di590860592234783492" cid="REL025" type="erd-relationship" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="11/18/2015 14:13:59">
+          <item id="di590860592234783492" cid="REL025" type="erd-relationship" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="11/18/2015 14:13:59">
             <stereotypes />
             <documentation>
               <text>
@@ -456,32 +421,32 @@
               <attribute-pairs />
             </erd-relation>
           </item>
-          <item id="di162508645651845388" cid="ENT006" type="erd-entity" name="Toets" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 13:49:16">
+          <item id="di162508645651845388" cid="ENT006" type="erd-entity" name="Toets" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 13:49:16">
             <stereotypes />
             <associated-diagrams />
             <owned-items />
             <style class="default" />
             <entity />
             <attributes>
-              <attribute uid="a653a50bf6f5b4a6eb0ef4ce2a49f4717336" cid="EA019" name="ToetsID" type-size="" foreign-key="false" primary-key="true" nullable="false" description="" default-value="" auto-increment="false">
+              <attribute uid="a653a50bf6f5b4a6eb0ef4ce2a49f4717336" cid="EA019" name="ToetsID" type="" type-id="" type-size="" foreign-key="false" primary-key="true" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
-              <attribute uid="aaa5c411a268042b3804be8aa0e3aef64530" cid="EA020" name="vakID" type-size="" foreign-key="true" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
+              <attribute uid="aaa5c411a268042b3804be8aa0e3aef64530" cid="EA020" name="vakID" type="" type-id="" type-size="" foreign-key="true" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
-              <attribute uid="a490d5dd42a0940eba6e52d6703d425f0120" cid="EA025" name="cijfer" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
+              <attribute uid="a490d5dd42a0940eba6e52d6703d425f0120" cid="EA025" name="cijfer" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
-              <attribute uid="af77c1919f47e4d908541eee5e83d619e966" cid="EA026" name="afnamedatum" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
+              <attribute uid="af77c1919f47e4d908541eee5e83d619e966" cid="EA026" name="afnamedatum" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
-              <attribute uid="a90dfe2788481448191de8ef2d6a661f069" cid="EA027" name="toetsduur" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
+              <attribute uid="a90dfe2788481448191de8ef2d6a661f069" cid="EA027" name="toetsduur" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
             </attributes>
             <indexes />
           </item>
-          <item id="di655584783645435948" cid="REL024" type="erd-relationship" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 14:13:53">
+          <item id="di655584783645435948" cid="REL024" type="erd-relationship" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 14:13:53">
             <stereotypes />
             <associated-diagrams />
             <owned-items />
@@ -492,7 +457,7 @@
               </attribute-pairs>
             </erd-relation>
           </item>
-          <item id="di293018276131432318" cid="ENT008" type="erd-entity" name="Klas" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 14:04:31">
+          <item id="di293018276131432318" cid="ENT008" type="erd-entity" name="Klas" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 14:04:31">
             <stereotypes />
             <associated-diagrams />
             <owned-items />
@@ -502,31 +467,16 @@
               <attribute uid="aa1462011936a43958942781c66d8902a272" cid="EA031" name="klasID" type="String" type-id="Uml.String" type-size="" foreign-key="false" primary-key="true" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
-              <attribute uid="a82a4fd513a8143a48c76c7cb88526de455" cid="EA032" name="opleidingID" type-size="" foreign-key="true" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
+              <attribute uid="a82a4fd513a8143a48c76c7cb88526de455" cid="EA032" name="opleidingID" type="" type-id="" type-size="" foreign-key="true" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
             </attributes>
             <indexes />
           </item>
-          <item id="di403475184637881576" cid="REL029" type="erd-relationship" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pf856e1b1c4d94cdc8c7c85a89aef852e" creation-date="11/18/2015 14:21:43">
-            <stereotypes />
-            <associated-diagrams />
-            <owned-items />
-            <style class="default" />
-            <erd-relation type="Association" multiplicity-from="1" multiplicity-to="1..*">
-              <attribute-pairs>
-                <attribute-pair from-attribute="a4ab6779cf71b430ab04f3da60e2f2f40594" to-attribute="a0e8edc9077004571b46dc88aa8d33e19456" />
-              </attribute-pairs>
-            </erd-relation>
-          </item>
         </abstract-items>
         <layer name="Default" visible="true" enabled="true" locked="false">
           <item id="di820937834597966944" iid="0e9d6557deef4d35b4c1eb48d593502e" creation-date="11/18/2015 13:13:28" order-index="0" type="entity">
             <layout ax="849" ay="-226.5" awidth="241" aheight="160" x="849" y="-226.5" width="241" height="160" angle="0" />
-            <erd-entity show-nullability="true" />
-          </item>
-          <item id="di691804597389265175" iid="8e015894810e45598a7df9b0d56d515d" creation-date="11/18/2015 13:29:17" order-index="5" type="entity">
-            <layout ax="558.5" ay="-226.5" awidth="234" aheight="160" x="558.5" y="-226.5" width="234" height="160" angle="0" />
             <erd-entity show-nullability="true" />
           </item>
           <item id="di291167408917430013" iid="7f6c550f2dea406ba22f9735478b24ec" creation-date="11/18/2015 14:13:34" order-index="15" type="relation">
@@ -578,42 +528,18 @@
             <role-positions start-role="25,15" end-role="25,-15" />
           </item>
           <item id="di432759410115273099" iid="6b462dcd15614e778f4dc19a8de0e511" creation-date="11/18/2015 14:15:09" order-index="19" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" name-position="10,-10" auto-path="" x1="277" y1="82" x2="220" y2="82" start-border-pos="0.87421875" end-border-pos="0.37578125">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" name-position="10,-10" auto-path="" x1="379" y1="2" x2="379" y2="-66" start-border-pos="0.125" end-border-pos="0.625">
               <points>
-                <point x="277" y="82" />
-                <point x="220" y="82" />
+                <point x="379" y="2" />
+                <point x="379" y="-66" />
               </points>
             </layout>
             <relation from="di795741870590605770" from-iid="021b27b819bc4f8598b95dd08361f860" to="di162508645651845388" to-iid="8de2885a9aeb45f9b241a0327af884ad" />
             <role-positions start-role="25,15" end-role="25,-15" />
           </item>
-          <item id="di363495323357230818" iid="c51953c381154c15aba58ef54b3bfc7b" creation-date="11/18/2015 14:20:45" order-index="20" type="entity">
+          <item id="di162508645651845388" iid="8de2885a9aeb45f9b241a0327af884ad" creation-date="11/18/2015 13:49:16" order-index="11" type="entity">
             <layout ax="284" ay="-226.5" awidth="190" aheight="160" x="284" y="-226.5" width="190" height="160" angle="0" />
             <erd-entity show-nullability="true" />
-          </item>
-          <item id="di568282275831387241" iid="a682cc19fe3d467490ee957aaddd8edb" creation-date="11/18/2015 14:21:36" order-index="21" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" name-position="10,-10" auto-path="" x1="379" y1="-66" x2="379" y2="2" start-border-pos="0.625" end-border-pos="0.125">
-              <points>
-                <point x="379" y="-66" />
-                <point x="379" y="2" />
-              </points>
-            </layout>
-            <relation from="di363495323357230818" from-iid="c51953c381154c15aba58ef54b3bfc7b" to="di795741870590605770" to-iid="021b27b819bc4f8598b95dd08361f860" />
-            <role-positions start-role="25,15" end-role="25,-15" />
-          </item>
-          <item id="di162508645651845388" iid="8de2885a9aeb45f9b241a0327af884ad" creation-date="11/18/2015 13:49:16" order-index="11" type="entity">
-            <layout ax="30" ay="1.5" awidth="190" aheight="160" x="30" y="1.5" width="190" height="160" angle="0" />
-            <erd-entity show-nullability="true" />
-          </item>
-          <item id="di403475184637881576" iid="66dbba2db12f4bc9a9c3ea59b14bef99" creation-date="11/18/2015 14:21:43" order-index="22" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" name-position="10,-10" auto-path="" x1="474" y1="-146" x2="558" y2="-146" start-border-pos="0.37578125" end-border-pos="0.87421875">
-              <points>
-                <point x="474" y="-146" />
-                <point x="558" y="-146" />
-              </points>
-            </layout>
-            <relation from="di363495323357230818" from-iid="c51953c381154c15aba58ef54b3bfc7b" to="di691804597389265175" to-iid="8e015894810e45598a7df9b0d56d515d" />
-            <role-positions start-role="25,15" end-role="25,-15" />
           </item>
           <item id="di795741870590605770" iid="021b27b819bc4f8598b95dd08361f860" creation-date="11/18/2015 13:13:57" order-index="1" type="entity">
             <layout ax="277" ay="1.5" awidth="204" aheight="160" x="277" y="1.5" width="204" height="160" angle="0" />
@@ -622,7 +548,7 @@
         </layer>
       </diagram>
     </model>
-    <model id="p588085607777435040" name="Model 2" type="" namespace="" order-index="2">
+    <model id="p588085607777435040" name="Model 2" type="model" namespace="" order-index="2">
       <meta>
         <authors>
           <author> </author>
