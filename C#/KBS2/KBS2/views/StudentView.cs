@@ -17,18 +17,21 @@ namespace KBS2.views
         //UI variablenen
         private Label lbl_naam;
         private Label lbl_id;
-        private Label lbl_gemisteEC;
-        private Label lbl_gehaaldeEC;
+        private Label lbl_vakken;
+        private Label lbl_toetsen;
         private ProgressBar testprb_gehaald;
         private Label lbl_totaalEC;
-        private DataGridView dgv_gemisteEC;
-        private DataGridViewTextBoxColumn vakgemist;
-        private DataGridViewTextBoxColumn Cijfergemist;
-        private DataGridViewTextBoxColumn ECgemist;
-        private DataGridView dgv_behaaldeEC;
-        private DataGridViewTextBoxColumn vakgehaald;
-        private DataGridViewTextBoxColumn cijfergehaald;
-        private DataGridViewTextBoxColumn ECgehaald;
+        private DataGridView dgv_vakken;
+        private DataGridViewTextBoxColumn vak;
+        private DataGridViewTextBoxColumn vakcijfer;
+        private DataGridViewTextBoxColumn gehaald;
+        private DataGridViewTextBoxColumn EC;
+
+        private DataGridView dgv_toetsen;
+        private DataGridViewTextBoxColumn toets;
+        private DataGridViewTextBoxColumn cijfer;
+        private DataGridViewTextBoxColumn toetsGehaald;
+
         private Label lbl_gehaald;
         private Label lbl_gemist;
 
@@ -45,8 +48,8 @@ namespace KBS2.views
                 //zet alle variablen in de UI elementen
                 this.lbl_naam.Text = student.Naam;
                 this.lbl_id.Text = student.ID;
-                this.lbl_gemisteEC.Text = "Gemiste EC\'s: " + student.gemisteEC();
-                this.lbl_gehaaldeEC.Text = "Behaalde EC\'s dit jaar: " + student.gehaaldeEC();
+                this.lbl_vakken.Text = "Gemiste EC\'s: " + student.gemisteEC();
+                this.lbl_toetsen.Text = "Behaalde EC\'s dit jaar: " + student.gehaaldeEC();
 
                 if (student.totaalEC() != 0)
                 {
@@ -63,14 +66,14 @@ namespace KBS2.views
                     //checkt of het voldoende is
                     if (student.Cijfers[i].isVoldoende()) {
                         //zet het cijfer in de behaalde EC's tabel
-                        object[] c = { student.Cijfers[i].VakNaam, student.Cijfers[i].Cijfer, student.Cijfers[i].EC};
-                        dgv_behaaldeEC.Rows.Add(c);
+                       // object[] c = { student.Cijfers[i].VakNaam, student.Cijfers[i].Cijfer, student.Cijfers[i].EC};
+                        //dgv_behaaldeEC.Rows.Add(c);
                     }
                     else
                     {
                         //zet het cijfer in het behaalde EC's tabel
-                        object[] c = { student.Cijfers[i].VakNaam, student.Cijfers[i].Cijfer, student.Cijfers[i].EC };
-                        dgv_gemisteEC.Rows.Add(c);
+                        //object[] c = { student.Cijfers[i].VakNaam, student.Cijfers[i].Cijfer, student.Cijfers[i].EC };
+                        //dgv_gemisteEC.Rows.Add(c);
                     }
                 }
 
@@ -80,8 +83,8 @@ namespace KBS2.views
                 //als Student null is: zet standaard waardes in de UI
                 this.lbl_naam.Text = "Naam";
                 this.lbl_id.Text = "ID";
-                this.lbl_gemisteEC.Text = "Gemiste EC\'s:";
-                this.lbl_gehaaldeEC.Text = "Behaalde EC\'s dit jaar:";
+                this.lbl_vakken.Text = "Gemiste EC\'s:";
+                this.lbl_toetsen.Text = "Behaalde EC\'s dit jaar:";
                 this.testprb_gehaald.Value = 0;
                 this.lbl_totaalEC.Text = "Van:";
             }
@@ -92,22 +95,22 @@ namespace KBS2.views
         {
             this.lbl_naam = new Label();
             this.lbl_id = new Label();
-            this.lbl_gemisteEC = new Label();
-            this.lbl_gehaaldeEC = new Label();
+            this.lbl_vakken = new Label();
+            this.lbl_toetsen = new Label();
             this.testprb_gehaald = new ProgressBar();
             this.lbl_totaalEC = new Label();
-            this.dgv_gemisteEC = new DataGridView();
-            this.vakgemist = new DataGridViewTextBoxColumn();
-            this.Cijfergemist = new DataGridViewTextBoxColumn();
-            this.ECgemist = new DataGridViewTextBoxColumn();
-            this.dgv_behaaldeEC = new DataGridView();
-            this.vakgehaald = new DataGridViewTextBoxColumn();
-            this.cijfergehaald = new DataGridViewTextBoxColumn();
-            this.ECgehaald = new DataGridViewTextBoxColumn();
+            this.dgv_vakken = new DataGridView();
+            this.vak = new DataGridViewTextBoxColumn();
+            this.vakcijfer = new DataGridViewTextBoxColumn();
+            this.EC = new DataGridViewTextBoxColumn();
+            this.dgv_toetsen = new DataGridView();
+            this.toets = new DataGridViewTextBoxColumn();
+            this.cijfer = new DataGridViewTextBoxColumn();
+            this.gehaald = new DataGridViewTextBoxColumn();
             this.lbl_gehaald = new Label();
             this.lbl_gemist = new Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_gemisteEC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_behaaldeEC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_vakken)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_toetsen)).BeginInit();
             this.SuspendLayout();
             
             //lbl_naam
@@ -127,20 +130,20 @@ namespace KBS2.views
             this.lbl_id.TabIndex = 4;
             
             //lbl_gemisteEC
-            this.lbl_gemisteEC.AutoSize = true;
-            this.lbl_gemisteEC.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lbl_gemisteEC.Location = new System.Drawing.Point(951, 127);
-            this.lbl_gemisteEC.Name = "lbl_gemisteEC";
-            this.lbl_gemisteEC.Size = new System.Drawing.Size(152, 26);
-            this.lbl_gemisteEC.TabIndex = 5;
+            this.lbl_vakken.AutoSize = true;
+            this.lbl_vakken.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.lbl_vakken.Location = new System.Drawing.Point(951, 127);
+            this.lbl_vakken.Name = "lbl_gemisteEC";
+            this.lbl_vakken.Size = new System.Drawing.Size(152, 26);
+            this.lbl_vakken.TabIndex = 5;
             
             //lbl_gehaaldeEC
-            this.lbl_gehaaldeEC.AutoSize = true;
-            this.lbl_gehaaldeEC.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lbl_gehaaldeEC.Location = new System.Drawing.Point(95, 127);
-            this.lbl_gehaaldeEC.Name = "lbl_gehaaldeEC";
-            this.lbl_gehaaldeEC.Size = new System.Drawing.Size(233, 26);
-            this.lbl_gehaaldeEC.TabIndex = 3;
+            this.lbl_toetsen.AutoSize = true;
+            this.lbl_toetsen.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.lbl_toetsen.Location = new System.Drawing.Point(95, 127);
+            this.lbl_toetsen.Name = "lbl_gehaaldeEC";
+            this.lbl_toetsen.Size = new System.Drawing.Size(233, 26);
+            this.lbl_toetsen.TabIndex = 3;
             
             //testprb_gehaald
             this.testprb_gehaald.ForeColor = System.Drawing.Color.Lime;
@@ -158,64 +161,64 @@ namespace KBS2.views
             this.lbl_totaalEC.TabIndex = 4;
             
             //dgv_gemisteEC
-            this.dgv_gemisteEC.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_gemisteEC.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_vakken.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_vakken.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
-            this.dgv_gemisteEC.Columns.AddRange(new DataGridViewColumn[] {
-            this.vakgemist,
-            this.Cijfergemist,
-            this.ECgemist});
+            this.dgv_vakken.Columns.AddRange(new DataGridViewColumn[] {
+            this.vak,
+            this.vakcijfer,
+            this.EC});
 
-            this.dgv_gemisteEC.Location = new System.Drawing.Point(100, 234);
-            this.dgv_gemisteEC.Name = "dgv_gemisteEC";
-            this.dgv_gemisteEC.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgv_gemisteEC.Size = new System.Drawing.Size(1089, 230);
-            this.dgv_gemisteEC.TabIndex = 7;
+            this.dgv_vakken.Location = new System.Drawing.Point(100, 234);
+            this.dgv_vakken.Name = "dgv_gemisteEC";
+            this.dgv_vakken.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgv_vakken.Size = new System.Drawing.Size(1089, 230);
+            this.dgv_vakken.TabIndex = 7;
             
             //vakgemist
-            this.vakgemist.HeaderText = "Vak";
-            this.vakgemist.Name = "Vak";
-            this.vakgemist.ReadOnly = true;
+            this.vak.HeaderText = "Vak";
+            this.vak.Name = "Vak";
+            this.vak.ReadOnly = true;
             
             //Cijfergemist
-            this.Cijfergemist.HeaderText = "Cijfer";
-            this.Cijfergemist.Name = "Cijfer";
-            this.Cijfergemist.ReadOnly = true;
+            this.vakcijfer.HeaderText = "Cijfer";
+            this.vakcijfer.Name = "Cijfer";
+            this.vakcijfer.ReadOnly = true;
             
             //ECgemist
-            this.ECgemist.HeaderText = "EC\'s";
-            this.ECgemist.Name = "EC";
-            this.ECgemist.ReadOnly = true;
+            this.EC.HeaderText = "EC\'s";
+            this.EC.Name = "EC";
+            this.EC.ReadOnly = true;
             
             //dgv_behaaldeEC
-            this.dgv_behaaldeEC.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_behaaldeEC.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_toetsen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_toetsen.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
-            this.dgv_behaaldeEC.Columns.AddRange(new DataGridViewColumn[] {
-            this.vakgehaald,
-            this.cijfergehaald,
-            this.ECgehaald});
+            this.dgv_toetsen.Columns.AddRange(new DataGridViewColumn[] {
+            this.toets,
+            this.cijfer,
+            this.gehaald});
 
-            this.dgv_behaaldeEC.Location = new System.Drawing.Point(100, 516);
-            this.dgv_behaaldeEC.Name = "dgv_behaaldeEC";
-            this.dgv_behaaldeEC.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgv_behaaldeEC.Size = new System.Drawing.Size(1089, 230);
-            this.dgv_behaaldeEC.TabIndex = 8;
+            this.dgv_toetsen.Location = new System.Drawing.Point(100, 516);
+            this.dgv_toetsen.Name = "dgv_behaaldeEC";
+            this.dgv_toetsen.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgv_toetsen.Size = new System.Drawing.Size(1089, 230);
+            this.dgv_toetsen.TabIndex = 8;
             
             //vakgehaald
-            this.vakgehaald.HeaderText = "Vak";
-            this.vakgehaald.Name = "dataGridViewTextBoxColumn1";
-            this.vakgehaald.ReadOnly = true;
+            this.toets.HeaderText = "Vak";
+            this.toets.Name = "dataGridViewTextBoxColumn1";
+            this.toets.ReadOnly = true;
             
             //cijfergehaald
-            this.cijfergehaald.HeaderText = "Cijfer";
-            this.cijfergehaald.Name = "dataGridViewTextBoxColumn2";
-            this.cijfergehaald.ReadOnly = true;
+            this.cijfer.HeaderText = "Cijfer";
+            this.cijfer.Name = "dataGridViewTextBoxColumn2";
+            this.cijfer.ReadOnly = true;
             
             //ECgehaald
-            this.ECgehaald.HeaderText = "EC\'s";
-            this.ECgehaald.Name = "dataGridViewTextBoxColumn3";
-            this.ECgehaald.ReadOnly = true;
+            this.gehaald.HeaderText = "EC\'s";
+            this.gehaald.Name = "dataGridViewTextBoxColumn3";
+            this.gehaald.ReadOnly = true;
             
             //lbl_gehaald
             this.lbl_gehaald.AutoSize = true;
@@ -241,14 +244,14 @@ namespace KBS2.views
             this.Controls.Add(this.lbl_naam);
             this.Controls.Add(this.lbl_gemist);
             this.Controls.Add(this.lbl_gehaald);
-            this.Controls.Add(this.dgv_behaaldeEC);
-            this.Controls.Add(this.dgv_gemisteEC);
+            this.Controls.Add(this.dgv_toetsen);
+            this.Controls.Add(this.dgv_vakken);
             this.Controls.Add(this.testprb_gehaald);
-            this.Controls.Add(this.lbl_gemisteEC);
+            this.Controls.Add(this.lbl_vakken);
             this.Controls.Add(this.lbl_totaalEC);
-            this.Controls.Add(this.lbl_gehaaldeEC);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_gemisteEC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_behaaldeEC)).EndInit();
+            this.Controls.Add(this.lbl_toetsen);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_vakken)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_toetsen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
