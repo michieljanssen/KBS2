@@ -52,28 +52,32 @@ namespace KBS2.data
             "INNER JOIN Toets ON Toets.Id = HeeftCijfer.toetsid " +
             "INNER JOIN Vak ON Vak.Id = Toets.vakid " +
             "WHERE Student.Id = " + id + ";";
-
             com = new SqlCommand(query, con);
             reader = com.ExecuteReader();
-
             while (reader.Read())
             {
                 if (cijfers.Count > 0)
                 {
+                    bool found = false;
                     for (int i = 0; i < cijfers.Count; i++)
                     {
-                        if (cijfers[i].VakNaam == (String) reader.GetValue(3)) {
-                           ToetsCijfer cijfer = new ToetsCijfer(id+"", naam, Convert.ToDouble(reader.GetValue(1)), (String) reader.GetValue(2));
-
+                        if (cijfers[i].VakNaam == (String)reader.GetValue(3))
+                        {
+                            found = !found;
+                            ToetsCijfer cijfer = new ToetsCijfer(id + "", naam, Convert.ToDouble(reader.GetValue(1)), (String)reader.GetValue(2));
+                            cijfers[i].Cijfers.Add(cijfer);
+                            break;
                         }
-
                     }
-
-
+                    if (!found)
+                    {
+                        VakCijfer vakcijfer = new VakCijfer((string)reader.GetValue(3), (int)reader.GetValue(4), new List<ToetsCijfer>());
+                        ToetsCijfer cijfer = new ToetsCijfer(id + "", naam, Convert.ToDouble(reader.GetValue(1)), (String)reader.GetValue(2));
+                        vakcijfer.Cijfers.Add(cijfer);
+                        cijfers.Add(vakcijfer);
+                    }
                 }
-
             }
-
             Student student = new Student(naam, id + "", cijfers);
             return student;
         }

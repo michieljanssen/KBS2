@@ -17,8 +17,8 @@ namespace KBS2.model.cijfer.Tests
             [TestMethod()]
             public void WillCreataANewVakCijfer()
             {
-                VakCijfer assert = new VakCijfer("UML", 2, 5.5);
-                if (assert.VakNaam == null || assert.EC == null || assert.Cijfer == null)
+                VakCijfer assert = new VakCijfer("UML", 2, new List<ToetsCijfer>());
+                if (assert.VakNaam == null || assert.EC == null || assert.Cijfers == null)
                 {
                     Assert.Fail();
                 }
@@ -36,7 +36,7 @@ namespace KBS2.model.cijfer.Tests
             public void ReturnsFalse_WhenCijferSmallerthan5p5()
             {
                 Boolean expected = false;
-                VakCijfer v = new VakCijfer("UML", 2, 4.5);
+                VakCijfer v = new VakCijfer("UML", 2, new List<ToetsCijfer>());
                 Boolean actual = v.isVoldoende();
                 Assert.AreEqual(expected, actual);
             }
@@ -44,7 +44,7 @@ namespace KBS2.model.cijfer.Tests
             public void ReturnsTrue_WhenCijferEqualto5p5()
             {
                 Boolean expected = true;
-                VakCijfer v = new VakCijfer("UML", 2, 5.5);
+                VakCijfer v = new VakCijfer("UML", 2, new List<ToetsCijfer>());
                 Boolean actual = v.isVoldoende();
                 Assert.AreEqual(expected, actual);
             }
@@ -52,7 +52,7 @@ namespace KBS2.model.cijfer.Tests
             public void ReturnsTrue_WhenCijferLargerthan5p5()
             {
                 Boolean expected = true;
-                VakCijfer v = new VakCijfer("UML", 2, 8.2);
+                VakCijfer v = new VakCijfer("UML", 2, new List<ToetsCijfer>());
                 Boolean actual = v.isVoldoende();
                 Assert.AreEqual(expected, actual);
             }
