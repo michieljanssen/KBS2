@@ -39,9 +39,9 @@ namespace KBS2.views
             {
                 //zet alle variabelen in de UI elementen
                 this.lbl_toetsnaam.Text = "Toets: " + toets.Naam;
-                this.lbl_aantalnietbehaald.Text = "Aantal onvoldoendes: " + toets.onvoldoendes();
-                this.lbl_percentage.Text = "Percentages gehaald: " + toets.percentageVold() + "%";
-                this.lbl_aantalbehaald.Text = "Aantal voldoendes: " + toets.voldoendes();
+                this.lbl_aantalnietbehaald.Text = "Niet behaald: " + toets.onvoldoendes();
+                this.lbl_percentage.Text = "Percentages behaald: " + toets.percentageVold() + "%";
+                this.lbl_aantalbehaald.Text = "Behaald: " + toets.voldoendes();
                 this.lbl_toetsType.Text = "Toetstype: " + toets.Type;
                 this.prb_behaald.Value = toets.percentageVold();
                 this.lbl_gemiddelde.Text = "Gemiddelde: " + toets.gemiddelde().ToString("0.0");
@@ -77,10 +77,10 @@ namespace KBS2.views
             else
             {
                 //als de toets niet gemaakt is worden de standaard waardes in de UI elementen gezet
-                this.lbl_toetsnaam.Text = "ToetAantal voldoendes:";
-                this.lbl_aantalnietbehaald.Text = "Aantal onvoldoendes:";
+                this.lbl_toetsnaam.Text = "Behaald:";
+                this.lbl_aantalnietbehaald.Text = "Niet Behaald:";
                 this.lbl_percentage.Text = "Percentagesnaam";
-                this.lbl_aantalbehaald.Text = "gehaald: %";
+                this.lbl_aantalbehaald.Text = "behaald: %";
                 this.lbl_toetsType.Text = "Toetstype:";
                 this.prb_behaald.Value = 0;
                 this.lbl_gemiddelde.Text = "Gemiddelde:";
@@ -134,7 +134,7 @@ namespace KBS2.views
             //lbl_percentage
             this.lbl_percentage.AutoSize = true;
             this.lbl_percentage.Font = new Font("Microsoft Sans Serif", 16F);
-            this.lbl_percentage.Location = new Point(951, 127);
+            this.lbl_percentage.Location = new Point(910, 127);
             this.lbl_percentage.Name = "lbl_percentage";
             this.lbl_percentage.Size = new Size(238, 26);
             this.lbl_percentage.TabIndex = 5;
@@ -184,7 +184,7 @@ namespace KBS2.views
             //Leerlingnr
             this.Leerlingnr.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
             this.Leerlingnr.DefaultCellStyle = dgvcs;
-            this.Leerlingnr.HeaderText = "Leerlingnr.";
+            this.Leerlingnr.HeaderText = "Leerlingnr";
             this.Leerlingnr.Name = "Leerlingnr";
             this.Leerlingnr.ReadOnly = true;
 
@@ -205,7 +205,7 @@ namespace KBS2.views
             //datum
             this.datum.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
             this.datum.DefaultCellStyle = dgvcs;
-            this.datum.HeaderText = "Behaald op";
+            this.datum.HeaderText = "Datum van Afname";
             this.datum.Name = "datum";
             this.datum.ReadOnly = true;
 
