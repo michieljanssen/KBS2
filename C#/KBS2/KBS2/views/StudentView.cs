@@ -19,12 +19,12 @@ namespace KBS2.views
         private Label lbl_id;
         private Label lbl_GemisteEC;
         private Label lbl_BehaaldeEC;
-        private ProgressBar testprb_gehaald;
+        private ProgressBar testprb_behaald;
         private Label lbl_totaalEC;
         private DataGridView dgv_vakken;
         private DataGridViewTextBoxColumn vak;
         private DataGridViewTextBoxColumn vakcijfer;
-        private DataGridViewTextBoxColumn gehaald;
+        private DataGridViewTextBoxColumn behaald;
         private DataGridViewTextBoxColumn EC;
 
         private DataGridView dgv_toetsen;
@@ -52,10 +52,10 @@ namespace KBS2.views
                 this.lbl_BehaaldeEC.Text = "Behaalde EC\'s dit jaar:" + student.gehaaldeEC();
                 if (student.totaalEC() != 0)
                 {
-                    this.testprb_gehaald.Value = student.gehaaldeEC() * 100 / student.totaalEC();
+                    this.testprb_behaald.Value = student.gehaaldeEC() * 100 / student.totaalEC();
                 }
                 else {
-                    this.testprb_gehaald.Value = 0;
+                    this.testprb_behaald.Value = 0;
                 }
                 this.lbl_totaalEC.Text = "Van: " + student.totaalEC();
                 //gaat door alle cijfers heen
@@ -74,7 +74,7 @@ namespace KBS2.views
                 this.lbl_id.Text = "ID";
                 this.lbl_GemisteEC.Text = "Gemiste EC\'s:";
                 this.lbl_BehaaldeEC.Text = "Behaalde EC\'s dit jaar:";
-                this.testprb_gehaald.Value = 0;
+                this.testprb_behaald.Value = 0;
                 this.lbl_totaalEC.Text = "Van:";
             }
         }
@@ -86,7 +86,7 @@ namespace KBS2.views
             this.lbl_id = new Label();
             this.lbl_GemisteEC = new Label();
             this.lbl_BehaaldeEC = new Label();
-            this.testprb_gehaald = new ProgressBar();
+            this.testprb_behaald = new ProgressBar();
             this.lbl_totaalEC = new Label();
             this.dgv_vakken = new DataGridView();
             this.vak = new DataGridViewTextBoxColumn();
@@ -95,7 +95,7 @@ namespace KBS2.views
             this.dgv_toetsen = new DataGridView();
             this.toets = new DataGridViewTextBoxColumn();
             this.cijfer = new DataGridViewTextBoxColumn();
-            this.gehaald = new DataGridViewTextBoxColumn();
+            this.behaald = new DataGridViewTextBoxColumn();
             this.toetsGehaald = new DataGridViewTextBoxColumn();
             this.lbl_toets = new Label();
             this.lbl_vak = new Label();
@@ -127,20 +127,20 @@ namespace KBS2.views
             this.lbl_GemisteEC.Size = new System.Drawing.Size(152, 26);
             this.lbl_GemisteEC.TabIndex = 5;
             
-            //lbl_gehaaldeEC
+            //lbl_behaaldeEC
             this.lbl_BehaaldeEC.AutoSize = true;
             this.lbl_BehaaldeEC.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.lbl_BehaaldeEC.Location = new System.Drawing.Point(95, 127);
-            this.lbl_BehaaldeEC.Name = "lbl_gehaaldeEC";
+            this.lbl_BehaaldeEC.Name = "lbl_behaaldeEC";
             this.lbl_BehaaldeEC.Size = new System.Drawing.Size(233, 26);
             this.lbl_BehaaldeEC.TabIndex = 3;
             
-            //testprb_gehaald
-            this.testprb_gehaald.ForeColor = System.Drawing.Color.Lime;
-            this.testprb_gehaald.Location = new System.Drawing.Point(100, 156);
-            this.testprb_gehaald.Name = "testprb_gehaald";
-            this.testprb_gehaald.Size = new System.Drawing.Size(1089, 23);
-            this.testprb_gehaald.TabIndex = 6;
+            //testprb_behaald
+            this.testprb_behaald.ForeColor = System.Drawing.Color.Lime;
+            this.testprb_behaald.Location = new System.Drawing.Point(100, 156);
+            this.testprb_behaald.Name = "testprb_behaald";
+            this.testprb_behaald.Size = new System.Drawing.Size(1089, 23);
+            this.testprb_behaald.TabIndex = 6;
             
             //lbl_totaalEC
             this.lbl_totaalEC.AutoSize = true;
@@ -157,7 +157,7 @@ namespace KBS2.views
             this.dgv_vakken.Columns.AddRange(new DataGridViewColumn[] {
             this.vak,
             this.vakcijfer,
-            this.gehaald,
+            this.behaald,
             this.EC});
 
             this.dgv_vakken.Location = new System.Drawing.Point(100, 234);
@@ -177,9 +177,9 @@ namespace KBS2.views
             this.vakcijfer.Name = "Cijfer";
             this.vakcijfer.ReadOnly = true;
 
-            this.gehaald.HeaderText = "Gehaald";
-            this.gehaald.Name = "Gehaald";
-            this.gehaald.ReadOnly = true;
+            this.behaald.HeaderText = "Behaald";
+            this.behaald.Name = "Behaald";
+            this.behaald.ReadOnly = true;
 
             //ECgemist
             this.EC.HeaderText = "EC\'s";
@@ -241,7 +241,7 @@ namespace KBS2.views
             this.Controls.Add(this.lbl_toets);
             this.Controls.Add(this.dgv_toetsen);
             this.Controls.Add(this.dgv_vakken);
-            this.Controls.Add(this.testprb_gehaald);
+            this.Controls.Add(this.testprb_behaald);
             this.Controls.Add(this.lbl_GemisteEC);
             this.Controls.Add(this.lbl_totaalEC);
             this.Controls.Add(this.lbl_BehaaldeEC);
