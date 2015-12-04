@@ -116,7 +116,7 @@ namespace KBS2.views
             //lbl_naam
             this.lbl_naam.AutoSize = true;
             this.lbl_naam.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lbl_naam.Location = new System.Drawing.Point(532, 60);
+            this.lbl_naam.Location = new System.Drawing.Point(600, 60);
             this.lbl_naam.Name = "lbl_naam";
             this.lbl_naam.Size = new System.Drawing.Size(57, 26);
             this.lbl_naam.TabIndex = 4;
@@ -124,7 +124,7 @@ namespace KBS2.views
             //lbl_id
             this.lbl_id.AutoSize = true;
             this.lbl_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lbl_id.Location = new System.Drawing.Point(532, 90);
+            this.lbl_id.Location = new System.Drawing.Point(600, 90);
             this.lbl_id.Name = "lbl_naam";
             this.lbl_id.Size = new System.Drawing.Size(57, 26);
             this.lbl_id.TabIndex = 4;
@@ -155,7 +155,7 @@ namespace KBS2.views
             //lbl_totaalEC
             this.lbl_totaalEC.AutoSize = true;
             this.lbl_totaalEC.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lbl_totaalEC.Location = new System.Drawing.Point(532, 127);
+            this.lbl_totaalEC.Location = new System.Drawing.Point(600, 127);
             this.lbl_totaalEC.Name = "lbl_totaalEC";
             this.lbl_totaalEC.Size = new System.Drawing.Size(57, 26);
             this.lbl_totaalEC.TabIndex = 4;
