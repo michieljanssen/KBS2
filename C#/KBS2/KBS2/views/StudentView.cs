@@ -17,8 +17,8 @@ namespace KBS2.views
         //UI variablenen
         private Label lbl_naam;
         private Label lbl_id;
-        private Label lbl_vakken;
-        private Label lbl_toetsen;
+        private Label lbl_GemisteEC;
+        private Label lbl_BehaaldeEC;
         private ProgressBar testprb_gehaald;
         private Label lbl_totaalEC;
         private DataGridView dgv_vakken;
@@ -32,8 +32,8 @@ namespace KBS2.views
         private DataGridViewTextBoxColumn cijfer;
         private DataGridViewTextBoxColumn toetsGehaald;
 
-        private Label lbl_gehaald;
-        private Label lbl_gemist;
+        private Label lbl_toets;
+        private Label lbl_vak;
 
         public StudentView(Student student, Form form)
             : base()
@@ -48,9 +48,8 @@ namespace KBS2.views
                 //zet alle variablen in de UI elementen
                 this.lbl_naam.Text = student.Naam;
                 this.lbl_id.Text = student.ID;
-                this.lbl_vakken.Text = "Gemiste EC\'s: " + student.gemisteEC();
-                this.lbl_toetsen.Text = "Behaalde EC\'s dit jaar: " + student.gehaaldeEC();
-
+                this.lbl_GemisteEC.Text = "Gemiste EC\'s: " + student.gemisteEC();
+                this.lbl_BehaaldeEC.Text = "Behaalde EC\'s dit jaar:" + student.gehaaldeEC();
                 if (student.totaalEC() != 0)
                 {
                     this.testprb_gehaald.Value = student.gehaaldeEC() * 100 / student.totaalEC();
@@ -59,22 +58,12 @@ namespace KBS2.views
                     this.testprb_gehaald.Value = 0;
                 }
                 this.lbl_totaalEC.Text = "Van: " + student.totaalEC();
-                
                 //gaat door alle cijfers heen
                 for (int i = 0; i < student.Cijfers.Count; i++)
                 {
-                    //checkt of het voldoende is
-                    if (student.Cijfers[i].isVoldoende()) {
-                        //zet het cijfer in de behaalde EC's tabel
-                       // object[] c = { student.Cijfers[i].VakNaam, student.Cijfers[i].Cijfer, student.Cijfers[i].EC};
-                        //dgv_behaaldeEC.Rows.Add(c);
-                    }
-                    else
-                    {
-                        //zet het cijfer in het behaalde EC's tabel
-                        //object[] c = { student.Cijfers[i].VakNaam, student.Cijfers[i].Cijfer, student.Cijfers[i].EC };
-                        //dgv_gemisteEC.Rows.Add(c);
-                    }
+                    VakCijfer vak = student.Cijfers[i];
+                    object[] obj = { vak.VakNaam, vak.gemiddelde(), vak.isVoldoende(), vak.EC };
+                    this.dgv_vakken.Rows.Add(obj);
                 }
 
             }
@@ -83,8 +72,8 @@ namespace KBS2.views
                 //als Student null is: zet standaard waardes in de UI
                 this.lbl_naam.Text = "Naam";
                 this.lbl_id.Text = "ID";
-                this.lbl_vakken.Text = "Gemiste EC\'s:";
-                this.lbl_toetsen.Text = "Behaalde EC\'s dit jaar:";
+                this.lbl_GemisteEC.Text = "Gemiste EC\'s:";
+                this.lbl_BehaaldeEC.Text = "Behaalde EC\'s dit jaar:";
                 this.testprb_gehaald.Value = 0;
                 this.lbl_totaalEC.Text = "Van:";
             }
@@ -95,8 +84,8 @@ namespace KBS2.views
         {
             this.lbl_naam = new Label();
             this.lbl_id = new Label();
-            this.lbl_vakken = new Label();
-            this.lbl_toetsen = new Label();
+            this.lbl_GemisteEC = new Label();
+            this.lbl_BehaaldeEC = new Label();
             this.testprb_gehaald = new ProgressBar();
             this.lbl_totaalEC = new Label();
             this.dgv_vakken = new DataGridView();
@@ -107,8 +96,9 @@ namespace KBS2.views
             this.toets = new DataGridViewTextBoxColumn();
             this.cijfer = new DataGridViewTextBoxColumn();
             this.gehaald = new DataGridViewTextBoxColumn();
-            this.lbl_gehaald = new Label();
-            this.lbl_gemist = new Label();
+            this.toetsGehaald = new DataGridViewTextBoxColumn();
+            this.lbl_toets = new Label();
+            this.lbl_vak = new Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_vakken)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_toetsen)).BeginInit();
             this.SuspendLayout();
@@ -130,20 +120,20 @@ namespace KBS2.views
             this.lbl_id.TabIndex = 4;
             
             //lbl_gemisteEC
-            this.lbl_vakken.AutoSize = true;
-            this.lbl_vakken.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lbl_vakken.Location = new System.Drawing.Point(951, 127);
-            this.lbl_vakken.Name = "lbl_gemisteEC";
-            this.lbl_vakken.Size = new System.Drawing.Size(152, 26);
-            this.lbl_vakken.TabIndex = 5;
+            this.lbl_GemisteEC.AutoSize = true;
+            this.lbl_GemisteEC.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.lbl_GemisteEC.Location = new System.Drawing.Point(951, 127);
+            this.lbl_GemisteEC.Name = "lbl_gemisteEC";
+            this.lbl_GemisteEC.Size = new System.Drawing.Size(152, 26);
+            this.lbl_GemisteEC.TabIndex = 5;
             
             //lbl_gehaaldeEC
-            this.lbl_toetsen.AutoSize = true;
-            this.lbl_toetsen.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lbl_toetsen.Location = new System.Drawing.Point(95, 127);
-            this.lbl_toetsen.Name = "lbl_gehaaldeEC";
-            this.lbl_toetsen.Size = new System.Drawing.Size(233, 26);
-            this.lbl_toetsen.TabIndex = 3;
+            this.lbl_BehaaldeEC.AutoSize = true;
+            this.lbl_BehaaldeEC.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.lbl_BehaaldeEC.Location = new System.Drawing.Point(95, 127);
+            this.lbl_BehaaldeEC.Name = "lbl_gehaaldeEC";
+            this.lbl_BehaaldeEC.Size = new System.Drawing.Size(233, 26);
+            this.lbl_BehaaldeEC.TabIndex = 3;
             
             //testprb_gehaald
             this.testprb_gehaald.ForeColor = System.Drawing.Color.Lime;
@@ -167,14 +157,16 @@ namespace KBS2.views
             this.dgv_vakken.Columns.AddRange(new DataGridViewColumn[] {
             this.vak,
             this.vakcijfer,
+            this.gehaald,
             this.EC});
 
             this.dgv_vakken.Location = new System.Drawing.Point(100, 234);
-            this.dgv_vakken.Name = "dgv_gemisteEC";
+            this.dgv_vakken.Name = "dgv_vakken";
             this.dgv_vakken.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgv_vakken.Size = new System.Drawing.Size(1089, 230);
             this.dgv_vakken.TabIndex = 7;
-            
+            this.dgv_vakken.CellClick += Dgv_vakken_CellClick;
+            this.dgv_vakken.AllowUserToAddRows = false;
             //vakgemist
             this.vak.HeaderText = "Vak";
             this.vak.Name = "Vak";
@@ -184,7 +176,11 @@ namespace KBS2.views
             this.vakcijfer.HeaderText = "Cijfer";
             this.vakcijfer.Name = "Cijfer";
             this.vakcijfer.ReadOnly = true;
-            
+
+            this.gehaald.HeaderText = "Gehaald";
+            this.gehaald.Name = "Gehaald";
+            this.gehaald.ReadOnly = true;
+
             //ECgemist
             this.EC.HeaderText = "EC\'s";
             this.EC.Name = "EC";
@@ -197,14 +193,14 @@ namespace KBS2.views
             this.dgv_toetsen.Columns.AddRange(new DataGridViewColumn[] {
             this.toets,
             this.cijfer,
-            this.gehaald});
+            this.toetsGehaald});
 
             this.dgv_toetsen.Location = new System.Drawing.Point(100, 516);
             this.dgv_toetsen.Name = "dgv_behaaldeEC";
             this.dgv_toetsen.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgv_toetsen.Size = new System.Drawing.Size(1089, 230);
             this.dgv_toetsen.TabIndex = 8;
-            
+            this.dgv_toetsen.AllowUserToAddRows = false;
             //vakgehaald
             this.toets.HeaderText = "Vak";
             this.toets.Name = "dataGridViewTextBoxColumn1";
@@ -214,46 +210,60 @@ namespace KBS2.views
             this.cijfer.HeaderText = "Cijfer";
             this.cijfer.Name = "dataGridViewTextBoxColumn2";
             this.cijfer.ReadOnly = true;
-            
-            //ECgehaald
-            this.gehaald.HeaderText = "EC\'s";
-            this.gehaald.Name = "dataGridViewTextBoxColumn3";
-            this.gehaald.ReadOnly = true;
-            
+
+            this.toetsGehaald.HeaderText = "Gehaald";
+            this.toetsGehaald.Name = "Gehaald";
+            this.toetsGehaald.ReadOnly = true;
+
             //lbl_gehaald
-            this.lbl_gehaald.AutoSize = true;
-            this.lbl_gehaald.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lbl_gehaald.Location = new System.Drawing.Point(95, 487);
-            this.lbl_gehaald.Name = "lbl_gehaald";
-            this.lbl_gehaald.Size = new System.Drawing.Size(144, 26);
-            this.lbl_gehaald.TabIndex = 9;
-            this.lbl_gehaald.Text = "Gehaalde Ec:";
+            this.lbl_toets.AutoSize = true;
+            this.lbl_toets.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.lbl_toets.Location = new System.Drawing.Point(95, 487);
+            this.lbl_toets.Name = "lbl_Toetsen";
+            this.lbl_toets.Size = new System.Drawing.Size(144, 26);
+            this.lbl_toets.TabIndex = 9;
+            this.lbl_toets.Text = "Toetsen";
             
             //lbl_gemist
-            this.lbl_gemist.AutoSize = true;
-            this.lbl_gemist.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lbl_gemist.Location = new System.Drawing.Point(95, 205);
-            this.lbl_gemist.Name = "lbl_gemist";
-            this.lbl_gemist.Size = new System.Drawing.Size(132, 26);
-            this.lbl_gemist.TabIndex = 10;
-            this.lbl_gemist.Text = "Gemiste Ec:";
+            this.lbl_vak.AutoSize = true;
+            this.lbl_vak.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.lbl_vak.Location = new System.Drawing.Point(95, 205);
+            this.lbl_vak.Name = "lbl_vak";
+            this.lbl_vak.Size = new System.Drawing.Size(132, 26);
+            this.lbl_vak.TabIndex = 10;
+            this.lbl_vak.Text = "Vakken";
             
             //Alles samenvoegen
             this.ClientSize = new System.Drawing.Size(1264, 761);
             this.Controls.Add(this.lbl_id);
             this.Controls.Add(this.lbl_naam);
-            this.Controls.Add(this.lbl_gemist);
-            this.Controls.Add(this.lbl_gehaald);
+            this.Controls.Add(this.lbl_vak);
+            this.Controls.Add(this.lbl_toets);
             this.Controls.Add(this.dgv_toetsen);
             this.Controls.Add(this.dgv_vakken);
             this.Controls.Add(this.testprb_gehaald);
-            this.Controls.Add(this.lbl_vakken);
+            this.Controls.Add(this.lbl_GemisteEC);
             this.Controls.Add(this.lbl_totaalEC);
-            this.Controls.Add(this.lbl_toetsen);
+            this.Controls.Add(this.lbl_BehaaldeEC);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_vakken)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_toetsen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+        }
+
+        private void Dgv_vakken_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) {
+                this.dgv_toetsen.Rows.Clear();
+                VakCijfer vak = student.Cijfers[e.RowIndex];
+
+                for (int i = 0; i < vak.Cijfers.Count; i++)
+                {
+                    ToetsCijfer cijfer = vak.Cijfers[i];
+                    object[] obj = { cijfer.ToetsNaam, cijfer.Cijfer, cijfer.isVoldoende()};
+                    this.dgv_toetsen.Rows.Add(obj);
+                }
+            }
         }
     }
 }

@@ -57,7 +57,7 @@ namespace KBS2.data
             reader = com.ExecuteReader();
             
             while (reader.Read()) {
-                ToetsCijfer cijfer = new ToetsCijfer(reader.GetValue(0)  +"", (String)reader.GetValue(1), Convert.ToDouble(reader.GetValue(2)),reader.GetValue(3) + "");
+                ToetsCijfer cijfer = new ToetsCijfer(reader.GetValue(0)  +"", (String)reader.GetValue(1), naam, Convert.ToDouble(reader.GetValue(2)),reader.GetValue(3) + "");
                 cijfers.Add(cijfer);
             }
             reader.Close();

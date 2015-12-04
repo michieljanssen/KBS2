@@ -11,6 +11,7 @@ namespace KBS2.model.cijfer
         //data variabelen van de toets
         private String leerlingid;
         private String leerlingnaam;
+        private String toetsnaam;
         private double cijfer;
         private String datum;
 
@@ -18,9 +19,11 @@ namespace KBS2.model.cijfer
         public String Datum { get { return datum; } }
         public String Naam { get { return leerlingnaam; } }
         public String ID { get { return leerlingid; } }
+        public String ToetsNaam { get { return toetsnaam; } }
         
         //constructor
-        public ToetsCijfer(String leerlingid, String leerlingnaam, double cijfer, String datum) {
+        public ToetsCijfer(String leerlingid, String leerlingnaam, String toetsnaam, double cijfer, String datum) {
+            this.toetsnaam = toetsnaam;
             this.datum = datum;
             this.leerlingid = leerlingid;
             this.leerlingnaam = leerlingnaam;
