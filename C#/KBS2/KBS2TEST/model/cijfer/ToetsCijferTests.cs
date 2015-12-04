@@ -19,7 +19,7 @@ namespace KBS2.model.cijfer.Tests
             {
                 bool expected = true;
                 bool actual = false;
-                ToetsCijfer testcijfer = new ToetsCijfer("S1075802", "Hugo Timmerman", 8.8, "11 mei");
+                ToetsCijfer testcijfer = new ToetsCijfer("S1075802", "Hugo Timmerman", "c#", 8.8, "11 mei");
                 actual = testcijfer.isVoldoende();
                 Assert.AreEqual(expected, actual);
             }
@@ -29,7 +29,7 @@ namespace KBS2.model.cijfer.Tests
 
                 bool expected = true;
                 bool actual = false;
-                ToetsCijfer testcijfer = new ToetsCijfer("S1075802", "Hugo Timmerman", 5.5, "11 mei");
+                ToetsCijfer testcijfer = new ToetsCijfer("S1075802", "Hugo Timmerman", "c#", 5.5, "11 mei");
                 actual = testcijfer.isVoldoende();
                 Assert.AreEqual(expected, actual);
             }
@@ -38,7 +38,7 @@ namespace KBS2.model.cijfer.Tests
             {
                 bool expected = false;
                 bool actual = true;
-                ToetsCijfer testcijfer = new ToetsCijfer("S1075802", "Hugo Timmerman", 3.5, "11 mei");
+                ToetsCijfer testcijfer = new ToetsCijfer("S1075802", "Hugo Timmerman", "c#", 3.5, "11 mei");
                 actual = testcijfer.isVoldoende();
                 Assert.AreEqual(expected, actual);
             }

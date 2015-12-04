@@ -26,7 +26,12 @@ namespace KBS2.model.cijfer
         //checkt of het cijfer een voldoende is
         public Boolean isVoldoende()
         {
-            return gemiddelde() >= 5.5;
+            for (int i = 0; i < cijfers.Count; i++) {
+                if (!cijfers[i].isVoldoende()) {
+                    return false;
+                }
+            }
+            return true;
         }
 
 
