@@ -168,7 +168,7 @@ namespace KBS2.views
             this.dgv_toets.AlternatingRowsDefaultCellStyle = dgvcs;
             this.dgv_toets.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_toets.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-
+            this.dgv_toets.AllowUserToAddRows = false;
             this.dgv_toets.CellDoubleClick += dgv_toets_CellDoubleClick;
 
             this.dgv_toets.Columns.AddRange(new DataGridViewColumn[] {
