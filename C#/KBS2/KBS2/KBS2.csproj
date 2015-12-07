@@ -62,6 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Graphpanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Graphpanel.Designer.cs">
+      <DependentUpon>Graphpanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="model\cijfer\Gradable.cs" />
     <Compile Include="model\cijfer\ToetsCijfer.cs" />
     <Compile Include="model\cijfer\VakCijfer.cs" />
@@ -85,6 +91,9 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphpanel.resx">
+      <DependentUpon>Graphpanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
