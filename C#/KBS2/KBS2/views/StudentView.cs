@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using KBS2.model.cijfer;
 using KBS2.model;
+using System.Drawing;
+
 namespace KBS2.views
 {
     class StudentView : Panel
@@ -62,8 +64,18 @@ namespace KBS2.views
                 for (int i = 0; i < student.Cijfers.Count; i++)
                 {
                     VakCijfer vak = student.Cijfers[i];
-                    object[] obj = { vak.VakNaam, vak.gemiddelde(), vak.isVoldoende(), vak.EC };
-                    this.dgv_vakken.Rows.Add(obj);
+
+                    if (vak.isVoldoende() == false)
+                    {
+                        object[] obj = { vak.VakNaam, "", "Niet Behaald", vak.EC };
+
+                        this.dgv_vakken.Rows.Add(obj);                
+                    } else
+                    {
+                        object[] obj = { vak.VakNaam, vak.gemiddelde(), "Behaald", vak.EC };
+
+                        this.dgv_vakken.Rows.Add(obj);
+                    }
                 }
 
             }
@@ -202,10 +214,10 @@ namespace KBS2.views
             this.dgv_toetsen.TabIndex = 8;
             this.dgv_toetsen.AllowUserToAddRows = false;
             //vakgehaald
-            this.toets.HeaderText = "Vak";
+            this.toets.HeaderText = "Toets";
             this.toets.Name = "dataGridViewTextBoxColumn1";
             this.toets.ReadOnly = true;
-            
+
             //cijfergehaald
             this.cijfer.HeaderText = "Cijfer";
             this.cijfer.Name = "dataGridViewTextBoxColumn2";
@@ -260,8 +272,22 @@ namespace KBS2.views
                 for (int i = 0; i < vak.Cijfers.Count; i++)
                 {
                     ToetsCijfer cijfer = vak.Cijfers[i];
-                    object[] obj = { cijfer.ToetsNaam, cijfer.Cijfer, cijfer.isVoldoende()};
-                    this.dgv_toetsen.Rows.Add(obj);
+                    //verandert de kleur van de text als voldoende is of niet
+                    if (cijfer.isVoldoende() == true)
+                    {
+                        object[] obj = { cijfer.ToetsNaam, cijfer.Cijfer, "Behaald"};
+                        this.dgv_toetsen.Rows.Add(obj);
+                        //groen voor voldoende
+                        this.dgv_toetsen.Rows[i].Cells[1].Style.ForeColor = Color.Green;
+                    }
+                    else
+                    {
+                        object[] obj = { cijfer.ToetsNaam, cijfer.Cijfer, "Niet Behaald"};
+                        this.dgv_toetsen.Rows.Add(obj);
+
+                        //rood voor onvoldoende
+                        this.dgv_toetsen.Rows[i].Cells[1].Style.ForeColor = Color.Red;
+                    }
                 }
             }
         }
