@@ -60,8 +60,8 @@
             // graphpanel1
             // 
             this.graphpanel1.BackColor = System.Drawing.Color.White;
-            this.graphpanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.graphpanel1.Location = new System.Drawing.Point(488, 75);
+            this.graphpanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.graphpanel1.Location = new System.Drawing.Point(524, 79);
             this.graphpanel1.Name = "graphpanel1";
             this.graphpanel1.Size = new System.Drawing.Size(660, 437);
             this.graphpanel1.TabIndex = 2;

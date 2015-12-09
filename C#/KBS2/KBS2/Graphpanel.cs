@@ -16,56 +16,93 @@ namespace KBS2Test.model
         const double GRADEMAX = 10;
         const double GRADEINC = 0.5;
         List<Double> Cijfers;
+        List<Point> points;
+        int maxfrequency = -100;
 
         public Graphpanel()
         {
-            
+            points = new List<Point>();
+            Cijfers = this.Testdata();
 
             InitializeComponent();
         }
 
         private void Graphpanel_Paint(object sender, PaintEventArgs e)
         {
-            this.BackColor = Color.White; //set's the background to white
-            Point ZERO = new Point(5, this.Height - 10); //ZERO point of the graphpaper
-            Point TOPRIGHT = new Point(this.Width - 10, 5); //TOPRIGHT point of the graphpaper
-            int WIDTH = Math.Abs(ZERO.X - TOPRIGHT.X); //Width of the graphpaper
-            int HEIGHT = Math.Abs(ZERO.Y - TOPRIGHT.Y); // Height of the graphpaper
-            Graphics g = e.Graphics;
-            Pen black = new Pen(Color.Black,2);
-            g.DrawLine(black, ZERO.X, ZERO.Y, TOPRIGHT.X, ZERO.Y); // draws the horizontal line
-            g.DrawLine(black, ZERO.X, ZERO.Y, ZERO.X, TOPRIGHT.Y); // draws the vertical line
-            Pen gray = new Pen(Color.Gray,2);
-            double grade = 0;
-            //draw the vertical grid
-            while (grade <= GRADEMAX)
-            {
-                //ERROR HERE WORKING ON IT
-                g.DrawLine(gray, ZERO.X + (int)(WIDTH / 10 * grade), ZERO.Y, TOPRIGHT.X + (int)(WIDTH / 10 * grade), TOPRIGHT.Y);
-                grade = grade + GRADEINC;
-            }
-            if(Cijfers != null)
-            {
-                //Round the cijfers
-                for(int i =0; i < Cijfers.Count; i++)
-                {
-                    if(Cijfers[i]%GRADEINC != 0)
-                    {
-                        Cijfers[i] = Cijfers[i] - 0.01;
-                    }
-                }
-                //loop and count each grade
-                int xmax = 0;
-                for(int a=0; a< Cijfers.Count; a++)
-                {
-                    double gradevalue;
-                    double gradefrequency;
-                    for(int b = a + 1; b < Cijfers.Count; b++)
-                    {
 
+            #region graphpaper setup
+            this.BackColor = Color.White;
+            Pen BlckBld = new Pen(Color.Black, 2);
+            Graphics g = e.Graphics;
+            int top = 5;
+            int bottom = this.Height - 5;
+            int left = 5;
+            int right = this.Width - 5;
+            Point lb = new Point(left, bottom);
+            g.DrawLine(BlckBld, lb, new Point(right, bottom));
+            g.DrawLine(BlckBld, lb, new Point(left, top));
+            Pen gr = new Pen(Color.Gray);
+            for (int a = 0; a < 10; a++)
+            {
+                g.DrawLine(gr, left + right * a / 10, bottom, left + right * a / 10, top);
+            }
+            #endregion
+            if (Cijfers != null)
+            {
+                #region Cijfers afronden
+
+                for (int b = 0; b < Cijfers.Count; b++)
+                {
+                    if (Cijfers[b] % GRADEINC != 0)
+                    {
+                        Cijfers[b] -= 0.1;
                     }
                 }
+
+
+                #endregion
+                #region voeg loze cijfers toe ivm een mooie grafiek
+                for (int c = 2; c < 21; c++)
+                {
+                    Cijfers.Add(c / 2);
+                }
+                #endregion
+                #region frequency berekenen en points toevoegen
+                for (int prim = 0; prim < Cijfers.Count; prim++)
+                {
+                    int freq = 0;
+                    for (int sec = prim + 1; sec < Cijfers.Count; sec++)
+                    {
+                        if (Cijfers[prim] == Cijfers[sec])
+                        {
+                            freq++;
+                            Cijfers.RemoveAt(sec);
+                            sec = prim + 1;
+                        }
+                        if (freq > maxfrequency)
+                        {
+                            maxfrequency = freq;
+                        }
+                        points.Add(new Point((int)Cijfers[prim] * 10, freq));
+                    }
+                }
+                #endregion
+                #region horizontale lijnen tekenen
+                for (int d = 0; d < maxfrequency; d++)
+                {
+                    g.DrawLine(gr, left, bottom - (bottom- top)*d/maxfrequency, right, bottom - (bottom - top) * d / maxfrequency);
+                }
+                #endregion
+                for(int p = 1; p < points.Count; p++)
+                {
+                    int xa = points[p].X / 10 * (right - left)/10;
+                    int ya = bottom - points[p].Y * (bottom- top) / maxfrequency;
+                    int xb = points[p-1].X / 10 * (right - left)/10;
+                    int yb = bottom - points[p-1].Y * (bottom- top) / maxfrequency;
+                    g.DrawLine(new Pen(Color.Red), xa, ya, xb, yb);
+                }
             }
+
         }
 
         //TODO delete this class
@@ -75,7 +112,8 @@ namespace KBS2Test.model
             Random rand = new Random();
             for (int i = 0; i < 30; i++)
             {
-                r.Add(rand.Next(9, 100)/10);
+                r.Add(rand.Next(9, 100) / 10);
+                Console.WriteLine(r[i].ToString());
             }
             return r;
         }
