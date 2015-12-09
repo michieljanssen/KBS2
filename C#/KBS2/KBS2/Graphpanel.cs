@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace KBS2Test.model
 {
@@ -30,10 +31,12 @@ namespace KBS2Test.model
         private void Graphpanel_Paint(object sender, PaintEventArgs e)
         {
 
+
             #region graphpaper setup
             this.BackColor = Color.White;
             Pen BlckBld = new Pen(Color.Black, 2);
             Graphics g = e.Graphics;
+            g.Clear(Color.White);
             int top = 5;
             int bottom = this.Height - 5;
             int left = 5;
@@ -49,56 +52,34 @@ namespace KBS2Test.model
             #endregion
             if (Cijfers != null)
             {
-                #region Cijfers afronden
-
-                for (int b = 0; b < Cijfers.Count; b++)
+                points.Clear();
+                //create 20 points
+                for(int a =2; a < 21; a++)
                 {
-                    if (Cijfers[b] % GRADEINC != 0)
+                    points.Add(new Point(a, 0));
+                }
+                //get frequency of each point (grade)
+                for(int p = 0; p<points.Count;p++)
+                {
+                    for(int c =0; c < Cijfers.Count; c++)
                     {
-                        Cijfers[b] -= 0.1;
+                        if ((double)points[p].X/2 == Cijfers[c])
+                        {
+                            points[p] = new Point(points[p].X, points[p].Y + 1);
+                        }
                     }
-                }
-
-
-                #endregion
-                #region voeg loze cijfers toe ivm een mooie grafiek
-                for (int c = 2; c < 21; c++)
-                {
-                    Cijfers.Add(c / 2);
-                }
-                #endregion
-                #region frequency berekenen en points toevoegen
-                for (int prim = 0; prim < Cijfers.Count; prim++)
-                {
-                    int freq = 0;
-                    for (int sec = prim + 1; sec < Cijfers.Count; sec++)
+                    if (points[p].Y > maxfrequency)
                     {
-                        if (Cijfers[prim] == Cijfers[sec])
-                        {
-                            freq++;
-                            Cijfers.RemoveAt(sec);
-                            sec = prim + 1;
-                        }
-                        if (freq > maxfrequency)
-                        {
-                            maxfrequency = freq;
-                        }
-                        points.Add(new Point((int)Cijfers[prim] * 10, freq));
+                        maxfrequency = points[p].Y;
                     }
+                    Console.WriteLine(points[p]);
                 }
-                #endregion
-                #region horizontale lijnen tekenen
-                for (int d = 0; d < maxfrequency; d++)
-                {
-                    g.DrawLine(gr, left, bottom - (bottom- top)*d/maxfrequency, right, bottom - (bottom - top) * d / maxfrequency);
-                }
-                #endregion
                 for(int p = 1; p < points.Count; p++)
                 {
-                    int xa = points[p].X / 10 * (right - left)/10;
-                    int ya = bottom - points[p].Y * (bottom- top) / maxfrequency;
-                    int xb = points[p-1].X / 10 * (right - left)/10;
-                    int yb = bottom - points[p-1].Y * (bottom- top) / maxfrequency;
+                    int xa = left + points[p].X * (right - left) / 20;
+                    int ya = bottom - points[p].Y * (bottom- top) / (maxfrequency);
+                    int xb = left + points[p-1].X * (right - left) / 20;
+                    int yb = bottom - points[p-1].Y * (bottom - top) / (maxfrequency);
                     g.DrawLine(new Pen(Color.Red), xa, ya, xb, yb);
                 }
             }
@@ -109,12 +90,41 @@ namespace KBS2Test.model
         private List<Double> Testdata()
         {
             List<Double> r = new List<double>();
-            Random rand = new Random();
-            for (int i = 0; i < 30; i++)
-            {
-                r.Add(rand.Next(9, 100) / 10);
-                Console.WriteLine(r[i].ToString());
-            }
+            //Random rand = new Random();
+            //for (int i = 0; i < 30; i++)
+            //{
+            //    r.Add(rand.Next(9, 100) / 10);
+            //    Console.WriteLine(r[i].ToString());
+            //}
+            r.Add(5.5);
+            r.Add(5.5);
+            r.Add(5.5);
+            r.Add(2.5);
+            r.Add(2.5);
+            r.Add(2.5);
+            r.Add(4.5);
+            r.Add(4.5);
+            r.Add(4.5);
+            r.Add(4.5);
+            r.Add(6);
+            r.Add(6);
+            r.Add(6);
+            r.Add(6);
+            r.Add(6);
+            r.Add(6);
+            r.Add(6);
+            r.Add(7.5);
+            r.Add(7.5);
+            r.Add(7.5);
+            r.Add(7.5);
+            r.Add(7.5);
+            r.Add(7.5);
+            r.Add(7.5);
+            r.Add(7.5);
+            r.Add(7.5);
+            r.Add(7.5);
+            r.Add(7.5);
+            r.Add(7.5);
             return r;
         }
     }

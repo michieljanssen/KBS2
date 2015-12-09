@@ -61,9 +61,9 @@
             // 
             this.graphpanel1.BackColor = System.Drawing.Color.White;
             this.graphpanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.graphpanel1.Location = new System.Drawing.Point(524, 79);
+            this.graphpanel1.Location = new System.Drawing.Point(429, 86);
             this.graphpanel1.Name = "graphpanel1";
-            this.graphpanel1.Size = new System.Drawing.Size(660, 437);
+            this.graphpanel1.Size = new System.Drawing.Size(692, 406);
             this.graphpanel1.TabIndex = 2;
             // 
             // Form1
@@ -77,6 +77,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
