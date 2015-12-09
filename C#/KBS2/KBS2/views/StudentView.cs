@@ -64,7 +64,8 @@ namespace KBS2.views
                 for (int i = 0; i < student.Cijfers.Count; i++)
                 {
                     VakCijfer vak = student.Cijfers[i];
-
+                    //Als het vak niet voldoende is word er geen gemiddelde gegeven en 'niet behaald' ingevuld 
+                    //Als het vak wel voldoende is word het gemiddelde ingevuld en 'behaald' ingevuld
                     if (vak.isVoldoende() == false)
                     {
                         object[] obj = { vak.VakNaam, "", "Niet Behaald", vak.EC };
@@ -273,20 +274,23 @@ namespace KBS2.views
                 {
                     ToetsCijfer cijfer = vak.Cijfers[i];
                     //verandert de kleur van de text als voldoende is of niet
-                    if (cijfer.isVoldoende() == true)
+                    //Als de toets onvoldoende is word er 'niet Behaald ingevoerd'
+                    if (cijfer.isVoldoende() == false)
                     {
-                        object[] obj = { cijfer.ToetsNaam, cijfer.Cijfer, "Behaald"};
-                        this.dgv_toetsen.Rows.Add(obj);
-                        //groen voor voldoende
-                        this.dgv_toetsen.Rows[i].Cells[1].Style.ForeColor = Color.Green;
-                    }
-                    else
-                    {
-                        object[] obj = { cijfer.ToetsNaam, cijfer.Cijfer, "Niet Behaald"};
+                        object[] obj = { cijfer.ToetsNaam, cijfer.Cijfer, "Niet Behaald" };
                         this.dgv_toetsen.Rows.Add(obj);
 
                         //rood voor onvoldoende
                         this.dgv_toetsen.Rows[i].Cells[1].Style.ForeColor = Color.Red;
+                    }
+                    //Als de toets voldoende is word er 'behaald' ingevuld
+                    else
+                    {
+                        object[] obj = { cijfer.ToetsNaam, cijfer.Cijfer, "Behaald" };
+                        this.dgv_toetsen.Rows.Add(obj);
+                        //groen voor voldoende
+                        this.dgv_toetsen.Rows[i].Cells[1].Style.ForeColor = Color.Green;
+                        
                     }
                 }
             }
