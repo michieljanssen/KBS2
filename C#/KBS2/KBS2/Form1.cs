@@ -86,5 +86,14 @@ namespace KBS2
             p = panel;
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void graphpanel1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
