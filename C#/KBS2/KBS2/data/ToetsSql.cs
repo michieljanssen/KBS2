@@ -48,11 +48,11 @@ namespace KBS2.data
             String toetstype = (String)reader.GetValue(1);
             reader.Close();
             List<ToetsCijfer> cijfers = new List<ToetsCijfer>();
-            query = "select Student.Id, Student.Naam, HeeftCijfer.cijfer, HeeftCijfer.Datum"
-                + " from HeeftCijfer  "
+            query = "select Student.Id, Student.Naam, Cijfer.cijfer, Cijfer.Datum"
+                + " from Cijfer  "
                 + "inner join Student  "
-                + "on Student.Id = HeeftCijfer.studentid "
-                + "where HeeftCijfer.toetsid = '" + toetsnaam + "'";
+                + "on Student.Id = Cijfer.studentid "
+                + "where Cijfer.toetsid = '" + toetsnaam + "'";
             com  = new SqlCommand(query, con);
             reader = com.ExecuteReader();
             

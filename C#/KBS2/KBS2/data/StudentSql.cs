@@ -44,7 +44,7 @@ namespace KBS2.data
             SqlDataReader reader = com.ExecuteReader();
             reader.Read();
             List<VakCijfer> cijfers = new List<VakCijfer>();
-            String naam = (String)reader.GetValue(2);
+            String naam = (String)reader.GetValue(1);
             reader.Close();
             query = "SELECT  HeeftCijfer.toetsid, HeeftCijfer.cijfer, HeeftCijfer.datum, Toets.vakid, Vak.ec " +
             "FROM Student " +
