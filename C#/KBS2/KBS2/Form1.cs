@@ -44,7 +44,7 @@ namespace KBS2
                     this.btn_zoek.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
 
                     //krijgt de toets uit de database
-                    Toets toets = ToetsSql.getToets(txb_zoek.Text);
+                    Toets toets = ToetsSql.getToets(txb_zoek.Text, ToetsSql.getToetsJaren(txb_zoek.Text)[0]);
                     //maakt het paneel aan met de toets en voegt deze toe aan het scherm
                     ToetsView panel = new ToetsView(toets, this);
                     setPanel(panel);

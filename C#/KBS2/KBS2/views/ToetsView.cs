@@ -252,7 +252,16 @@ namespace KBS2.views
         private void Cb_jaar_SelectionChangeCommitted(object sender, EventArgs e)
         {
            cb_datum.DataSource = ToetsSql.toetsData(toets.Naam, (String)cb_jaar.SelectedValue);
-
+           if (!cb_datum.SelectedValue.Equals("beste resultaten"))
+           {
+               Toets t = ToetsSql.getToets(this.toets.Naam, (String)cb_datum.SelectedValue, (String)cb_jaar.SelectedValue);
+               load(t);
+           }
+           else
+           {
+               Toets t = ToetsSql.getToets(this.toets.Naam, (String)cb_jaar.SelectedValue);
+               load(t);
+           }
         }
 
         private void Cb_datum_SelectionChangeCommitted(object sender, EventArgs e)
@@ -261,11 +270,11 @@ namespace KBS2.views
             Console.WriteLine("Clicked = " + c.SelectedValue );
             if (!c.SelectedValue.Equals("beste resultaten"))
             {
-                Toets t = ToetsSql.getToets(this.toets.Naam, (String)c.SelectedValue);
+                Toets t = ToetsSql.getToets(this.toets.Naam, (String)c.SelectedValue, (String)cb_jaar.SelectedValue);
                 load(t);
             }
             else {
-                Toets t = ToetsSql.getToets(this.toets.Naam);
+                Toets t = ToetsSql.getToets(this.toets.Naam,(String) cb_jaar.SelectedValue);
                 load(t);
             }
         }

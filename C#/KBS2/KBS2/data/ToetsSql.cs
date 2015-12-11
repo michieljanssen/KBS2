@@ -40,7 +40,7 @@ namespace KBS2.data
         }
 
         //toets ophalen uit database
-        public static Toets getToets(String toetsnaam)
+        public static Toets getToets(String toetsnaam, String jaar)
         {
             String query = "select id,type from Toets where Id = '" + toetsnaam + "'";
             SqlCommand com = new SqlCommand(query, con);
@@ -50,14 +50,16 @@ namespace KBS2.data
             String toetstype = (String)reader.GetValue(1);
             reader.Close();
             List<ToetsCijfer> cijfers = new List<ToetsCijfer>();
-            query = "select Student.Id, Student.Naam, Cijfer.cijfer, Cijfer.Datum"
-                + " from Cijfer  "
-                + "inner join Student  "
-                + "on Student.Id = Cijfer.studentid "
-                + "where Cijfer.toetsid = '" + toetsnaam + "'";
+            query = "select Student.Id, Student.Naam, Cijfer.cijfer, Cijfer.Datum" 
+                + " from Student "
+                + " inner join Cijfer on Student.Id = Cijfer.studentid "
+                + " inner join Jaar on Student.id = Jaar.studentID "
+                + " where Cijfer.toetsid = '" + toetsnaam 
+                + "' and Jaar.jaar = '" + jaar + "'";
             com = new SqlCommand(query, con);
             reader = com.ExecuteReader();
 
+           
             while (reader.Read())
             {
                 ToetsCijfer cijfer = new ToetsCijfer(reader.GetValue(0) + "", (String)reader.GetValue(1), naam, Convert.ToDouble(reader.GetValue(2)), reader.GetValue(3) + "");
@@ -83,7 +85,7 @@ namespace KBS2.data
             return toets;
         }
 
-        public static Toets getToets(String toetsnaam, String datum)
+        public static Toets getToets(String toetsnaam, String datum, String jaar)
         {
             String query = "select id,type from Toets where Id = '" + toetsnaam + "'";
             SqlCommand com = new SqlCommand(query, con);
@@ -95,10 +97,10 @@ namespace KBS2.data
             List<ToetsCijfer> cijfers = new List<ToetsCijfer>();
             query = "select Student.Id, Student.Naam, Cijfer.cijfer, Cijfer.Datum"
                 + " from Cijfer  "
-                + "inner join Student  "
-                + "on Student.Id = Cijfer.studentid "
+                + "inner join Student on Student.Id = Cijfer.studentid "
+                + "inner join Jaar on Student.id = Jaar.studentID "
                 + "where Cijfer.toetsid = '" + toetsnaam + "'"
-                + " and Cijfer.datum = '" + datum + "'";
+                + " and Cijfer.datum = '" + datum + "' and Jaar.jaar = '" + jaar + "'";
             com = new SqlCommand(query, con);
             reader = com.ExecuteReader();
 
