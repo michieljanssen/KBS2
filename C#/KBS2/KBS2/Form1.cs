@@ -12,6 +12,7 @@ using KBS2.views;
 using KBS2.model.cijfer;
 using KBS2.model;
 using KBS2.data;
+
 namespace KBS2
 {
     public partial class Form1 : Form
@@ -88,12 +89,55 @@ namespace KBS2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
-        private void graphpanel1_Load(object sender, EventArgs e)
+        private void GraphPanel_Paint(object sender, PaintEventArgs e)
         {
+            //int frequency = graphpanel1.graphfrequency;
+            int frequency = 5;
+            int height = graphpanel1.graphheight;
+            int freqheight = frequency / height;
 
+            int width = GraphPanel.Width;
+            int cijferswidth = width / 12;
+
+            List<Label> freqlabels = new List<Label>();
+            List<Label> cijferlabels = new List<Label>();
+
+            Console.WriteLine(cijferswidth.ToString());
+
+            for (int a = 1; a < 11; a++)
+            {
+                Label cijfer = new Label();
+
+                cijfer.Location = new Point(418, 300 + 10 * a);
+                cijfer.Text = a.ToString();
+                cijfer.Show();
+                cijferlabels.Add(cijfer);
+
+                //cijfer.Parent = GraphPanel;
+                //GraphPanel.Container.Add(cijfer);
+                Controls.Add(cijfer);
+            }
+
+            Label test = new Label();
+
+            test.Location = new Point(10, 10);
+            test.Text = "Test";
+            test.Show();
+            this.Controls.Add(test);
+
+            for (int i = 0; i < frequency; i++)
+            {
+                Label nr = new Label();
+
+                nr.Location = new Point(10, 10 + 10 * i);
+                nr.Text = i.ToString();
+                nr.Show();
+                freqlabels.Add(nr);
+                this.Controls.Add(nr);
+            }
         }
     }
 }
