@@ -46,10 +46,10 @@ namespace KBS2.data
             List<VakCijfer> cijfers = new List<VakCijfer>();
             String naam = (String)reader.GetValue(1);
             reader.Close();
-            query = "SELECT  HeeftCijfer.toetsid, HeeftCijfer.cijfer, HeeftCijfer.datum, Toets.vakid, Vak.ec " +
+            query = "SELECT  Cijfer.toetsid, Cijfer.cijfer,Cijfer.datum, Toets.vakid, Vak.ec " +
             "FROM Student " +
-            "INNER JOIN HeeftCijfer ON Student.Id = HeeftCijfer.studentid " +
-            "INNER JOIN Toets ON Toets.Id = HeeftCijfer.toetsid " +
+            "INNER JOIN Cijfer ON Student.Id = Cijfer.studentid " +
+            "INNER JOIN Toets ON Toets.Id = Cijfer.toetsid " +
             "INNER JOIN Vak ON Vak.Id = Toets.vakid " +
             "WHERE Student.Id = " + id + ";";
             com = new SqlCommand(query, con);

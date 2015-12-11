@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
 
@@ -21,6 +22,8 @@ namespace KBS2.views
         private ProgressBar prb_behaald;
         private Label lbl_gemiddelde;
         private Label lbl_toetsType;
+        private ComboBox cb_datum;
+        private ComboBox cb_jaar;
         private DataGridView dgv_toets;
         private DataGridViewTextBoxColumn Leerlingnr;
         private DataGridViewTextBoxColumn naam;
@@ -34,6 +37,14 @@ namespace KBS2.views
             this.Parent = form;
             this.toets = toets;
             init();
+            cb_jaar.DataSource = ToetsSql.getToetsJaren(toets.Naam);
+            cb_datum.DataSource = ToetsSql.toetsData(toets.Naam, (String)cb_jaar.SelectedValue);
+            load(toets);
+        }
+        //laad de teots
+        public void load(Toets toets)
+        {
+            this.toets = toets;
             //checkt of de toets gemaakt is
             if (toets != null)
             {
@@ -46,6 +57,7 @@ namespace KBS2.views
                 this.prb_behaald.Value = toets.percentageVold();
                 this.lbl_gemiddelde.Text = "Gemiddelde: " + toets.gemiddelde().ToString("0.0");
                 //checked of er cijfers instaan
+                dgv_toets.Rows.Clear();
                 if (toets.Cijfers.Count > 0)
                 {
                     //gaat door alle cijfers heen
@@ -87,7 +99,9 @@ namespace KBS2.views
                 object[] rows = { "1", "2", "3" };
                 this.dgv_toets.Rows.Add(rows);
             }
+
         }
+
         //maakt UI aan
         public void init()
         {
@@ -103,7 +117,19 @@ namespace KBS2.views
             this.naam = new DataGridViewTextBoxColumn();
             this.Cijfer = new DataGridViewTextBoxColumn();
             this.datum = new DataGridViewTextBoxColumn();
+            this.cb_datum = new ComboBox();
+            this.cb_jaar = new ComboBox();
             this.SuspendLayout();
+
+            //cb_jaar
+            this.cb_jaar.Size = new Size(150, 30);
+            this.cb_jaar.Location = new Point(879, 200);
+            this.cb_jaar.SelectionChangeCommitted += Cb_jaar_SelectionChangeCommitted;
+
+            //cb_datum
+            this.cb_datum.Size = new Size(150, 30);
+            this.cb_datum.Location = new Point(1039, 200);
+            this.cb_datum.SelectionChangeCommitted += Cb_datum_SelectionChangeCommitted;
 
             //lbl_toetsnaam
             this.lbl_toetsnaam.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Left)
@@ -219,25 +245,44 @@ namespace KBS2.views
             this.Controls.Add(this.lbl_aantalnietbehaald);
             this.Controls.Add(this.lbl_aantalbehaald);
             this.Controls.Add(this.lbl_toetsnaam);
+            this.Controls.Add(this.cb_datum);
+            this.Controls.Add(this.cb_jaar);
         }
 
+        private void Cb_jaar_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+           cb_datum.DataSource = ToetsSql.toetsData(toets.Naam, (String)cb_jaar.SelectedValue);
+
+        }
+
+        private void Cb_datum_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            ComboBox c = (ComboBox)sender;
+            Console.WriteLine("Clicked = " + c.SelectedValue );
+            if (!c.SelectedValue.Equals("beste resultaten"))
+            {
+                Toets t = ToetsSql.getToets(this.toets.Naam, (String)c.SelectedValue);
+                load(t);
+            }
+            else {
+                Toets t = ToetsSql.getToets(this.toets.Naam);
+                load(t);
+            }
+        }
         private void dgv_toets_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int row = e.RowIndex;
             if (row >= 0)
             {
                 int id = Convert.ToInt32(dgv_toets.Rows[row].Cells[0].Value);
-                
                 if (StudentSql.studentExists(id))
                 {
                     Student student = StudentSql.getStudent(id);
                     Form form = new Form();
                     StudentView view = new StudentView(student, form);
-                    form.SetBounds(this.form.Bounds.X +100, this.form.Bounds.Y + 100, this.form.Bounds.Width, this.form.Bounds.Height);
+                    form.SetBounds(this.form.Bounds.X + 100, this.form.Bounds.Y + 100, this.form.Bounds.Width, this.form.Bounds.Height);
                     form.Show();
-
                 }
-                
             }
         }
     }
