@@ -46,6 +46,34 @@ namespace KBS2.data
             List<VakCijfer> cijfers = new List<VakCijfer>();
             String naam = (String)reader.GetValue(1);
             reader.Close();
+            ////////////////
+            //query = "select distinct vak.id, vak.ec from student " +
+            //    "INNER JOIN Jaar on Student.Id = Jaar.studentId " +
+            //    "INNER JOIN Klas on Klas.Id = Jaar.klasId " +
+            //    "INNER JOIN Opleiding on Klas.oplid = Opleiding.id " +
+            //    "INNER JOIN Vak on Vak.oplid = Opleiding.ID " +
+            //    "WHERE Student.Id = " + id + ";";
+            //com = new SqlCommand(query, con);
+            //reader = com.ExecuteReader();
+
+            //while (reader.Read())
+            //{
+            //    VakCijfer vakcijfer = new VakCijfer((string)reader.GetValue(0), (int)reader.GetValue(1), new List<ToetsCijfer>());
+            //    cijfers.Add(vakcijfer);
+            //}
+            //reader.Close();
+
+            //query = "select distinct Toets.id, vak.id from Toets " +
+            //    "INNER join Vak on Vak.id = Toets.vakid " +
+            //    "INNER JOIN opleiding on Opleiding.id = vak.oplid " + 
+            //    "INNER JOIN Klas on klas.oplid = Opleiding.id " +
+            //    "INNER JOIN Jaar on jaar.klasid = Klas.ID " +
+            //    "INNER JOIN";
+
+
+
+
+            ///////////
             query = "SELECT  Cijfer.toetsid, Cijfer.cijfer,Cijfer.datum, Toets.vakid, Vak.ec " +
             "FROM Student " +
             "INNER JOIN Cijfer ON Student.Id = Cijfer.studentid " +
