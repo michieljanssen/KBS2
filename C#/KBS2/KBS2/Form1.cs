@@ -43,9 +43,20 @@ namespace KBS2
                     btn_zoek.Location = new Point(btn_zoek.Location.X, 20);
                     this.txb_zoek.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top);
                     this.btn_zoek.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+                    
+                    Toets toets = null;
+                    if (ToetsSql.getToetsJaren(txb_zoek.Text).Count != 0)
+                    {
+                        //krijgt de toets uit de database
+                        toets = ToetsSql.getToets(txb_zoek.Text, ToetsSql.getToetsJaren(txb_zoek.Text)[0]);
 
-                    //krijgt de toets uit de database
-                    Toets toets = ToetsSql.getToets(txb_zoek.Text, ToetsSql.getToetsJaren(txb_zoek.Text)[0]);
+                    }
+                    else
+                    {
+                        toets = ToetsSql.getToets(txb_zoek.Text, "");
+                    
+                    }
+
                     //maakt het paneel aan met de toets en voegt deze toe aan het scherm
                     ToetsView panel = new ToetsView(toets, this);
                     setPanel(panel);
@@ -89,7 +100,7 @@ namespace KBS2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void GraphPanel_Paint(object sender, PaintEventArgs e)
@@ -99,13 +110,13 @@ namespace KBS2
             int height = graphpanel1.graphheight;
             int freqheight = frequency / height;
 
-            int width = GraphPanel.Width;
-            int cijferswidth = width / 12;
+            //int width = GraphPanel.Width;
+            // int cijferswidth = width / 12;
 
             List<Label> freqlabels = new List<Label>();
             List<Label> cijferlabels = new List<Label>();
 
-            Console.WriteLine(cijferswidth.ToString());
+            // Console.WriteLine(cijferswidth.ToString());
 
             for (int a = 1; a < 11; a++)
             {

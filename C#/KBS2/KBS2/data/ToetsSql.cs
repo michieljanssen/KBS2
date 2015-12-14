@@ -95,8 +95,7 @@ namespace KBS2.data
             String toetstype = (String)reader.GetValue(1);
             reader.Close();
             List<ToetsCijfer> cijfers = new List<ToetsCijfer>();
-            query = "select Student.Id, Student.Naam, Cijfer.cijfer, Cijfer.Datum"
-                + " from Cijfer  "
+            query = "select Student.Id, Student.Naam, Cijfer.cijfer, Cijfer.Datum from Cijfer  "
                 + "inner join Student on Student.Id = Cijfer.studentid "
                 + "inner join Jaar on Student.id = Jaar.studentID "
                 + "where Cijfer.toetsid = '" + toetsnaam + "'"
