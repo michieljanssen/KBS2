@@ -37,7 +37,7 @@
             // 
             this.btn_zoek.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btn_zoek.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.btn_zoek.Location = new System.Drawing.Point(902, 364);
+            this.btn_zoek.Location = new System.Drawing.Point(902, 402);
             this.btn_zoek.Name = "btn_zoek";
             this.btn_zoek.Size = new System.Drawing.Size(72, 32);
             this.btn_zoek.TabIndex = 0;
@@ -49,7 +49,7 @@
             // 
             this.txb_zoek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txb_zoek.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.txb_zoek.Location = new System.Drawing.Point(289, 364);
+            this.txb_zoek.Location = new System.Drawing.Point(289, 402);
             this.txb_zoek.Name = "txb_zoek";
             this.txb_zoek.Size = new System.Drawing.Size(609, 32);
             this.txb_zoek.TabIndex = 1;
@@ -60,7 +60,7 @@
             this.graphpanel1.BackColor = System.Drawing.Color.White;
             this.graphpanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.graphpanel1.Location = new System.Drawing.Point(74, 10);
-            this.graphpanel1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.graphpanel1.Margin = new System.Windows.Forms.Padding(1);
             this.graphpanel1.Name = "graphpanel1";
             this.graphpanel1.Size = new System.Drawing.Size(462, 265);
             this.graphpanel1.TabIndex = 2;
@@ -70,7 +70,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 684);
+            this.ClientSize = new System.Drawing.Size(1264, 761);
             this.Controls.Add(this.txb_zoek);
             this.Controls.Add(this.btn_zoek);
             this.Controls.Add(this.graphpanel1);

@@ -15,7 +15,7 @@ namespace KBS2.views
     {
         //Student variabelen
         private Student student;
-        
+
         //UI variablenen
         private Label lbl_naam;
         private Label lbl_id;
@@ -31,7 +31,7 @@ namespace KBS2.views
 
         private DataGridView dgv_toetsen;
         private DataGridViewTextBoxColumn toets;
-        private DataGridViewTextBoxColumn cijfer;
+        private DataGridViewComboBoxColumn cijfer;
         private DataGridViewTextBoxColumn toetsBehaald;
 
         private Label lbl_toets;
@@ -43,7 +43,7 @@ namespace KBS2.views
             this.Parent = form;
             this.student = student;
             init();
-            
+
             //checkt of het student niet null is
             if (student != null)
             {
@@ -70,8 +70,9 @@ namespace KBS2.views
                     {
                         object[] obj = { vak.VakNaam, "", "Niet Behaald", vak.EC };
 
-                        this.dgv_vakken.Rows.Add(obj);                
-                    } else
+                        this.dgv_vakken.Rows.Add(obj);
+                    }
+                    else
                     {
                         object[] obj = { vak.VakNaam, vak.gemiddelde(), "Behaald", vak.EC };
 
@@ -91,7 +92,7 @@ namespace KBS2.views
                 this.lbl_totaalEC.Text = "Van:";
             }
         }
-        
+
         //maakt UI aan
         public void init()
         {
@@ -107,7 +108,7 @@ namespace KBS2.views
             this.EC = new DataGridViewTextBoxColumn();
             this.dgv_toetsen = new DataGridView();
             this.toets = new DataGridViewTextBoxColumn();
-            this.cijfer = new DataGridViewTextBoxColumn();
+            this.cijfer = new DataGridViewComboBoxColumn();
             this.behaald = new DataGridViewTextBoxColumn();
             this.toetsBehaald = new DataGridViewTextBoxColumn();
             this.lbl_toets = new Label();
@@ -115,7 +116,7 @@ namespace KBS2.views
             ((System.ComponentModel.ISupportInitialize)(this.dgv_vakken)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_toetsen)).BeginInit();
             this.SuspendLayout();
-            
+
             //lbl_naam
             this.lbl_naam.AutoSize = true;
             this.lbl_naam.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
@@ -123,7 +124,7 @@ namespace KBS2.views
             this.lbl_naam.Name = "lbl_naam";
             this.lbl_naam.Size = new System.Drawing.Size(57, 26);
             this.lbl_naam.TabIndex = 4;
-            
+
             //lbl_id
             this.lbl_id.AutoSize = true;
             this.lbl_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
@@ -131,7 +132,7 @@ namespace KBS2.views
             this.lbl_id.Name = "lbl_naam";
             this.lbl_id.Size = new System.Drawing.Size(57, 26);
             this.lbl_id.TabIndex = 4;
-            
+
             //lbl_gemisteEC
             this.lbl_GemisteEC.AutoSize = true;
             this.lbl_GemisteEC.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
@@ -139,7 +140,7 @@ namespace KBS2.views
             this.lbl_GemisteEC.Name = "lbl_gemisteEC";
             this.lbl_GemisteEC.Size = new System.Drawing.Size(152, 26);
             this.lbl_GemisteEC.TabIndex = 5;
-            
+
             //lbl_behaaldeEC
             this.lbl_BehaaldeEC.AutoSize = true;
             this.lbl_BehaaldeEC.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
@@ -147,14 +148,14 @@ namespace KBS2.views
             this.lbl_BehaaldeEC.Name = "lbl_behaaldeEC";
             this.lbl_BehaaldeEC.Size = new System.Drawing.Size(233, 26);
             this.lbl_BehaaldeEC.TabIndex = 3;
-            
+
             //testprb_behaald
             this.testprb_behaald.ForeColor = System.Drawing.Color.Lime;
             this.testprb_behaald.Location = new System.Drawing.Point(100, 156);
             this.testprb_behaald.Name = "testprb_behaald";
             this.testprb_behaald.Size = new System.Drawing.Size(1089, 23);
             this.testprb_behaald.TabIndex = 6;
-            
+
             //lbl_totaalEC
             this.lbl_totaalEC.AutoSize = true;
             this.lbl_totaalEC.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
@@ -162,7 +163,7 @@ namespace KBS2.views
             this.lbl_totaalEC.Name = "lbl_totaalEC";
             this.lbl_totaalEC.Size = new System.Drawing.Size(57, 26);
             this.lbl_totaalEC.TabIndex = 4;
-            
+
             //dgv_gemisteEC
             this.dgv_vakken.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_vakken.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -184,7 +185,7 @@ namespace KBS2.views
             this.vak.HeaderText = "Vak";
             this.vak.Name = "Vak";
             this.vak.ReadOnly = true;
-            
+
             //Cijfergemist
             this.vakcijfer.HeaderText = "Cijfer";
             this.vakcijfer.Name = "Cijfer";
@@ -198,7 +199,7 @@ namespace KBS2.views
             this.EC.HeaderText = "EC\'s";
             this.EC.Name = "EC";
             this.EC.ReadOnly = true;
-            
+
             //dgv_behaaldeEC
             this.dgv_toetsen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_toetsen.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -236,7 +237,7 @@ namespace KBS2.views
             this.lbl_toets.Size = new System.Drawing.Size(144, 26);
             this.lbl_toets.TabIndex = 9;
             this.lbl_toets.Text = "Toetsen";
-            
+
             //lbl_gemist
             this.lbl_vak.AutoSize = true;
             this.lbl_vak.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
@@ -245,7 +246,7 @@ namespace KBS2.views
             this.lbl_vak.Size = new System.Drawing.Size(132, 26);
             this.lbl_vak.TabIndex = 10;
             this.lbl_vak.Text = "Vakken";
-            
+
             //Alles samenvoegen
             this.ClientSize = new System.Drawing.Size(1264, 761);
             this.Controls.Add(this.lbl_id);
@@ -266,31 +267,52 @@ namespace KBS2.views
 
         private void Dgv_vakken_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) {
+            if (e.RowIndex >= 0)
+            {
                 this.dgv_toetsen.Rows.Clear();
                 VakCijfer vak = student.getVakCijfer((String)dgv_vakken.Rows[e.RowIndex].Cells[0].Value);
 
+                List<string> added = new List<string>();
                 for (int i = 0; i < vak.Cijfers.Count; i++)
                 {
                     ToetsCijfer cijfer = vak.Cijfers[i];
-                    //verandert de kleur van de text als voldoende is of niet
-                    //Als de toets onvoldoende is word er 'niet Behaald ingevoerd'
-                    if (cijfer.isVoldoende() == false)
+                    if (!added.Contains(cijfer.ToetsNaam))
                     {
-                        object[] obj = { cijfer.ToetsNaam, cijfer.Cijfer, "Niet Behaald" };
-                        this.dgv_toetsen.Rows.Add(obj);
-
-                        //rood voor onvoldoende
-                        this.dgv_toetsen.Rows[i].Cells[1].Style.ForeColor = Color.Red;
+                        added.Add(cijfer.ToetsNaam);
+                        object[] row = { cijfer.ToetsNaam };
+                        dgv_toetsen.Rows.Add(row);
                     }
-                    //Als de toets voldoende is word er 'behaald' ingevuld
-                    else
+                }
+                for (int x = 0; x < dgv_toetsen.Rows.Count; x++)
+                {
+                    DataGridViewComboBoxCell cell = (DataGridViewComboBoxCell)dgv_toetsen.Rows[x].Cells[1];
+                    cell.ReadOnly = false;
+                    for (int i = 0; i < vak.Cijfers.Count; i++)
                     {
-                        object[] obj = { cijfer.ToetsNaam, cijfer.Cijfer, "Behaald" };
-                        this.dgv_toetsen.Rows.Add(obj);
-                        //groen voor voldoende
-                        this.dgv_toetsen.Rows[i].Cells[1].Style.ForeColor = Color.Green;
-                        
+                        ToetsCijfer cijfer = vak.Cijfers[i];
+                        if ((String)dgv_toetsen.Rows[x].Cells[0].Value == cijfer.ToetsNaam)
+                        {
+                            cell.Items.Add(cijfer.Cijfer);
+                        }
+                    }
+                    for (int i = 0; i < cell.Items.Count; i++)
+                    {
+                        if (cell.Value == null)
+                        {
+                            cell.Value = cell.Items[i];
+                        }
+                        if ((double)cell.Value < (double)cell.Items[i])
+                        {
+                            cell.Value = cell.Items[i];
+                        }
+                    }
+
+                    if ((double)cell.Value >= 5.5)
+                    {
+                        dgv_toetsen.Rows[x].Cells[2].Value = "Behaald";
+                    }
+                    else {
+                        dgv_toetsen.Rows[x].Cells[2].Value = "Niet Behaald";
                     }
                 }
             }
