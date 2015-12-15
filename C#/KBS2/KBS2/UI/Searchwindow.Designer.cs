@@ -31,6 +31,7 @@
             this.Zk_btn = new System.Windows.Forms.Button();
             this.Zk_Bx = new System.Windows.Forms.TextBox();
             this.zk_combo = new System.Windows.Forms.ComboBox();
+            this.Zk_Error = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Zk_btn
@@ -51,6 +52,7 @@
             this.Zk_Bx.Name = "Zk_Bx";
             this.Zk_Bx.Size = new System.Drawing.Size(430, 35);
             this.Zk_Bx.TabIndex = 1;
+            this.Zk_Bx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Zk_Bx_KeyPress);
             // 
             // zk_combo
             // 
@@ -67,10 +69,21 @@
             this.zk_combo.TabIndex = 2;
             this.zk_combo.Text = "ToetsID";
             // 
+            // Zk_Error
+            // 
+            this.Zk_Error.AutoSize = true;
+            this.Zk_Error.ForeColor = System.Drawing.Color.OrangeRed;
+            this.Zk_Error.Location = new System.Drawing.Point(230, 321);
+            this.Zk_Error.Name = "Zk_Error";
+            this.Zk_Error.Size = new System.Drawing.Size(251, 29);
+            this.Zk_Error.TabIndex = 3;
+            this.Zk_Error.Text = "This does not exist yet";
+            // 
             // Searchwindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Zk_Error);
             this.Controls.Add(this.zk_combo);
             this.Controls.Add(this.Zk_Bx);
             this.Controls.Add(this.Zk_btn);
@@ -89,5 +102,6 @@
         private System.Windows.Forms.Button Zk_btn;
         private System.Windows.Forms.TextBox Zk_Bx;
         private System.Windows.Forms.ComboBox zk_combo;
+        private System.Windows.Forms.Label Zk_Error;
     }
 }

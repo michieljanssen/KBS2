@@ -25,7 +25,7 @@ namespace KBS2.views
         private ComboBox cb_datum;
         private ComboBox cb_jaar;
         private DataGridView dgv_toets;
-        private DataGridViewTextBoxColumn Leerlingnr;
+        private DataGridViewTextBoxColumn Studentnr;
         private DataGridViewTextBoxColumn naam;
         private DataGridViewTextBoxColumn Cijfer;
         private DataGridViewTextBoxColumn datum;
@@ -64,19 +64,19 @@ namespace KBS2.views
                     for (int i = 0; i < toets.Cijfers.Count; i++)
                     {
                         //zet de cijfers in de tabel
-                        object[] row = { toets.Cijfers[i].ID, toets.Cijfers[i].Naam, toets.Cijfers[i].Cijfer, toets.Cijfers[i].Datum };
+                        object[] row = { toets.Cijfers[i].Cijfer, toets.Cijfers[i].ID, toets.Cijfers[i].Naam, toets.Cijfers[i].Datum };
                         this.dgv_toets.Rows.Add(row);
 
                         //verandert de kleur van de text als voldoende is of niet
                         if (toets.Cijfers[i].isVoldoende())
                         {
                             //groen voor voldoende
-                            this.dgv_toets.Rows[i].Cells[2].Style.ForeColor = Color.Green;
+                            this.dgv_toets.Rows[i].Cells[0].Style.ForeColor = Color.Green;
                         }
                         else
                         {
                             //rood voor onvoldoende
-                            this.dgv_toets.Rows[i].Cells[2].Style.ForeColor = Color.Red;
+                            this.dgv_toets.Rows[i].Cells[0].Style.ForeColor = Color.Red;
                         }
                     }
                 }
@@ -113,7 +113,7 @@ namespace KBS2.views
             this.lbl_gemiddelde = new Label();
             this.lbl_toetsType = new Label();
             this.dgv_toets = new DataGridView();
-            this.Leerlingnr = new DataGridViewTextBoxColumn();
+            this.Studentnr = new DataGridViewTextBoxColumn();
             this.naam = new DataGridViewTextBoxColumn();
             this.Cijfer = new DataGridViewTextBoxColumn();
             this.datum = new DataGridViewTextBoxColumn();
@@ -198,21 +198,32 @@ namespace KBS2.views
             this.dgv_toets.CellDoubleClick += dgv_toets_CellDoubleClick;
 
             this.dgv_toets.Columns.AddRange(new DataGridViewColumn[] {
-            this.Leerlingnr,
+            this.Cijfer,
+            this.Studentnr,
             this.naam,
-            this.Cijfer, this.datum});
+            this.datum});
 
+            this.dgv_toets.Columns[0].Width = 15;
+            this.dgv_toets.Columns[1].Width = 30;
+            this.dgv_toets.Columns[2].Width = 30;
             this.dgv_toets.Location = new Point(100, 246);
             this.dgv_toets.Name = "dgv_toets";
             this.dgv_toets.Size = new Size(1089, 454);
             this.dgv_toets.TabIndex = 0;
 
+            //Cijfer
+            this.Cijfer.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
+            this.Cijfer.DefaultCellStyle = dgvcs;
+            this.Cijfer.HeaderText = "Cijfer";
+            this.Cijfer.Name = "Cijfer";
+            this.Cijfer.ReadOnly = true;
+
             //Leerlingnr
-            this.Leerlingnr.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
-            this.Leerlingnr.DefaultCellStyle = dgvcs;
-            this.Leerlingnr.HeaderText = "Leerlingnr";
-            this.Leerlingnr.Name = "Leerlingnr";
-            this.Leerlingnr.ReadOnly = true;
+            this.Studentnr.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
+            this.Studentnr.DefaultCellStyle = dgvcs;
+            this.Studentnr.HeaderText = "Studentnr";
+            this.Studentnr.Name = "Studentnr";
+            this.Studentnr.ReadOnly = true;
 
             //naam
             this.naam.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
@@ -221,12 +232,7 @@ namespace KBS2.views
             this.naam.Name = "naam";
             this.naam.ReadOnly = true;
 
-            //Cijfer
-            this.Cijfer.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
-            this.Cijfer.DefaultCellStyle = dgvcs;
-            this.Cijfer.HeaderText = "Cijfer";
-            this.Cijfer.Name = "Cijfer";
-            this.Cijfer.ReadOnly = true;
+            
 
             //datum
             this.datum.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
