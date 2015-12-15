@@ -21,5 +21,11 @@ namespace KBS2.UI
         {
             //TODO perform query.
         }
+
+        internal void LoadData(string v)
+        {
+            //TODO insert data:
+
+        }
     }
 }

@@ -30,6 +30,7 @@
         {
             this.Zk_btn = new System.Windows.Forms.Button();
             this.Zk_Bx = new System.Windows.Forms.TextBox();
+            this.zk_combo = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // Zk_btn
@@ -46,15 +47,31 @@
             // Zk_Bx
             // 
             this.Zk_Bx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.Zk_Bx.Location = new System.Drawing.Point(55, 283);
+            this.Zk_Bx.Location = new System.Drawing.Point(235, 283);
             this.Zk_Bx.Name = "Zk_Bx";
-            this.Zk_Bx.Size = new System.Drawing.Size(610, 35);
+            this.Zk_Bx.Size = new System.Drawing.Size(430, 35);
             this.Zk_Bx.TabIndex = 1;
+            // 
+            // zk_combo
+            // 
+            this.zk_combo.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.zk_combo.FormattingEnabled = true;
+            this.zk_combo.Items.AddRange(new object[] {
+            "ToetsID",
+            "ToetsNaam",
+            "Studentnummer",
+            "Studentnaam"});
+            this.zk_combo.Location = new System.Drawing.Point(61, 283);
+            this.zk_combo.Name = "zk_combo";
+            this.zk_combo.Size = new System.Drawing.Size(168, 37);
+            this.zk_combo.TabIndex = 2;
+            this.zk_combo.Text = "ToetsID";
             // 
             // Searchwindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.zk_combo);
             this.Controls.Add(this.Zk_Bx);
             this.Controls.Add(this.Zk_btn);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -71,5 +88,6 @@
 
         private System.Windows.Forms.Button Zk_btn;
         private System.Windows.Forms.TextBox Zk_Bx;
+        private System.Windows.Forms.ComboBox zk_combo;
     }
 }

@@ -19,7 +19,19 @@ namespace KBS2.UI
 
         private void Zk_btn_Click(object sender, EventArgs e)
         {
-            //TODO perform Query
+            String inputstring = this.Zk_Bx.Text;
+            //TODO Perform Query;
+
+            
+            this.Enabled = false;
+            this.Visible = false;
+            MainWindow a = new MainWindow();
+            a.LoadData("QueryData");
+            a.ClientSize = Parent.ClientSize;
+            a.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom);
+            a.Visible = true;
+            Parent.Controls.Add(a);
+            this.Dispose();
         }
     }
 }
