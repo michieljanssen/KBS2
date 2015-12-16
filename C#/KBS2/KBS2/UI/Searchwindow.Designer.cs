@@ -75,9 +75,9 @@
             this.Zk_Error.ForeColor = System.Drawing.Color.OrangeRed;
             this.Zk_Error.Location = new System.Drawing.Point(230, 321);
             this.Zk_Error.Name = "Zk_Error";
-            this.Zk_Error.Size = new System.Drawing.Size(251, 29);
+            this.Zk_Error.Size = new System.Drawing.Size(169, 29);
             this.Zk_Error.TabIndex = 3;
-            this.Zk_Error.Text = "This does not exist yet";
+            this.Zk_Error.Text = "DO NOT EDIT";
             // 
             // Searchwindow
             // 

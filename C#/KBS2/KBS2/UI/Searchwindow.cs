@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KBS2.data;
+using KBS2.views;
+using KBS2.model;
 
 namespace KBS2.UI
 {
@@ -22,24 +24,35 @@ namespace KBS2.UI
         private void Zk_btn_Click(object sender, EventArgs e)
         {
             String inputstring = this.Zk_Bx.Text;
-            //TODO Perform Query;
-            if (inputstring != "" && ToetsSql.ToetsExists(inputstring)){
-
+            //TODO Refine search 
+            if (inputstring != "")
+            {
+                ToetsSql.connect();
+                if (ToetsSql.ToetsExists(inputstring))
+                {
+                    Zk_Error.Text = "";
+                    Toets toets = null;
+                    if(ToetsSql.getToetsJaren(inputstring).Count != 0)
+                    {
+                        toets = ToetsSql.getToets(inputstring, ToetsSql.getToetsJaren(inputstring)[0]);
+                    }
+                    else
+                    {
+                        toets = ToetsSql.getToets(inputstring, "");
+                    }
+                    this.changeWindow();
+                }
+                else
+                {
+                    Zk_Error.Text = "Deze Toets bestaat niet";
+                }
             }
             else
             {
-                Zk_Error.Text = "Test";
+                Zk_Error.Text = "";
             }
 
-            //this.Enabled = false;
-            //this.Visible = false;
-            //MainWindow a = new MainWindow();
-            //a.LoadData();
-            //a.ClientSize = Parent.ClientSize;
-            //a.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom);
-            //a.Visible = true;
-            //Parent.Controls.Add(a);
-            //this.Dispose();
+            
         }
 
         private void Zk_Bx_KeyPress(object sender, KeyPressEventArgs e)
@@ -49,6 +62,19 @@ namespace KBS2.UI
             {
                 Zk_btn.PerformClick();
             }
+        }
+        
+        private void changeWindow()
+        {
+            this.Enabled = false;
+            this.Visible = false;
+            MainWindow a = new MainWindow();
+            a.LoadData();
+            a.ClientSize = Parent.ClientSize;
+            a.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom);
+            a.Visible = true;
+            Parent.Controls.Add(a);
+            this.Dispose();
         }
     }
 }

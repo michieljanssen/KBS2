@@ -17,7 +17,7 @@ namespace KBS2
         {
             bool a = true;
             
-            //a = false;
+            a = false;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             if (a)
