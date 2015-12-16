@@ -64,19 +64,19 @@ namespace KBS2.views
                     for (int i = 0; i < toets.Cijfers.Count; i++)
                     {
                         //zet de cijfers in de tabel
-                        object[] row = { toets.Cijfers[i].Cijfer, toets.Cijfers[i].ID, toets.Cijfers[i].Naam, toets.Cijfers[i].Datum };
+                        object[] row = { toets.Cijfers[i].ID, toets.Cijfers[i].Naam, toets.Cijfers[i].Cijfer, toets.Cijfers[i].Datum };
                         this.dgv_toets.Rows.Add(row);
 
                         //verandert de kleur van de text als voldoende is of niet
                         if (toets.Cijfers[i].isVoldoende())
                         {
                             //groen voor voldoende
-                            this.dgv_toets.Rows[i].Cells[0].Style.ForeColor = Color.Green;
+                            this.dgv_toets.Rows[i].Cells[2].Style.ForeColor = Color.Green;
                         }
                         else
                         {
                             //rood voor onvoldoende
-                            this.dgv_toets.Rows[i].Cells[0].Style.ForeColor = Color.Red;
+                            this.dgv_toets.Rows[i].Cells[2].Style.ForeColor = Color.Red;
                         }
                     }
                 }
@@ -198,13 +198,13 @@ namespace KBS2.views
             this.dgv_toets.CellDoubleClick += dgv_toets_CellDoubleClick;
 
             this.dgv_toets.Columns.AddRange(new DataGridViewColumn[] {
-            this.Cijfer,
             this.Studentnr,
             this.naam,
+            this.Cijfer,
             this.datum});
 
-            this.dgv_toets.Columns[0].Width = 15;
-            this.dgv_toets.Columns[1].Width = 30;
+            this.dgv_toets.Columns[0].Width = 30;
+            this.dgv_toets.Columns[1].Width = 50;
             this.dgv_toets.Columns[2].Width = 30;
             this.dgv_toets.Location = new Point(100, 246);
             this.dgv_toets.Name = "dgv_toets";
