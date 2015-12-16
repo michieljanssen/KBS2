@@ -14,12 +14,15 @@ namespace KBS2.UI
     {
         public Window()
         {
+
+            
             InitializeComponent();
             Searchwindow zk_win = new Searchwindow();
             zk_win.ClientSize = this.ClientSize;
             zk_win.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom);
             zk_win.Visible = true;
             this.Controls.Add(zk_win);
+            
             
         }
     }

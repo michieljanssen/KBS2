@@ -41,7 +41,7 @@
             this.lbl_nietbehaald = new System.Windows.Forms.Label();
             this.lbl_perc = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_gem = new System.Windows.Forms.Label();
             this.lbl_type = new System.Windows.Forms.Label();
             this.lbl_err = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chrt_)).BeginInit();
@@ -158,14 +158,14 @@
             this.comboBox1.TabIndex = 9;
             this.comboBox1.Text = "ToetsID";
             // 
-            // label1
+            // lbl_gem
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(55, 189);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(172, 29);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "LABELERROR";
+            this.lbl_gem.AutoSize = true;
+            this.lbl_gem.Location = new System.Drawing.Point(55, 189);
+            this.lbl_gem.Name = "lbl_gem";
+            this.lbl_gem.Size = new System.Drawing.Size(172, 29);
+            this.lbl_gem.TabIndex = 10;
+            this.lbl_gem.Text = "LABELERROR";
             // 
             // lbl_type
             // 
@@ -179,7 +179,6 @@
             // 
             // lbl_err
             // 
-            this.lbl_err.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_err.AutoSize = true;
             this.lbl_err.ForeColor = System.Drawing.Color.OrangeRed;
             this.lbl_err.Location = new System.Drawing.Point(247, 51);
@@ -194,7 +193,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lbl_err);
             this.Controls.Add(this.lbl_type);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_gem);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.lbl_perc);
             this.Controls.Add(this.lbl_nietbehaald);
@@ -229,7 +228,7 @@
         private System.Windows.Forms.Label lbl_nietbehaald;
         private System.Windows.Forms.Label lbl_perc;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_gem;
         private System.Windows.Forms.Label lbl_type;
         private System.Windows.Forms.Label lbl_err;
     }

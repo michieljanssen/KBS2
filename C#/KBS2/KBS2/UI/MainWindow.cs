@@ -34,10 +34,12 @@ namespace KBS2.UI
             this.txbx_zoek.Text = data[1];          // fils in the textbox
             this.comboBox1.SelectedItem = data[0];  // get's the selected item
             this.lbl_name.Text = toets.Naam;        // changes the name label
-            this.lbl_behaald.Text = "Behaald: " + toets.voldoendes();
-            this.lbl_nietbehaald.Text = "Niet behaald: " + toets.onvoldoendes();
-            this.lbl_perc.Text = "Percentage: " + toets.percentageVold();
-            this.lbl_err.Text = "";
+            this.lbl_behaald.Text = "Behaald: " + toets.voldoendes();   //change the voldoende label
+            this.lbl_nietbehaald.Text = "Niet behaald: " + toets.onvoldoendes(); // change the onvoldoende label
+            this.lbl_perc.Text = "Percentage: " + toets.percentageVold(); //change the percentage label
+            this.lbl_err.Text = ""; 
+            this.lbl_gem.Text = "Gemiddelde: " + toets.gemiddelde(); // change the gemiddlede label
+            this.lbl_type.Text = "type: " + toets.Type;
         }
     }
 }
