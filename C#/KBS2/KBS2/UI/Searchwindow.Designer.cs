@@ -59,10 +59,7 @@
             this.zk_combo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.zk_combo.FormattingEnabled = true;
             this.zk_combo.Items.AddRange(new object[] {
-            "ToetsID",
-            "ToetsNaam",
-            "Studentnummer",
-            "Studentnaam"});
+            "ToetsID"});
             this.zk_combo.Location = new System.Drawing.Point(61, 283);
             this.zk_combo.Name = "zk_combo";
             this.zk_combo.Size = new System.Drawing.Size(168, 37);

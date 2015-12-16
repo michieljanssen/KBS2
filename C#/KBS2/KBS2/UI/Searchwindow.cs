@@ -15,6 +15,7 @@ namespace KBS2.UI
 {
     public partial class Searchwindow : UserControl
     {
+        
         public Searchwindow()
         {
             InitializeComponent();
@@ -40,7 +41,10 @@ namespace KBS2.UI
                     {
                         toets = ToetsSql.getToets(inputstring, "");
                     }
-                    this.changeWindow();
+                    List<string> dat = new List<string>();
+                    dat.Add(zk_combo.SelectedItem.ToString());
+                    dat.Add(inputstring);
+                    this.changeWindow(toets,dat);
                 }
                 else
                 {
@@ -64,12 +68,12 @@ namespace KBS2.UI
             }
         }
         
-        private void changeWindow()
+        private void changeWindow(Toets q,List<string> b)
         {
             this.Enabled = false;
             this.Visible = false;
-            MainWindow a = new MainWindow();
-            a.LoadData();
+            lbl_avg a = new lbl_avg(q,b);
+            
             a.ClientSize = Parent.ClientSize;
             a.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom);
             a.Visible = true;

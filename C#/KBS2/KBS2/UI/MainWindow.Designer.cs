@@ -1,6 +1,6 @@
 ﻿namespace KBS2.UI
 {
-    partial class MainWindow
+    partial class lbl_avg
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btn_zoek = new System.Windows.Forms.Button();
             this.txbx_zoek = new System.Windows.Forms.TextBox();
             this.lbl_name = new System.Windows.Forms.Label();
@@ -39,8 +39,11 @@
             this.dtgrd = new System.Windows.Forms.DataGridView();
             this.lbl_behaald = new System.Windows.Forms.Label();
             this.lbl_nietbehaald = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_perc = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_type = new System.Windows.Forms.Label();
+            this.lbl_err = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chrt_)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgrd)).BeginInit();
             this.SuspendLayout();
@@ -69,7 +72,7 @@
             // 
             this.lbl_name.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_name.AutoSize = true;
-            this.lbl_name.Location = new System.Drawing.Point(362, 47);
+            this.lbl_name.Location = new System.Drawing.Point(362, 81);
             this.lbl_name.Name = "lbl_name";
             this.lbl_name.Size = new System.Drawing.Size(77, 29);
             this.lbl_name.TabIndex = 2;
@@ -79,7 +82,7 @@
             // 
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(55, 119);
+            this.progressBar1.Location = new System.Drawing.Point(55, 153);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(691, 29);
             this.progressBar1.TabIndex = 3;
@@ -88,17 +91,17 @@
             // 
             this.chrt_.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea4.Name = "ChartArea1";
-            this.chrt_.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chrt_.Legends.Add(legend4);
-            this.chrt_.Location = new System.Drawing.Point(55, 178);
+            chartArea2.Name = "ChartArea1";
+            this.chrt_.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chrt_.Legends.Add(legend2);
+            this.chrt_.Location = new System.Drawing.Point(55, 235);
             this.chrt_.Name = "chrt_";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chrt_.Series.Add(series4);
-            this.chrt_.Size = new System.Drawing.Size(691, 198);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chrt_.Series.Add(series2);
+            this.chrt_.Size = new System.Drawing.Size(691, 233);
             this.chrt_.TabIndex = 4;
             this.chrt_.Text = "chart1";
             // 
@@ -108,61 +111,92 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgrd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgrd.Location = new System.Drawing.Point(55, 382);
+            this.dtgrd.Location = new System.Drawing.Point(55, 474);
             this.dtgrd.Name = "dtgrd";
             this.dtgrd.RowTemplate.Height = 28;
-            this.dtgrd.Size = new System.Drawing.Size(691, 209);
+            this.dtgrd.Size = new System.Drawing.Size(691, 117);
             this.dtgrd.TabIndex = 5;
             // 
             // lbl_behaald
             // 
             this.lbl_behaald.AutoSize = true;
-            this.lbl_behaald.Location = new System.Drawing.Point(50, 87);
+            this.lbl_behaald.Location = new System.Drawing.Point(50, 121);
             this.lbl_behaald.Name = "lbl_behaald";
-            this.lbl_behaald.Size = new System.Drawing.Size(153, 29);
+            this.lbl_behaald.Size = new System.Drawing.Size(208, 29);
             this.lbl_behaald.TabIndex = 6;
-            this.lbl_behaald.Text = "Behaald: 000";
+            this.lbl_behaald.Text = "BEHAALDERROR";
             // 
             // lbl_nietbehaald
             // 
             this.lbl_nietbehaald.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_nietbehaald.AutoSize = true;
-            this.lbl_nietbehaald.Location = new System.Drawing.Point(299, 87);
+            this.lbl_nietbehaald.Location = new System.Drawing.Point(299, 121);
             this.lbl_nietbehaald.Name = "lbl_nietbehaald";
             this.lbl_nietbehaald.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbl_nietbehaald.Size = new System.Drawing.Size(203, 29);
+            this.lbl_nietbehaald.Size = new System.Drawing.Size(226, 29);
             this.lbl_nietbehaald.TabIndex = 7;
-            this.lbl_nietbehaald.Text = "Niet Behaald: 000";
+            this.lbl_nietbehaald.Text = "NBEHAALDERROR";
             // 
-            // label1
+            // lbl_perc
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(536, 87);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(210, 29);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Percentage: 100%";
+            this.lbl_perc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_perc.AutoSize = true;
+            this.lbl_perc.Location = new System.Drawing.Point(581, 121);
+            this.lbl_perc.Name = "lbl_perc";
+            this.lbl_perc.Size = new System.Drawing.Size(165, 29);
+            this.lbl_perc.TabIndex = 8;
+            this.lbl_perc.Text = "PERCERROR";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "ToetsID",
-            "ToetsNaam",
-            "Studentnummer",
-            "Studentnaam"});
+            "ToetsID"});
             this.comboBox1.Location = new System.Drawing.Point(55, 9);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(186, 37);
             this.comboBox1.TabIndex = 9;
+            this.comboBox1.Text = "ToetsID";
             // 
-            // MainWindow
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(55, 189);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(172, 29);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "LABELERROR";
+            // 
+            // lbl_type
+            // 
+            this.lbl_type.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbl_type.AutoSize = true;
+            this.lbl_type.Location = new System.Drawing.Point(325, 189);
+            this.lbl_type.Name = "lbl_type";
+            this.lbl_type.Size = new System.Drawing.Size(147, 29);
+            this.lbl_type.TabIndex = 11;
+            this.lbl_type.Text = "TYPERROR";
+            // 
+            // lbl_err
+            // 
+            this.lbl_err.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbl_err.AutoSize = true;
+            this.lbl_err.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lbl_err.Location = new System.Drawing.Point(247, 51);
+            this.lbl_err.Name = "lbl_err";
+            this.lbl_err.Size = new System.Drawing.Size(99, 29);
+            this.lbl_err.TabIndex = 12;
+            this.lbl_err.Text = "ERROR";
+            // 
+            // lbl_avg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.lbl_err);
+            this.Controls.Add(this.lbl_type);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.lbl_perc);
             this.Controls.Add(this.lbl_nietbehaald);
             this.Controls.Add(this.lbl_behaald);
             this.Controls.Add(this.dtgrd);
@@ -174,7 +208,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.MinimumSize = new System.Drawing.Size(800, 600);
-            this.Name = "MainWindow";
+            this.Name = "lbl_avg";
             this.Size = new System.Drawing.Size(800, 614);
             ((System.ComponentModel.ISupportInitialize)(this.chrt_)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgrd)).EndInit();
@@ -193,7 +227,10 @@
         private System.Windows.Forms.DataGridView dtgrd;
         private System.Windows.Forms.Label lbl_behaald;
         private System.Windows.Forms.Label lbl_nietbehaald;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_perc;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_type;
+        private System.Windows.Forms.Label lbl_err;
     }
 }
