@@ -232,7 +232,7 @@ namespace KBS2.views
             this.naam.Name = "naam";
             this.naam.ReadOnly = true;
 
-            
+
 
             //datum
             this.datum.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
@@ -257,30 +257,31 @@ namespace KBS2.views
 
         private void Cb_jaar_SelectionChangeCommitted(object sender, EventArgs e)
         {
-           cb_datum.DataSource = ToetsSql.toetsData(toets.Naam, (String)cb_jaar.SelectedValue);
-           if (!cb_datum.SelectedValue.Equals("beste resultaten"))
-           {
-               Toets t = ToetsSql.getToets(this.toets.Naam, (String)cb_datum.SelectedValue, (String)cb_jaar.SelectedValue);
-               load(t);
-           }
-           else
-           {
-               Toets t = ToetsSql.getToets(this.toets.Naam, (String)cb_jaar.SelectedValue);
-               load(t);
-           }
+            cb_datum.DataSource = ToetsSql.toetsData(toets.Naam, (String)cb_jaar.SelectedValue);
+            if (!cb_datum.SelectedValue.Equals("beste resultaten"))
+            {
+                Toets t = ToetsSql.getToets(this.toets.Naam, (String)cb_datum.SelectedValue, (String)cb_jaar.SelectedValue);
+                load(t);
+            }
+            else
+            {
+                Toets t = ToetsSql.getToets(this.toets.Naam, (String)cb_jaar.SelectedValue);
+                load(t);
+            }
         }
 
         private void Cb_datum_SelectionChangeCommitted(object sender, EventArgs e)
         {
             ComboBox c = (ComboBox)sender;
-            Console.WriteLine("Clicked = " + c.SelectedValue );
+            Console.WriteLine("Clicked = " + c.SelectedValue);
             if (!c.SelectedValue.Equals("beste resultaten"))
             {
                 Toets t = ToetsSql.getToets(this.toets.Naam, (String)c.SelectedValue, (String)cb_jaar.SelectedValue);
                 load(t);
             }
-            else {
-                Toets t = ToetsSql.getToets(this.toets.Naam,(String) cb_jaar.SelectedValue);
+            else
+            {
+                Toets t = ToetsSql.getToets(this.toets.Naam, (String)cb_jaar.SelectedValue);
                 load(t);
             }
         }
