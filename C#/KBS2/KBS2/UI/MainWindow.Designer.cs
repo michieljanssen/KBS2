@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btn_zoek = new System.Windows.Forms.Button();
             this.txbx_zoek = new System.Windows.Forms.TextBox();
             this.lbl_name = new System.Windows.Forms.Label();
@@ -47,17 +46,8 @@
             this.lbl_err = new System.Windows.Forms.Label();
             this.cb_datum = new System.Windows.Forms.ComboBox();
             this.cb_jaar = new System.Windows.Forms.ComboBox();
-            this.databaseDataSet = new KBS2.DatabaseDataSet();
-            this.cijferBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cijferTableAdapter = new KBS2.DatabaseDataSetTableAdapters.CijferTableAdapter();
-            this.toetsidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cijferDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.chrt_)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_toets)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cijferBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_zoek
@@ -103,16 +93,16 @@
             // 
             this.chrt_.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.Name = "ChartArea1";
-            this.chrt_.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chrt_.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chrt_.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chrt_.Legends.Add(legend1);
             this.chrt_.Location = new System.Drawing.Point(55, 235);
             this.chrt_.Name = "chrt_";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chrt_.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chrt_.Series.Add(series1);
             this.chrt_.Size = new System.Drawing.Size(691, 233);
             this.chrt_.TabIndex = 4;
             this.chrt_.Text = "chart1";
@@ -122,14 +112,7 @@
             this.dgv_toets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv_toets.AutoGenerateColumns = false;
             this.dgv_toets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_toets.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.toetsidDataGridViewTextBoxColumn,
-            this.studentidDataGridViewTextBoxColumn,
-            this.datumDataGridViewTextBoxColumn,
-            this.cijferDataGridViewTextBoxColumn});
-            this.dgv_toets.DataSource = this.cijferBindingSource;
             this.dgv_toets.Location = new System.Drawing.Point(55, 474);
             this.dgv_toets.Name = "dgv_toets";
             this.dgv_toets.RowTemplate.Height = 28;
@@ -224,44 +207,6 @@
             this.cb_jaar.Size = new System.Drawing.Size(160, 37);
             this.cb_jaar.TabIndex = 14;
             // 
-            // databaseDataSet
-            // 
-            this.databaseDataSet.DataSetName = "DatabaseDataSet";
-            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // cijferBindingSource
-            // 
-            this.cijferBindingSource.DataMember = "Cijfer";
-            this.cijferBindingSource.DataSource = this.databaseDataSet;
-            // 
-            // cijferTableAdapter
-            // 
-            this.cijferTableAdapter.ClearBeforeFill = true;
-            // 
-            // toetsidDataGridViewTextBoxColumn
-            // 
-            this.toetsidDataGridViewTextBoxColumn.DataPropertyName = "toetsid";
-            this.toetsidDataGridViewTextBoxColumn.HeaderText = "toetsid";
-            this.toetsidDataGridViewTextBoxColumn.Name = "toetsidDataGridViewTextBoxColumn";
-            // 
-            // studentidDataGridViewTextBoxColumn
-            // 
-            this.studentidDataGridViewTextBoxColumn.DataPropertyName = "studentid";
-            this.studentidDataGridViewTextBoxColumn.HeaderText = "studentid";
-            this.studentidDataGridViewTextBoxColumn.Name = "studentidDataGridViewTextBoxColumn";
-            // 
-            // datumDataGridViewTextBoxColumn
-            // 
-            this.datumDataGridViewTextBoxColumn.DataPropertyName = "datum";
-            this.datumDataGridViewTextBoxColumn.HeaderText = "datum";
-            this.datumDataGridViewTextBoxColumn.Name = "datumDataGridViewTextBoxColumn";
-            // 
-            // cijferDataGridViewTextBoxColumn
-            // 
-            this.cijferDataGridViewTextBoxColumn.DataPropertyName = "cijfer";
-            this.cijferDataGridViewTextBoxColumn.HeaderText = "cijfer";
-            this.cijferDataGridViewTextBoxColumn.Name = "cijferDataGridViewTextBoxColumn";
-            // 
             // lbl_avg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -288,8 +233,6 @@
             this.Size = new System.Drawing.Size(800, 614);
             ((System.ComponentModel.ISupportInitialize)(this.chrt_)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_toets)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cijferBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,12 +255,5 @@
         private System.Windows.Forms.Label lbl_err;
         private System.Windows.Forms.ComboBox cb_datum;
         private System.Windows.Forms.ComboBox cb_jaar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn toetsidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn studentidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn datumDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cijferDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource cijferBindingSource;
-        private DatabaseDataSet databaseDataSet;
-        private DatabaseDataSetTableAdapters.CijferTableAdapter cijferTableAdapter;
     }
 }

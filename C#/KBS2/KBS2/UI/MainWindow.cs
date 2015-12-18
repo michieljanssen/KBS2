@@ -43,6 +43,9 @@ namespace KBS2.UI
             this.lbl_err.Text = "";
             this.lbl_gem.Text = "Gemiddelde: " + toets.gemiddelde(); // change the gemiddlede label
             this.lbl_type.Text = "type: " + toets.Type;
+            this.progressBar1.Value = toets.percentageVold();
+            this.dgv_toets.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_toets.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             //Fill gridview
             DataGridViewCellStyle dgvcs = new DataGridViewCellStyle();
             dgvcs.NullValue = null;
@@ -62,6 +65,7 @@ namespace KBS2.UI
             Cijfer.HeaderText = "Cijfer";
             Cijfer.Name = "Cijfer";
             Cijfer.ReadOnly = true;
+            Cijfer.Width = (int)(0.1 * dgv_toets.Width);
 
             //Leerlingnr
             Studentnr.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
@@ -69,6 +73,7 @@ namespace KBS2.UI
             Studentnr.HeaderText = "Studentnr";
             Studentnr.Name = "Studentnr";
             Studentnr.ReadOnly = true;
+            Studentnr.Width = (int)(0.2 * dgv_toets.Width);
 
             //naam
             naam.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
@@ -76,6 +81,7 @@ namespace KBS2.UI
             naam.HeaderText = "Naam";
             naam.Name = "naam";
             naam.ReadOnly = true;
+            naam.Width = (int)(0.2 * dgv_toets.Width);
 
 
 
@@ -85,6 +91,7 @@ namespace KBS2.UI
             datum.HeaderText = "Datum van Afname";
             datum.Name = "datum";
             datum.ReadOnly = true;
+            datum.Width = (int)(dgv_toets.Width-naam.Width-Studentnr.Width-Cijfer.Width);
 
             if (toets.Cijfers.Count > 0)
             {
