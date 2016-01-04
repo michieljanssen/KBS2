@@ -13,16 +13,19 @@ using KBS2.data;
 
 namespace KBS2.UI
 {
-    public partial class lbl_avg : UserControl
+    public partial class MainWindow : UserControl
     {
         Toets toets;
-        public lbl_avg(Toets toets, List<string> data)
+        public MainWindow(Toets toets, List<string> data)
         {
 
             InitializeComponent();
-            LoadData(toets, data);
+            txbx_zoek_refresh(data);
+            init();
             cb_jaar.DataSource = ToetsSql.getToetsJaren(toets.Naam);
             cb_datum.DataSource = ToetsSql.toetsData(toets.Naam, (string)cb_jaar.SelectedValue);
+            LoadData(toets);
+            
 
         }
 
@@ -30,22 +33,13 @@ namespace KBS2.UI
         {
             this.lbl_err.Text = "NOT FUNCTIONAL";
         }
-
-        internal void LoadData(Toets toets, List<string> data)
+        internal void txbx_zoek_refresh(List<String> data)
         {
-            this.toets = toets;
             this.txbx_zoek.Text = data[1];          // fils in the textbox
             this.comboBox1.SelectedItem = data[0];  // get's the selected item
-            this.lbl_name.Text = toets.Naam;        // changes the name label
-            this.lbl_behaald.Text = "Behaald: " + toets.voldoendes();   //change the voldoende label
-            this.lbl_nietbehaald.Text = "Niet behaald: " + toets.onvoldoendes(); // change the onvoldoende label
-            this.lbl_perc.Text = "Percentage: " + toets.percentageVold(); //change the percentage label
-            this.lbl_err.Text = "";
-            this.lbl_gem.Text = "Gemiddelde: " + toets.gemiddelde(); // change the gemiddlede label
-            this.lbl_type.Text = "type: " + toets.Type;
-            this.progressBar1.Value = toets.percentageVold();
-            this.dgv_toets.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_toets.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        }
+        internal void init()
+        {
             //Fill gridview
             DataGridViewCellStyle dgvcs = new DataGridViewCellStyle();
             dgvcs.NullValue = null;
@@ -91,8 +85,23 @@ namespace KBS2.UI
             datum.HeaderText = "Datum van Afname";
             datum.Name = "datum";
             datum.ReadOnly = true;
-            datum.Width = (int)(dgv_toets.Width-naam.Width-Studentnr.Width-Cijfer.Width);
+            datum.Width = (int)(dgv_toets.Width - naam.Width - Studentnr.Width - Cijfer.Width);
+        }
 
+        internal void LoadData(Toets toets)
+        {
+            this.toets = toets;
+            dgv_toets.Rows.Clear();
+            this.lbl_name.Text = toets.Naam;        // changes the name label
+            this.lbl_behaald.Text = "Behaald: " + toets.voldoendes();   //change the voldoende label
+            this.lbl_nietbehaald.Text = "Niet behaald: " + toets.onvoldoendes(); // change the onvoldoende label
+            this.lbl_perc.Text = "Percentage: " + toets.percentageVold(); //change the percentage label
+            this.lbl_err.Text = "";
+            this.lbl_gem.Text = "Gemiddelde: " + toets.gemiddelde(); // change the gemiddlede label
+            this.lbl_type.Text = "type: " + toets.Type;
+            this.progressBar1.Value = toets.percentageVold();
+            this.dgv_toets.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_toets.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             if (toets.Cijfers.Count > 0)
             {
                 //gaat door alle cijfers heen
@@ -118,11 +127,39 @@ namespace KBS2.UI
             else
             {
                 //anders laat een melding zien
-                var result = MessageBox.Show("Deze toets heeft geen cijfers.", "Geen cijfers", MessageBoxButtons.OK);
+                this.lbl_err.Text = "Deze toets heeft geen cijfers";
             }
         }
 
+        private void cb_datum_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            cb_datum.DataSource = ToetsSql.toetsData(toets.Naam, (String)cb_jaar.SelectedValue);
+            if (!cb_datum.SelectedValue.Equals("beste resultaten"))
+            {
+                Toets t = ToetsSql.getToets(this.toets.Naam, (String)cb_datum.SelectedValue, (String)cb_jaar.SelectedValue);
+                LoadData(t);
+            }
+            else
+            {
+                Toets t = ToetsSql.getToets(this.toets.Naam, (String)cb_jaar.SelectedValue);
+                LoadData(t);
+            }
+        }
 
+        private void cb_jaar_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            cb_datum.DataSource = ToetsSql.toetsData(toets.Naam, (String)cb_jaar.SelectedValue);
+            if (!cb_datum.SelectedValue.Equals("beste resultaten"))
+            {
+                Toets t = ToetsSql.getToets(this.toets.Naam, (String)cb_datum.SelectedValue, (String)cb_jaar.SelectedValue);
+                LoadData(t);
+            }
+            else
+            {
+                Toets t = ToetsSql.getToets(this.toets.Naam, (String)cb_jaar.SelectedValue);
+                LoadData(t);
+            }
+        }
     }
 
 }

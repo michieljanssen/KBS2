@@ -72,7 +72,7 @@ namespace KBS2.UI
         {
             this.Enabled = false;
             this.Visible = false;
-            lbl_avg a = new lbl_avg(q,b);
+            MainWindow a = new MainWindow(q,b);
             
             a.ClientSize = Parent.ClientSize;
             a.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom);

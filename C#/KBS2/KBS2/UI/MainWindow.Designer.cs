@@ -1,6 +1,6 @@
 ﻿namespace KBS2.UI
 {
-    partial class lbl_avg
+    partial class MainWindow
     {
         /// <summary> 
         /// Required designer variable.
@@ -197,6 +197,7 @@
             this.cb_datum.Name = "cb_datum";
             this.cb_datum.Size = new System.Drawing.Size(155, 37);
             this.cb_datum.TabIndex = 13;
+            this.cb_datum.SelectionChangeCommitted += new System.EventHandler(this.cb_datum_SelectionChangeCommitted);
             // 
             // cb_jaar
             // 
@@ -206,8 +207,9 @@
             this.cb_jaar.Name = "cb_jaar";
             this.cb_jaar.Size = new System.Drawing.Size(160, 37);
             this.cb_jaar.TabIndex = 14;
+            this.cb_jaar.SelectionChangeCommitted += new System.EventHandler(this.cb_jaar_SelectionChangeCommitted);
             // 
-            // lbl_avg
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -229,7 +231,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.MinimumSize = new System.Drawing.Size(800, 600);
-            this.Name = "lbl_avg";
+            this.Name = "MainWindow";
             this.Size = new System.Drawing.Size(800, 614);
             ((System.ComponentModel.ISupportInitialize)(this.chrt_)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_toets)).EndInit();
