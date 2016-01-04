@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using KBS2.model;
 using KBS2.views;
 using KBS2.data;
+using KBS2.model.cijfer;
 
 namespace KBS2.UI
 {
@@ -105,6 +106,7 @@ namespace KBS2.UI
             if (toets.Cijfers.Count > 0)
             {
                 //gaat door alle cijfers heen
+                chrtreset(toets.Cijfers);
                 for (int i = 0; i < toets.Cijfers.Count; i++)
                 {
                     //zet de cijfers in de tabel
@@ -123,12 +125,48 @@ namespace KBS2.UI
                         this.dgv_toets.Rows[i].Cells[2].Style.ForeColor = Color.Red;
                     }
                 }
+                //
             }
             else
             {
                 //anders laat een melding zien
                 this.lbl_err.Text = "Deze toets heeft geen cijfers";
             }
+        }
+        internal void chrtreset(List<model.cijfer.ToetsCijfer> Cijferlijst)
+        {
+            chrt_.Series[0].Points.Clear();                 // clear old data
+            List<double> ccijfers = new List<Double>();
+            foreach (ToetsCijfer tc in Cijferlijst)         //round grades down to .5 increments
+            {
+                double a = tc.Cijfer;
+                double b = topoint5(a);
+                ccijfers.Add(b);
+            }
+            ccijfers.Sort();
+            for (double xval = 1; xval < 10.5;xval = xval + 0.5)
+            {
+                int yval = 0;
+                foreach(double cijfer in ccijfers)
+                {
+                    if(xval == cijfer)
+                    {
+                        yval++;
+                    }
+                }
+                chrt_.Series[0].Points.AddXY(xval, yval);
+            }
+        }
+
+        //TODO FIX THIS CLASS????
+        internal double topoint5(double a)
+        {
+            double c = a;
+            while((c*100)%5 != 0)
+            {
+                c = c - 0.1;
+            }
+            return c;
         }
 
         private void cb_datum_SelectionChangeCommitted(object sender, EventArgs e)
