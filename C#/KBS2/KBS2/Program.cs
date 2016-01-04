@@ -33,8 +33,15 @@ namespace KBS2
 
             if (studentKijkt)
             {
-                Application.Run(new StudentKijkt());
-                //Draai de versie voor studenten
+                try
+                {
+                    Application.Run(new StudentKijkt());
+                    //Draai de versie voor studenten
+                }
+                catch (ObjectDisposedException)
+                {
+                    Environment.Exit(0);
+                }
             }
             else
             {
