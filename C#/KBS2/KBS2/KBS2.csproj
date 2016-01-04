@@ -101,6 +101,12 @@
     <Compile Include="UI\Searchwindow.Designer.cs">
       <DependentUpon>Searchwindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\StudentKijkt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\StudentKijkt.Designer.cs">
+      <DependentUpon>StudentKijkt.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Window.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Searchwindow.resx">
       <DependentUpon>Searchwindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\StudentKijkt.resx">
+      <DependentUpon>StudentKijkt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Window.resx">
       <DependentUpon>Window.cs</DependentUpon>
