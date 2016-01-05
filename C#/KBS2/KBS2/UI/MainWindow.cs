@@ -144,29 +144,27 @@ namespace KBS2.UI
                 ccijfers.Add(b);
             }
             ccijfers.Sort();
-            for (double xval = 1; xval < 10.5;xval = xval + 0.5)
+            int yval = 0;
+            for(double xval = 2; xval < 21; xval++)
             {
-                int yval = 0;
+                yval = 0;
                 foreach(double cijfer in ccijfers)
                 {
-                    if(xval == cijfer)
+                    if(xval/2 == cijfer)
                     {
                         yval++;
                     }
                 }
-                chrt_.Series[0].Points.AddXY(xval, yval);
+                chrt_.Series[0].Points.AddXY(xval / 2, yval);
             }
         }
 
-        //TODO FIX THIS CLASS????
         internal double topoint5(double a)
         {
-            double c = a;
-            while((c*100)%5 != 0)
-            {
-                c = c - 0.1;
-            }
-            return c;
+            double b = a * 2;
+            double c = Math.Floor(b);
+            double d = c / 2;
+            return d;
         }
 
         private void cb_datum_SelectionChangeCommitted(object sender, EventArgs e)
