@@ -11,7 +11,7 @@ using System.Drawing;
 
 namespace KBS2.views
 {
-    class StudentView : Panel
+    public class StudentView : Panel
     {
         //Student variabelen
         private Student student;
@@ -40,6 +40,7 @@ namespace KBS2.views
         //
         private Label lbl_hulpNodig;
         private Button btn_stuurVergaderVerzoek;
+        public static bool studentKijkt;
         
         public StudentView(Student student, Form form)
             : base()
@@ -119,8 +120,11 @@ namespace KBS2.views
             this.lbl_vak = new Label();
 
             //
-            this.lbl_hulpNodig = new Label();
-            this.btn_stuurVergaderVerzoek = new Button();
+            if (studentKijkt)
+            {
+                this.lbl_hulpNodig = new Label();
+                this.btn_stuurVergaderVerzoek = new Button();
+            }
 
             ((System.ComponentModel.ISupportInitialize)(this.dgv_vakken)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_toetsen)).BeginInit();
@@ -259,23 +263,27 @@ namespace KBS2.views
             this.lbl_vak.Text = "Vakken";
 
             /* */
-            //lbl_HulpNodig
-            this.lbl_hulpNodig.AutoSize = true;
-            this.lbl_hulpNodig.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lbl_hulpNodig.Location = new System.Drawing.Point(100, 770);
-            this.lbl_hulpNodig.Name = "lbl_HulpNodig";
-            this.lbl_hulpNodig.Size = new System.Drawing.Size(128, 26);
-            this.lbl_hulpNodig.TabIndex = 1;
-            this.lbl_hulpNodig.Text = "Hulp nodig?";
+            
+            if (studentKijkt)
+            {
+                //lbl_HulpNodig
+                this.lbl_hulpNodig.AutoSize = true;
+                this.lbl_hulpNodig.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+                this.lbl_hulpNodig.Location = new System.Drawing.Point(100, 770);
+                this.lbl_hulpNodig.Name = "lbl_HulpNodig";
+                this.lbl_hulpNodig.Size = new System.Drawing.Size(128, 26);
+                this.lbl_hulpNodig.TabIndex = 1;
+                this.lbl_hulpNodig.Text = "Hulp nodig?";
 
-            //btn_stuurVergaderVerzoek
-            this.btn_stuurVergaderVerzoek.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.btn_stuurVergaderVerzoek.Location = new System.Drawing.Point(100, 800);
-            this.btn_stuurVergaderVerzoek.Name = "btn_stuurVergaderVerzoek";
-            this.btn_stuurVergaderVerzoek.Size = new System.Drawing.Size(251, 38);
-            this.btn_stuurVergaderVerzoek.TabIndex = 0;
-            this.btn_stuurVergaderVerzoek.Text = "Stuur vergaderverzoek";
-            this.btn_stuurVergaderVerzoek.UseVisualStyleBackColor = true;
+                //btn_stuurVergaderVerzoek
+                this.btn_stuurVergaderVerzoek.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+                this.btn_stuurVergaderVerzoek.Location = new System.Drawing.Point(100, 800);
+                this.btn_stuurVergaderVerzoek.Name = "btn_stuurVergaderVerzoek";
+                this.btn_stuurVergaderVerzoek.Size = new System.Drawing.Size(251, 38);
+                this.btn_stuurVergaderVerzoek.TabIndex = 0;
+                this.btn_stuurVergaderVerzoek.Text = "Stuur vergaderverzoek";
+                this.btn_stuurVergaderVerzoek.UseVisualStyleBackColor = true;
+            }
 
 
             //Alles samenvoegen
@@ -292,8 +300,11 @@ namespace KBS2.views
             this.Controls.Add(this.lbl_BehaaldeEC);
 
             //
-            this.Controls.Add(this.lbl_hulpNodig);
-            this.Controls.Add(this.btn_stuurVergaderVerzoek);
+            if (studentKijkt)
+            {
+                this.Controls.Add(this.lbl_hulpNodig);
+                this.Controls.Add(this.btn_stuurVergaderVerzoek);
+            }
 
             ((System.ComponentModel.ISupportInitialize)(this.dgv_vakken)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_toetsen)).EndInit();
