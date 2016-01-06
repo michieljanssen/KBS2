@@ -20,7 +20,7 @@ namespace KBS2
         {
             bool a = true;
 
-            //a = false;
+            a = false;
             //uitleg pls
 
             bool studentKijkt = false;

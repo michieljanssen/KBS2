@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 3D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 3D);
             this.btn_zoek = new System.Windows.Forms.Button();
             this.txbx_zoek = new System.Windows.Forms.TextBox();
             this.lbl_name = new System.Windows.Forms.Label();
@@ -95,17 +95,17 @@
             // 
             this.chrt_.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea3.Name = "ChartArea1";
-            this.chrt_.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chrt_.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chrt_.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chrt_.Legends.Add(legend1);
             this.chrt_.Location = new System.Drawing.Point(55, 235);
             this.chrt_.Name = "chrt_";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            series3.Points.Add(dataPoint3);
-            this.chrt_.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.Points.Add(dataPoint1);
+            this.chrt_.Series.Add(series1);
             this.chrt_.Size = new System.Drawing.Size(691, 233);
             this.chrt_.TabIndex = 4;
             this.chrt_.Text = "chart1";
@@ -121,6 +121,7 @@
             this.dgv_toets.RowTemplate.Height = 28;
             this.dgv_toets.Size = new System.Drawing.Size(691, 117);
             this.dgv_toets.TabIndex = 5;
+            this.dgv_toets.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_toets_CellDoubleClick);
             // 
             // lbl_behaald
             // 

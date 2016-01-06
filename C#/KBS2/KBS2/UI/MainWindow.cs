@@ -19,15 +19,12 @@ namespace KBS2.UI
         Toets toets;
         public MainWindow(Toets toets, List<string> data)
         {
-
             InitializeComponent();
             txbx_zoek_refresh(data);
             init();
             cb_jaar.DataSource = ToetsSql.getToetsJaren(toets.Naam);
             cb_datum.DataSource = ToetsSql.toetsData(toets.Naam, (string)cb_jaar.SelectedValue);
             LoadData(toets);
-            
-
         }
 
         private void Zk_Btn_Click(object sender, EventArgs e)
@@ -203,6 +200,7 @@ namespace KBS2.UI
         {
             ComboBox c = (ComboBox)sender;
             Console.WriteLine("Clicked = " + c.SelectedValue);
+            string datetime = c.GetItemText(c.SelectedItem);
             if (!c.SelectedValue.Equals("beste resultaten"))
             {
                 Toets t = ToetsSql.getToets(this.toets.Naam, (String)c.SelectedValue, (String)cb_jaar.SelectedValue);
@@ -239,7 +237,20 @@ namespace KBS2.UI
 
         private void dgv_toets_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            int row = e.RowIndex;
+            if (row >= 0)
+            {
+                int id = Convert.ToInt32(dgv_toets.Rows[row].Cells[0].Value);
+                StudentSql.connect();
+                if (StudentSql.studentExists(id))
+                {
+                    Student student = StudentSql.getStudent(id);
+                    Form form = new Form();
+                    StudentView view = new StudentView(student, form);
+                    form.SetBounds(form.Bounds.X + 100,form.Bounds.Y + 100,form.Bounds.Width,form.Bounds.Height);
+                    form.Show();
+                }
+            }
         }
     }
 
