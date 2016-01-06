@@ -23,20 +23,20 @@ namespace KBS2
             a = false;
             //uitleg pls
 
-            bool studentKijkt = false;
+ 
             //Als deze true is wordt de applicatie geopend als student.
+            StudentView.studentKijkt = false;
+            //StudentView.studentKijkt = true;
 
-            studentKijkt = true;
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if (studentKijkt)
+            if (StudentView.studentKijkt)
             {
                 try
                 {
-                    //Application.Run(new StudentKijkt());
-                    Application.Run(new VergaderVerzoek());
+                    Application.Run(new StudentKijkt());
                     //Draai de versie voor studenten
                 }
                 catch (ObjectDisposedException)
