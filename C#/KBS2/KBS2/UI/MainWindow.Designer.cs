@@ -31,6 +31,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 3D);
             this.btn_zoek = new System.Windows.Forms.Button();
             this.txbx_zoek = new System.Windows.Forms.TextBox();
             this.lbl_name = new System.Windows.Forms.Label();
@@ -40,7 +41,7 @@
             this.lbl_behaald = new System.Windows.Forms.Label();
             this.lbl_nietbehaald = new System.Windows.Forms.Label();
             this.lbl_perc = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cb_Zoek = new System.Windows.Forms.ComboBox();
             this.lbl_gem = new System.Windows.Forms.Label();
             this.lbl_type = new System.Windows.Forms.Label();
             this.lbl_err = new System.Windows.Forms.Label();
@@ -69,6 +70,7 @@
             this.txbx_zoek.Name = "txbx_zoek";
             this.txbx_zoek.Size = new System.Drawing.Size(418, 35);
             this.txbx_zoek.TabIndex = 1;
+            this.txbx_zoek.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbx_zoek_KeyPress);
             // 
             // lbl_name
             // 
@@ -102,6 +104,7 @@
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
+            series1.Points.Add(dataPoint1);
             this.chrt_.Series.Add(series1);
             this.chrt_.Size = new System.Drawing.Size(691, 233);
             this.chrt_.TabIndex = 4;
@@ -118,6 +121,7 @@
             this.dgv_toets.RowTemplate.Height = 28;
             this.dgv_toets.Size = new System.Drawing.Size(691, 117);
             this.dgv_toets.TabIndex = 5;
+            this.dgv_toets.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_toets_CellDoubleClick);
             // 
             // lbl_behaald
             // 
@@ -149,16 +153,16 @@
             this.lbl_perc.TabIndex = 8;
             this.lbl_perc.Text = "PERCERROR";
             // 
-            // comboBox1
+            // cb_Zoek
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cb_Zoek.FormattingEnabled = true;
+            this.cb_Zoek.Items.AddRange(new object[] {
             "ToetsID"});
-            this.comboBox1.Location = new System.Drawing.Point(55, 9);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(186, 37);
-            this.comboBox1.TabIndex = 9;
-            this.comboBox1.Text = "ToetsID";
+            this.cb_Zoek.Location = new System.Drawing.Point(55, 9);
+            this.cb_Zoek.Name = "cb_Zoek";
+            this.cb_Zoek.Size = new System.Drawing.Size(186, 37);
+            this.cb_Zoek.TabIndex = 9;
+            this.cb_Zoek.Text = "ToetsID";
             // 
             // lbl_gem
             // 
@@ -218,7 +222,7 @@
             this.Controls.Add(this.lbl_err);
             this.Controls.Add(this.lbl_type);
             this.Controls.Add(this.lbl_gem);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cb_Zoek);
             this.Controls.Add(this.lbl_perc);
             this.Controls.Add(this.lbl_nietbehaald);
             this.Controls.Add(this.lbl_behaald);
@@ -251,7 +255,7 @@
         private System.Windows.Forms.Label lbl_behaald;
         private System.Windows.Forms.Label lbl_nietbehaald;
         private System.Windows.Forms.Label lbl_perc;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cb_Zoek;
         private System.Windows.Forms.Label lbl_gem;
         private System.Windows.Forms.Label lbl_type;
         private System.Windows.Forms.Label lbl_err;
