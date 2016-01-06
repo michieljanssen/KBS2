@@ -41,6 +41,7 @@ namespace KBS2
                 catch (ObjectDisposedException)
                 {
                     Environment.Exit(0);
+                    //Zorgt dat de applicatie afsluit als er geen student wordt gevonden
                 }
             }
             else
@@ -48,10 +49,12 @@ namespace KBS2
                 if (a)
                 {
                     Application.Run(new Form1());
+                    //Start de standaard applicatie
                 }
                 else
                 {
                     Application.Run(new Window());
+                    //Start de test met andere zoekmethodes
                 }
             }
         }
