@@ -32,12 +32,43 @@ namespace KBS2.UI
 
         private void Zk_Btn_Click(object sender, EventArgs e)
         {
-            this.lbl_err.Text = "NOT FUNCTIONAL";
+            String inputstring = this.txbx_zoek.Text;
+            //TODO Refine search 
+            if (inputstring != "")
+            {
+                ToetsSql.connect();
+                if (ToetsSql.ToetsExists(inputstring))
+                {
+                    lbl_err.Text = "";
+                    Toets toets = null;
+                    if (ToetsSql.getToetsJaren(inputstring).Count != 0)
+                    {
+                        toets = ToetsSql.getToets(inputstring, ToetsSql.getToetsJaren(inputstring)[0]);
+                    }
+                    else
+                    {
+                        toets = ToetsSql.getToets(inputstring, "");
+                    }
+                    List<string> dat = new List<string>();
+                    dat.Add(cb_Zoek.SelectedItem.ToString());
+                    dat.Add(inputstring);
+
+                    this.LoadData(toets);
+                }
+                else
+                {
+                    lbl_err.Text = "Deze Toets bestaat niet";
+                }
+            }
+            else
+            {
+                lbl_err.Text = "";
+            }
         }
         internal void txbx_zoek_refresh(List<String> data)
         {
             this.txbx_zoek.Text = data[1];          // fils in the textbox
-            this.comboBox1.SelectedItem = data[0];  // get's the selected item
+            this.cb_Zoek.SelectedItem = data[0];  // get's the selected item
         }
         internal void init()
         {
@@ -88,6 +119,7 @@ namespace KBS2.UI
             datum.ReadOnly = true;
             datum.Width = (int)(dgv_toets.Width - naam.Width - Studentnr.Width - Cijfer.Width);
         }
+        
 
         internal void LoadData(Toets toets)
         {
@@ -158,7 +190,7 @@ namespace KBS2.UI
                 chrt_.Series[0].Points.AddXY(xval / 2, yval);
             }
         }
-
+        //Cijfer rounding
         internal double topoint5(double a)
         {
             double b = a * 2;
@@ -166,13 +198,14 @@ namespace KBS2.UI
             double d = c / 2;
             return d;
         }
-
+        //Dropdown menu's setting
         private void cb_datum_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            cb_datum.DataSource = ToetsSql.toetsData(toets.Naam, (String)cb_jaar.SelectedValue);
-            if (!cb_datum.SelectedValue.Equals("beste resultaten"))
+            ComboBox c = (ComboBox)sender;
+            Console.WriteLine("Clicked = " + c.SelectedValue);
+            if (!c.SelectedValue.Equals("beste resultaten"))
             {
-                Toets t = ToetsSql.getToets(this.toets.Naam, (String)cb_datum.SelectedValue, (String)cb_jaar.SelectedValue);
+                Toets t = ToetsSql.getToets(this.toets.Naam, (String)c.SelectedValue, (String)cb_jaar.SelectedValue);
                 LoadData(t);
             }
             else
@@ -181,7 +214,6 @@ namespace KBS2.UI
                 LoadData(t);
             }
         }
-
         private void cb_jaar_SelectionChangeCommitted(object sender, EventArgs e)
         {
             cb_datum.DataSource = ToetsSql.toetsData(toets.Naam, (String)cb_jaar.SelectedValue);
@@ -195,6 +227,19 @@ namespace KBS2.UI
                 Toets t = ToetsSql.getToets(this.toets.Naam, (String)cb_jaar.SelectedValue);
                 LoadData(t);
             }
+        }
+
+        private void txbx_zoek_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                btn_zoek.PerformClick();
+            }
+        }
+
+        private void dgv_toets_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 
