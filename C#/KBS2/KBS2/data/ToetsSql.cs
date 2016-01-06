@@ -88,11 +88,10 @@ namespace KBS2.data
 
         public static Toets getToets(String toetsnaam, String datum, String jaar)
         {
-            CultureInfo us = new CultureInfo("en-US");
-
-            DateTime time = DateTime.ParseExact(datum, "dd/MM/yyyy hh:mm:ss tt", us);
+            CultureInfo us = new CultureInfo("nl-NL");
+            DateTime time = DateTime.Parse(datum, us);
             datum = time.ToString();
-            Console.WriteLine(time.ToString());
+            //Console.WriteLine(time.ToString());
 
             String query = "select id,type from Toets where Id = '" + toetsnaam + "'";
             SqlCommand com = new SqlCommand(query, con);
@@ -145,11 +144,12 @@ namespace KBS2.data
             SqlCommand com = new SqlCommand(query, con);
             SqlDataReader reader = com.ExecuteReader();
 
-            CultureInfo ci = new CultureInfo("en-US");
+            CultureInfo ci = new CultureInfo("nl-NL");
             while (reader.Read())
             {
                 DateTime date = (DateTime)reader.GetValue(0);
-                data.Add((String)date.ToString("dd/MM/yyyy hh:mm:ss tt"));
+                data.Add((String)date.ToString("dd/MM/yyyy HH:mm:ss tt"));
+          
             }
             reader.Close();
             return data;
