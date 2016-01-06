@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using KBS2.model.cijfer;
 using KBS2.model;
 using System.Drawing;
+using KBS2.UI;
 
 namespace KBS2.views
 {
@@ -37,7 +38,7 @@ namespace KBS2.views
         private Label lbl_toets;
         private Label lbl_vak;
 
-        //
+        // Voor de student applicatie
         private Label lbl_hulpNodig;
         private Button btn_stuurVergaderVerzoek;
         public static bool studentKijkt;
@@ -124,6 +125,7 @@ namespace KBS2.views
             {
                 this.lbl_hulpNodig = new Label();
                 this.btn_stuurVergaderVerzoek = new Button();
+                this.btn_stuurVergaderVerzoek.Click += new EventHandler(this.stuurVergaderVerzoek_Click);
             }
 
             ((System.ComponentModel.ISupportInitialize)(this.dgv_vakken)).BeginInit();
@@ -262,8 +264,8 @@ namespace KBS2.views
             this.lbl_vak.TabIndex = 10;
             this.lbl_vak.Text = "Vakken";
 
-            /* */
             
+            // If student applicatie, dit aanmaken
             if (studentKijkt)
             {
                 //lbl_HulpNodig
@@ -298,8 +300,7 @@ namespace KBS2.views
             this.Controls.Add(this.lbl_GemisteEC);
             this.Controls.Add(this.lbl_totaalEC);
             this.Controls.Add(this.lbl_BehaaldeEC);
-
-            //
+            // Deze alleen samenvoegen als studentKijkt true is, ofwel als de student de studentapplicatie gebruikt.
             if (studentKijkt)
             {
                 this.Controls.Add(this.lbl_hulpNodig);
@@ -363,6 +364,13 @@ namespace KBS2.views
                     }
                 }
             }
+        }
+
+        // On Click opent e-mail form om bericht te sturen
+        private void stuurVergaderVerzoek_Click(object sender, EventArgs e)
+        {
+            Form form = new VergaderVerzoek();
+            form.Show();
         }
     }
 }
