@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace KBS2.UI
 {
-    public partial class Form1 : Form
+    public partial class VergaderVerzoek : Form
     {
-        public Form1()
+        public VergaderVerzoek()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_verstuurBericht_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
