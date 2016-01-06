@@ -37,6 +37,10 @@ namespace KBS2.views
         private Label lbl_toets;
         private Label lbl_vak;
 
+        //
+        private Label lbl_hulpNodig;
+        private Button btn_stuurVergaderVerzoek;
+        
         public StudentView(Student student, Form form)
             : base()
         {
@@ -113,6 +117,11 @@ namespace KBS2.views
             this.toetsBehaald = new DataGridViewTextBoxColumn();
             this.lbl_toets = new Label();
             this.lbl_vak = new Label();
+
+            //
+            this.lbl_hulpNodig = new Label();
+            this.btn_stuurVergaderVerzoek = new Button();
+
             ((System.ComponentModel.ISupportInitialize)(this.dgv_vakken)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_toetsen)).BeginInit();
             this.SuspendLayout();
@@ -181,6 +190,7 @@ namespace KBS2.views
             this.dgv_vakken.TabIndex = 7;
             this.dgv_vakken.CellClick += Dgv_vakken_CellClick;
             this.dgv_vakken.AllowUserToAddRows = false;
+            
             //vakgemist
             this.vak.HeaderText = "Vak";
             this.vak.Name = "Vak";
@@ -215,6 +225,7 @@ namespace KBS2.views
             this.dgv_toetsen.Size = new System.Drawing.Size(1089, 230);
             this.dgv_toetsen.TabIndex = 8;
             this.dgv_toetsen.AllowUserToAddRows = false;
+            
             //vakgehaald
             this.toets.HeaderText = "Toets";
             this.toets.Name = "dataGridViewTextBoxColumn1";
@@ -247,8 +258,28 @@ namespace KBS2.views
             this.lbl_vak.TabIndex = 10;
             this.lbl_vak.Text = "Vakken";
 
+            /* */
+            //lbl_HulpNodig
+            this.lbl_hulpNodig.AutoSize = true;
+            this.lbl_hulpNodig.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.lbl_hulpNodig.Location = new System.Drawing.Point(100, 770);
+            this.lbl_hulpNodig.Name = "lbl_HulpNodig";
+            this.lbl_hulpNodig.Size = new System.Drawing.Size(128, 26);
+            this.lbl_hulpNodig.TabIndex = 1;
+            this.lbl_hulpNodig.Text = "Hulp nodig?";
+
+            //btn_stuurVergaderVerzoek
+            this.btn_stuurVergaderVerzoek.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.btn_stuurVergaderVerzoek.Location = new System.Drawing.Point(100, 800);
+            this.btn_stuurVergaderVerzoek.Name = "btn_stuurVergaderVerzoek";
+            this.btn_stuurVergaderVerzoek.Size = new System.Drawing.Size(251, 38);
+            this.btn_stuurVergaderVerzoek.TabIndex = 0;
+            this.btn_stuurVergaderVerzoek.Text = "Stuur vergaderverzoek";
+            this.btn_stuurVergaderVerzoek.UseVisualStyleBackColor = true;
+
+
             //Alles samenvoegen
-            this.ClientSize = new System.Drawing.Size(1264, 761);
+            this.ClientSize = new System.Drawing.Size(1264, 1000);
             this.Controls.Add(this.lbl_id);
             this.Controls.Add(this.lbl_naam);
             this.Controls.Add(this.lbl_vak);
@@ -259,6 +290,11 @@ namespace KBS2.views
             this.Controls.Add(this.lbl_GemisteEC);
             this.Controls.Add(this.lbl_totaalEC);
             this.Controls.Add(this.lbl_BehaaldeEC);
+
+            //
+            this.Controls.Add(this.lbl_hulpNodig);
+            this.Controls.Add(this.btn_stuurVergaderVerzoek);
+
             ((System.ComponentModel.ISupportInitialize)(this.dgv_vakken)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_toetsen)).EndInit();
             this.ResumeLayout(false);

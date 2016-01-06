@@ -34,7 +34,7 @@ namespace KBS2.UI
                 StudentView view = new StudentView(student, this);
                 //Maakt de studentview aan
 
-                this.SetBounds(100, 100, 1280, 800);
+                this.SetBounds(100, 100, 1280, 960);
                 //Bepaald het formaat en de positie van het scherm
             }
             catch (InvalidOperationException)
