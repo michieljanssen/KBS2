@@ -66,6 +66,7 @@
             this.btn_inloggen.TabIndex = 2;
             this.btn_inloggen.Text = "Inloggen";
             this.btn_inloggen.UseVisualStyleBackColor = true;
+            this.btn_inloggen.Click += new System.EventHandler(this.btn_inloggen_Click);
             // 
             // txtbx_email
             // 

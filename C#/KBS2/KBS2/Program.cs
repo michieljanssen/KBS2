@@ -36,7 +36,7 @@ namespace KBS2
             {
                 try
                 {
-                    Application.Run(new StudentKijkt());
+                    Application.Run(new InlogSchermStudent());
                     //Draai de versie voor studenten
                 }
                 catch (ObjectDisposedException)

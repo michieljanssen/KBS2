@@ -39,11 +39,11 @@ namespace KBS2.UI
             }
             catch (InvalidOperationException)
             {
+                //Als de student niet bestaat krijgt de gebruiker een bericht
+                //hiervan en wordt de applicatie afgesloten
                 string message = "Deze student bestaat niet.";
                 MessageBoxButtons knop = MessageBoxButtons.OK;
                 MessageBox.Show(message, "Student niet bekend", knop);
-                //ToetsSql.close();
-                //StudentSql.close();
                 this.Close();
             }            
         }

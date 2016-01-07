@@ -36,5 +36,18 @@ namespace KBS2.UI
         {
 
         }
+
+        private void btn_inloggen_Click(object sender, EventArgs e)
+        {
+            //Verberg de huidige form
+            this.Hide();
+
+            //Opent StudentKijkt als dialoog
+            Form form = new StudentKijkt();
+            form.ShowDialog();
+
+            //Sluit de applicatie als StudentKijkt wordt afgesloten
+            this.Close();
+        }
     }
 }

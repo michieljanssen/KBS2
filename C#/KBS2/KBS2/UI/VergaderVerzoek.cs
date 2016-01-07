@@ -49,5 +49,10 @@ namespace KBS2.UI
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void VergaderVerzoek_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            views.StudentView.has_been_shown = false;
+        }
     }
 }

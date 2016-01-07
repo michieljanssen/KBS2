@@ -14,6 +14,8 @@ namespace KBS2.views
 {
     public class StudentView : Panel
     {
+        public static bool has_been_shown = false;
+
         //Student variabelen
         private Student student;
 
@@ -366,11 +368,27 @@ namespace KBS2.views
             }
         }
 
+        private void SystemParametersClick(object sender, EventArgs e)
+        {
+            if (!has_been_shown)
+            {
+                has_been_shown = true;
+            }
+        }
+
         // On Click opent e-mail form om bericht te sturen
         private void stuurVergaderVerzoek_Click(object sender, EventArgs e)
         {
-            Form form = new VergaderVerzoek();
-            form.Show();
+            if (has_been_shown)
+            {
+
+            }
+            else
+            {
+                Form form = new VergaderVerzoek();
+                form.Show();
+                has_been_shown = true;
+            }
         }
     }
 }
