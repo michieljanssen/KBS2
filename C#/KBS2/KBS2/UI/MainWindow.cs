@@ -14,10 +14,10 @@ using KBS2.model.cijfer;
 
 namespace KBS2.UI
 {
-    public partial class ToetsPanel : UserControl
+    public partial class MainWindow : UserControl
     {
         Toets toets;
-        public ToetsPanel(Toets toets, List<string> data)
+        public MainWindow(Toets toets, List<string> data)
         {
             InitializeComponent();
             txbx_zoek_refresh(data);
@@ -25,14 +25,54 @@ namespace KBS2.UI
             cb_jaar.DataSource = ToetsSql.getToetsJaren(toets.Naam);
             cb_datum.DataSource = ToetsSql.toetsData(toets.Naam, (string)cb_jaar.SelectedValue);
             LoadData(toets);
-        }   //constructor
+        }
+
+        private void Zk_Btn_Click(object sender, EventArgs e)
+        {
+            String inputstring = this.txbx_zoek.Text;
+            //TODO Refine search 
+            if (inputstring != "")
+            {
+                ToetsSql.connect();
+                if (ToetsSql.ToetsExists(inputstring))
+                {
+                    lbl_err.Text = "";
+                    Toets toets = null;
+                    if (ToetsSql.getToetsJaren(inputstring).Count != 0)
+                    {
+                        toets = ToetsSql.getToets(inputstring, ToetsSql.getToetsJaren(inputstring)[0]);
+                    }
+                    else
+                    {
+                        toets = ToetsSql.getToets(inputstring, "");
+                    }
+                    List<string> dat = new List<string>();
+                    dat.Add(cb_Zoek.SelectedItem.ToString());
+                    dat.Add(inputstring);
+
+                    this.LoadData(toets);
+                }
+                else
+                {
+                    lbl_err.Text = "Deze Toets bestaat niet";
+                }
+            }
+            else
+            {
+                lbl_err.Text = "";
+            }
+        }
+        internal void txbx_zoek_refresh(List<String> data)
+        {
+            this.txbx_zoek.Text = data[1];          // fils in the textbox
+            this.cb_Zoek.SelectedItem = data[0];  // get's the selected item
+        }
         internal void init()
         {
             //Fill gridview
             DataGridViewCellStyle dgvcs = new DataGridViewCellStyle();
             dgvcs.NullValue = null;
             this.dgv_toets.AlternatingRowsDefaultCellStyle = dgvcs;
-            Font gridfont = new Font("Microsoft Sans Serif", 16F);
             DataGridViewTextBoxColumn Studentnr = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn naam = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn Cijfer = new DataGridViewTextBoxColumn();
@@ -43,7 +83,7 @@ namespace KBS2.UI
             Cijfer,
             datum});
             //Cijfer
-            Cijfer.HeaderCell.Style.Font = gridfont;
+            Cijfer.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
             Cijfer.DefaultCellStyle = dgvcs;
             Cijfer.HeaderText = "Cijfer";
             Cijfer.Name = "Cijfer";
@@ -51,7 +91,7 @@ namespace KBS2.UI
             Cijfer.Width = (int)(0.1 * dgv_toets.Width);
 
             //Leerlingnr
-            Studentnr.HeaderCell.Style.Font = gridfont;
+            Studentnr.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
             Studentnr.DefaultCellStyle = dgvcs;
             Studentnr.HeaderText = "Studentnr";
             Studentnr.Name = "Studentnr";
@@ -59,7 +99,7 @@ namespace KBS2.UI
             Studentnr.Width = (int)(0.2 * dgv_toets.Width);
 
             //naam
-            naam.HeaderCell.Style.Font = gridfont;
+            naam.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
             naam.DefaultCellStyle = dgvcs;
             naam.HeaderText = "Naam";
             naam.Name = "naam";
@@ -69,20 +109,16 @@ namespace KBS2.UI
 
 
             //datum
-            datum.HeaderCell.Style.Font = gridfont;
+            datum.HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 16F);
             datum.DefaultCellStyle = dgvcs;
             datum.HeaderText = "Datum van Afname";
             datum.Name = "datum";
             datum.ReadOnly = true;
             datum.Width = (int)(dgv_toets.Width - naam.Width - Studentnr.Width - Cijfer.Width);
-        }                                //additional GUI setup
-        internal void txbx_zoek_refresh(List<String> data)
-        {
-            this.txbx_zoek.Text = data[1];          // fils in the textbox
-            this.cb_Zoek.SelectedItem = data[0];  // get's the selected item
-        }  //refres search area info
+        }
+        
 
-        internal void LoadData(Toets toets) //loads data
+        internal void LoadData(Toets toets)
         {
             this.toets = toets;
             dgv_toets.Rows.Clear();
@@ -96,33 +132,44 @@ namespace KBS2.UI
             this.progressBar1.Value = toets.percentageVold();
             this.dgv_toets.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_toets.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            if (toets.Cijfers.Count > 0)    //if grades are found
+            if (toets.Cijfers.Count > 0)
             {
-                chrt_refresh(toets.Cijfers);    //refresh the diagram
+                //gaat door alle cijfers heen
+                chrtreset(toets.Cijfers);
                 for (int i = 0; i < toets.Cijfers.Count; i++)
                 {
+                    //zet de cijfers in de tabel
                     object[] row = { toets.Cijfers[i].ID, toets.Cijfers[i].Naam, toets.Cijfers[i].Cijfer, toets.Cijfers[i].Datum };
-                    this.dgv_toets.Rows.Add(row);   //add the cijfers to the 
-                    this.dgv_toets.Rows[i].Cells[2].Style.ForeColor = Color.Red;    //default gradecolor = red
+                    this.dgv_toets.Rows.Add(row);
+
+                    //verandert de kleur van de text als voldoende is of niet
                     if (toets.Cijfers[i].isVoldoende())
                     {
-                        this.dgv_toets.Rows[i].Cells[2].Style.ForeColor = Color.Green; //acceptable grades are green
+                        //groen voor voldoende
+                        this.dgv_toets.Rows[i].Cells[2].Style.ForeColor = Color.Green;
+                    }
+                    else
+                    {
+                        //rood voor onvoldoende
+                        this.dgv_toets.Rows[i].Cells[2].Style.ForeColor = Color.Red;
                     }
                 }
+                //
             }
             else
             {
-                this.lbl_err.Text = "Deze toets heeft geen cijfers";    //show an error message when no grades are found
+                //anders laat een melding zien
+                this.lbl_err.Text = "Deze toets heeft geen cijfers";
             }
-        }   
-        internal void chrt_refresh(List<model.cijfer.ToetsCijfer> Cijferlijst)  //refresh the diagram
+        }
+        internal void chrtreset(List<model.cijfer.ToetsCijfer> Cijferlijst)
         {
             chrt_.Series[0].Points.Clear();                 // clear old data
             List<double> ccijfers = new List<Double>();
             foreach (ToetsCijfer tc in Cijferlijst)         //round grades down to .5 increments
             {
                 double a = tc.Cijfer;
-                double b = roundtopointfiveincrement(a);
+                double b = topoint5(a);
                 ccijfers.Add(b);
             }
             ccijfers.Sort();
@@ -139,15 +186,16 @@ namespace KBS2.UI
                 }
                 chrt_.Series[0].Points.AddXY(xval / 2, yval);
             }
-        }   
-        internal double roundtopointfiveincrement(double a)  //rounds grades down to point five increments
+        }
+        //Cijfer rounding
+        internal double topoint5(double a)
         {
-            double b = a * 2;           //for a = 2.7 gives b = a*2 = 2.7*2 = 5.4
-            double c = Math.Floor(b);   //c = 5.4 => 5.0
-            double d = c / 2;           //d = c/2 = 5/2 = 2.5
+            double b = a * 2;
+            double c = Math.Floor(b);
+            double d = c / 2;
             return d;
-        }  
-
+        }
+        //Dropdown menu's setting
         private void cb_datum_SelectionChangeCommitted(object sender, EventArgs e)
         {
             ComboBox c = (ComboBox)sender;
@@ -155,21 +203,7 @@ namespace KBS2.UI
             string datetime = c.GetItemText(c.SelectedItem);
             if (!c.SelectedValue.Equals("beste resultaten"))
             {
-                Toets t = ToetsSql.getToets(this.toets.Naam, (String)c.SelectedValue, (String)cb_jaar.SelectedValue);   //return specific grades by date
-                LoadData(t);
-            }
-            else
-            {
-                Toets t = ToetsSql.getToets(this.toets.Naam, (String)cb_jaar.SelectedValue);        //return all grades
-                LoadData(t);
-            }
-        }       //handles grades presentation
-        private void cb_jaar_SelectionChangeCommitted(object sender, EventArgs e)//handles  grades presentation
-        {
-            cb_datum.DataSource = ToetsSql.toetsData(toets.Naam, (String)cb_jaar.SelectedValue);
-            if (!cb_datum.SelectedValue.Equals("beste resultaten"))
-            {
-                Toets t = ToetsSql.getToets(this.toets.Naam, (String)cb_datum.SelectedValue, (String)cb_jaar.SelectedValue);    //returns all grades by year
+                Toets t = ToetsSql.getToets(this.toets.Naam, (String)c.SelectedValue, (String)cb_jaar.SelectedValue);
                 LoadData(t);
             }
             else
@@ -177,15 +211,31 @@ namespace KBS2.UI
                 Toets t = ToetsSql.getToets(this.toets.Naam, (String)cb_jaar.SelectedValue);
                 LoadData(t);
             }
-        }       
-        private void txbx_zoek_KeyPress(object sender, KeyPressEventArgs e)//handles search event
+        }
+        private void cb_jaar_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            cb_datum.DataSource = ToetsSql.toetsData(toets.Naam, (String)cb_jaar.SelectedValue);
+            if (!cb_datum.SelectedValue.Equals("beste resultaten"))
+            {
+                Toets t = ToetsSql.getToets(this.toets.Naam, (String)cb_datum.SelectedValue, (String)cb_jaar.SelectedValue);
+                LoadData(t);
+            }
+            else
+            {
+                Toets t = ToetsSql.getToets(this.toets.Naam, (String)cb_jaar.SelectedValue);
+                LoadData(t);
+            }
+        }
+
+        private void txbx_zoek_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                btn_zoek.PerformClick();    //perform a click on the btn_zoek button (see Zk_Btn_Click)
+                btn_zoek.PerformClick();
             }
-        }               
-        private void dgv_toets_CellDoubleClick(object sender, DataGridViewCellEventArgs e) //handles the gridview event
+        }
+
+        private void dgv_toets_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int row = e.RowIndex;
             if (row >= 0)
@@ -201,43 +251,7 @@ namespace KBS2.UI
                     form.Show();
                 }
             }
-        }   
-        private void Zk_Btn_Click(object sender, EventArgs e) //handles search event
-        {
-            String inputstring = this.txbx_zoek.Text;       //user input string
-            //TODO Refine search 
-            if (inputstring != "")          //if string is not empty
-            {
-                ToetsSql.connect();         //connect to the database
-                if (ToetsSql.ToetsExists(inputstring))
-                {
-                    lbl_err.Text = "";      //clear errors
-                    Toets toets = null;
-                    if (ToetsSql.getToetsJaren(inputstring).Count != 0)     //check for exsisting test
-                    {
-                        toets = ToetsSql.getToets(inputstring, ToetsSql.getToetsJaren(inputstring)[0]); //get testdata
-                    }
-                    else
-                    {
-                        toets = ToetsSql.getToets(inputstring, "");     //get empty testdata
-                    }
-                    List<string> dat = new List<string>();      //create list with searchdata
-                    dat.Add(cb_Zoek.SelectedItem.ToString());   //add dropdown data
-                    dat.Add(inputstring);                       //add input string
-                    txbx_zoek_refresh(dat);                     //refresh textbox
-                    this.LoadData(toets);                       //load the found data
-                }
-                else
-                {
-                    lbl_err.Text = "Deze Toets bestaat niet";
-                }
-            }
-            else
-            {
-                lbl_err.Text = "";
-            }
-        }                           
-
+        }
     }
 
 }

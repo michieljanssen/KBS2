@@ -1,6 +1,6 @@
 ﻿namespace KBS2.UI
 {
-    partial class ToetsPanel
+    partial class MainWindow
     {
         /// <summary> 
         /// Required designer variable.
