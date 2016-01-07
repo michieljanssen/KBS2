@@ -35,10 +35,10 @@ namespace KBS2.UI
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
                 client.Credentials = new NetworkCredential(
-                  "s1082925@student.windesheim.nl", "");
+                  "s1082925@student.windesheim.nl", "Wachtwoordhier");
                 MailMessage msg = new MailMessage();
                 msg.To.Add(this.txtbx_emailOntvanger.Text);
-                msg.From = new MailAddress("s1082925@student.windesheim.nl");
+                msg.From = new MailAddress("s1082925@student.windesheim.nl", "Student naam hier");
                 msg.Subject = this.txtbx_onderwerp.Text;
                 msg.Body = this.txtbx_bericht.Text;
                 client.Send(msg);
