@@ -34,7 +34,6 @@
             this.lbl_vergaderVerzoekSturen.Size = new System.Drawing.Size(408, 37);
             this.lbl_vergaderVerzoekSturen.TabIndex = 0;
             this.lbl_vergaderVerzoekSturen.Text = "Stuur een vergaderverzoek:";
-            this.lbl_vergaderVerzoekSturen.Click += new System.EventHandler(this.label1_Click);
             // 
             // lbl_emailOntvanger
             // 
