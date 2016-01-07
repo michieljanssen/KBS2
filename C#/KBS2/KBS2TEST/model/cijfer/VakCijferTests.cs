@@ -15,46 +15,30 @@ namespace KBS2.model.cijfer.Tests
         public class VakCijferTest
         {
             [TestMethod()]
-            public void WillCreataANewVakCijfer()
+            public void method()
             {
-                VakCijfer assert = new VakCijfer("UML", 2, new List<ToetsCijfer>());
-                if (assert.VakNaam == null || assert.EC == null || assert.Cijfers == null)
-                {
-                    Assert.Fail();
-                }
-                else
-                {
-                    Assert.AreEqual(1, 1);
-                }
+                Assert.Fail();
             }
+
         }
 
         [TestClass()]
         public class isVoldoendeTest
         {
             [TestMethod()]
-            public void ReturnsFalse_WhenCijferSmallerthan5p5()
+            public void Watdoetdezefuntie()
             {
-                Boolean expected = false;
-                VakCijfer v = new VakCijfer("UML", 2, new List<ToetsCijfer>());
-                Boolean actual = v.isVoldoende();
-                Assert.AreEqual(expected, actual);
+                Assert.Fail();
             }
+        }
+
+        [TestClass()]
+        public class gemiddeldeTest
+        {
             [TestMethod()]
-            public void ReturnsTrue_WhenCijferEqualto5p5()
+            public void method()
             {
-                Boolean expected = true;
-                VakCijfer v = new VakCijfer("UML", 2, new List<ToetsCijfer>());
-                Boolean actual = v.isVoldoende();
-                Assert.AreEqual(expected, actual);
-            }
-            [TestMethod()]
-            public void ReturnsTrue_WhenCijferLargerthan5p5()
-            {
-                Boolean expected = true;
-                VakCijfer v = new VakCijfer("UML", 2, new List<ToetsCijfer>());
-                Boolean actual = v.isVoldoende();
-                Assert.AreEqual(expected, actual);
+                Assert.Fail();
             }
         }
     }

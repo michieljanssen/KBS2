@@ -12,34 +12,48 @@ namespace KBS2.model.cijfer.Tests
     public class ToetsCijferTests
     {
         [TestClass()]
-        public class isVoldoendeTest
+        public class Constructor
         {
             [TestMethod()]
-            public void returnstrue_whengradebiggerthan5p5()
+            public void correctconstructor()
             {
-                bool expected = true;
-                bool actual = false;
-                ToetsCijfer testcijfer = new ToetsCijfer("S1075802", "Hugo Timmerman", "c#", 8.8, "11 mei");
-                actual = testcijfer.isVoldoende();
-                Assert.AreEqual(expected, actual);
-            }
-            [TestMethod()]
-            public void returnstrue_whengradeis5p5()
-            {
+                ToetsCijfer testcijfer = new ToetsCijfer("1", "nm1", "multiplechoice", 4.5, "11-05-2005");
+                if (testcijfer == null)
+                {
+                    Assert.Fail();
+                }
+                else
+                {
+                    Assert.IsTrue(true);
+                }
 
-                bool expected = true;
-                bool actual = false;
-                ToetsCijfer testcijfer = new ToetsCijfer("S1075802", "Hugo Timmerman", "c#", 5.5, "11 mei");
-                actual = testcijfer.isVoldoende();
-                Assert.AreEqual(expected, actual);
             }
+        }
+        [TestClass()]
+        public class isVoldoende
+        {
             [TestMethod()]
-            public void returnsfalse_whengradeislowerthan5p5()
+            public void false_Ongradelessthan5p5()
             {
                 bool expected = false;
-                bool actual = true;
-                ToetsCijfer testcijfer = new ToetsCijfer("S1075802", "Hugo Timmerman", "c#", 3.5, "11 mei");
-                actual = testcijfer.isVoldoende();
+                ToetsCijfer testcijfer = new ToetsCijfer("1", "nm1", "multiplechoice", 4.5, "11-05-2005");
+                bool actual = testcijfer.isVoldoende();
+                Assert.AreEqual(expected, actual);
+            }
+            [TestMethod()]
+            public void true_ongradeis5p5()
+            {
+                bool expected = true;
+                ToetsCijfer testcijfer = new ToetsCijfer("1", "nm1", "multiplechoice", 5.5, "11-05-2005");
+                bool actual = testcijfer.isVoldoende();
+                Assert.AreEqual(expected, actual);
+            }
+            [TestMethod()]
+            public void true_ongradelargerthan5p5()
+            {
+                bool expected = true;
+                ToetsCijfer testcijfer = new ToetsCijfer("1", "nm1", "multiplechoice", 8, "11-05-2005");
+                bool actual = testcijfer.isVoldoende();
                 Assert.AreEqual(expected, actual);
             }
         }
