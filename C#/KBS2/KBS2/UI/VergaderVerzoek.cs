@@ -15,27 +15,41 @@ namespace KBS2.UI
 
         private void btn_verstuurBericht_Click(object sender, EventArgs e)
         {
-            model.Student student = data.StudentSql.getStudent(InlogSchermStudent.ingelogdID);
+             model.Student student = data.StudentSql.getStudent(InlogSchermStudent.ingelogdID);
 
             //Juiste student weten
             //student.Cijfers
 
             List<model.cijfer.VakCijfer> cijferLijst = student.Cijfers;
 
-            String cijferTekst = "";
+            String cijferTekst = "<table style=\"width:150px\">";
 
             for (int i = 0; i < cijferLijst.Count; i++)
             {
                 Console.WriteLine(cijferLijst[i].VakNaam + "     " + cijferLijst[i].Cijfers[0].Cijfer);
 
-                cijferTekst += cijferTekst + cijferLijst[i].VakNaam + '\t' + cijferLijst[i].gemiddelde() + Environment.NewLine;
+
+                cijferTekst += "<tr> <td>" + cijferLijst[i].VakNaam + "</td><td></td><td> " + cijferLijst[i].gemiddelde() + "</td></tr> ";
+
 
                 List<model.cijfer.ToetsCijfer> toetsen = cijferLijst[i].besteToetsen();
                 for (int b = 0; b < toetsen.Count; b++)
                 {
-                    cijferTekst += '\t' + toetsen[b].ToetsNaam + '\t' + toetsen[b].Cijfer + Environment.NewLine;
+                    cijferTekst += "<tr><td></td> <td>" + toetsen[b].ToetsNaam + "</td><td>" + toetsen[b].Cijfer + "</td></tr>";
                 }
+
+
+                cijferTekst += "</table>";
+                //cijferTekst = cijferTekst + cijfer.VakNaam + " " + cijfer.Cijfers + Environment.NewLine;
             }
+
+            //cijferTekst.Replace("@", "@" + Environment.NewLine);
+
+            //student.Cijfers.ToString();
+
+            //cijferLijst
+
+            //model.cijfer.VakCijfer Vak = 
 
             try
             {
@@ -52,6 +66,7 @@ namespace KBS2.UI
                 //msg.From = new MailAddress("s1082925@student.windesheim.nl", "Student naam hier");
                 msg.From = new MailAddress("windesheimstudentvolg@gmail.com");
                 msg.Subject = this.txtbx_onderwerp.Text;
+                msg.IsBodyHtml = true;
                 msg.Body = this.txtbx_bericht.Text + Environment.NewLine + cijferTekst;
                 client.Send(msg);
                 MessageBox.Show("Successfully Sent Message.");
