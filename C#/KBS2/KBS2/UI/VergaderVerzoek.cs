@@ -15,8 +15,7 @@ namespace KBS2.UI
 
         private void btn_verstuurBericht_Click(object sender, EventArgs e)
         {
-            int ingelogdId = 1;
-            model.Student student = data.StudentSql.getStudent(ingelogdId);
+            model.Student student = data.StudentSql.getStudent(InlogSchermStudent.ingelogdID);
 
             //Juiste student weten
             //student.Cijfers
@@ -27,12 +26,11 @@ namespace KBS2.UI
 
             for (int i = cijferLijst.Count - 1; i >= 0; i--)
             {
-                Console.WriteLine(cijferLijst[i].VakNaam + " " + cijferLijst[i].Cijfers[0].Cijfer);
+                Console.WriteLine(cijferLijst[i].VakNaam + "     " + cijferLijst[i].Cijfers[0].Cijfer);
 
-                cijferTekst = cijferTekst + cijferLijst[i].VakNaam + " " + cijferLijst[i].Cijfers[0].Cijfer + Environment.NewLine;
+                cijferTekst = cijferTekst + cijferLijst[i].VakNaam + "     " + cijferLijst[i].Cijfers[0].Cijfer + Environment.NewLine;
                 //cijferTekst = cijferTekst + cijfer.VakNaam + " " + cijfer.Cijfers + Environment.NewLine;
             }
-
 
             //cijferTekst.Replace("@", "@" + Environment.NewLine);
 
