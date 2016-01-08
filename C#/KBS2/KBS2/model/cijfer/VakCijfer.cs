@@ -26,32 +26,13 @@ namespace KBS2.model.cijfer
         //checkt of het cijfer een voldoende is
         public Boolean isVoldoende()
         {
+            Boolean behaald = true;
             ToetsCijfer[] cijfers = this.cijfers.ToArray();
-            for (int i = cijfers.Length - 1; i >= 0; i--)
-            {
-                for (int c = cijfers.Length - 1; c >= 0; c--)
-                {
-                    if (i != c && cijfers[i].ID.Equals(cijfers[c].ID))
-                    {
-                        if (cijfers[i].Cijfer <= cijfers[c].Cijfer)
-                        {
-                            cijfers[i] = null;
-                            break;
-                        }
-                    }
-                }
+            for(int i = 0; i < cijfers.Length; i++){
+                if (!cijfers[i].isVoldoende())
+                    behaald = false;
             }
-            for (int i = 0; i < cijfers.Length; i++)
-            {
-                if (cijfers[i] != null)
-                {
-                    if (!cijfers[i].isVoldoende())
-                    {
-                        return false;
-                    }
-                }
-            }
-            return true;
+            return behaald;
         }
 
 
