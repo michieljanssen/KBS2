@@ -24,36 +24,18 @@ namespace KBS2.UI
 
             String cijferTekst = "";
 
-<<<<<<< HEAD
             for (int i = 0; i < cijferLijst.Count; i++)
             {
                 Console.WriteLine(cijferLijst[i].VakNaam + "     " + cijferLijst[i].Cijfers[0].Cijfer);
 
-                cijferTekst += cijferTekst + cijferLijst[i].VakNaam + '\t' + cijferLijst[i].gemiddelde()+ Environment.NewLine;
+                cijferTekst += cijferTekst + cijferLijst[i].VakNaam + '\t' + cijferLijst[i].gemiddelde() + Environment.NewLine;
 
                 List<model.cijfer.ToetsCijfer> toetsen = cijferLijst[i].besteToetsen();
                 for (int b = 0; b < toetsen.Count; b++)
                 {
                     cijferTekst += '\t' + toetsen[b].ToetsNaam + '\t' + toetsen[b].Cijfer + Environment.NewLine;
                 }
-                //cijferTekst = cijferTekst + cijfer.VakNaam + " " + cijfer.Cijfers + Environment.NewLine;
-=======
-            if (cijferLijst.Count != 0)
-            {
-                for (int i = cijferLijst.Count - 1; i >= 0; i--)
-                {
-                    cijferTekst = cijferTekst + cijferLijst[i].VakNaam + "     " + cijferLijst[i].Cijfers[0].Cijfer + Environment.NewLine;
-                    //cijferTekst = cijferTekst + cijfer.VakNaam + " " + cijfer.Cijfers + Environment.NewLine;
-                }
->>>>>>> origin/master
             }
-            //cijferTekst.Replace("@", "@" + Environment.NewLine);
-
-            //student.Cijfers.ToString();
-
-            //cijferLijst
-
-            //model.cijfer.VakCijfer Vak = 
 
             try
             {
