@@ -17,6 +17,7 @@ namespace KBS2.UI
         private string wwHash;
         private byte[] result;
         public static int ingelogdID;
+        public static string wwInput;
 
         public InlogSchermStudent()
         {
@@ -24,28 +25,9 @@ namespace KBS2.UI
             StudentSql.connect();
         }
 
-        private void lbl_email_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtbx_email_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtbx_wachtwoord_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_wachtwoord_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_inloggen_Click(object sender, EventArgs e)
         {
+            wwInput = this.txtbx_wachtwoord.Text;
             ingelogdID = Convert.ToInt32(txtbx_email.Text);
             bool studentExists = StudentSql.studentExists(ingelogdID);
             if (studentExists)
@@ -68,16 +50,13 @@ namespace KBS2.UI
                 {
                     MessageBox.Show("Het gegeven wachtwoord is incorrect. Probeer het opnieuw.");
                 }
-                
+
             }
             else
             {
                 // Als studentnummer niet bestaat krijg je deze melding
                 MessageBox.Show("Het gegeven studentnummer bestaat niet. Controleer of u het correct heeft ingevoerd.");
             }
-
-            
-            
         }
 
         //Functie om hash te krijgen van ingevoerde wachtwoord
@@ -90,7 +69,9 @@ namespace KBS2.UI
             // Convert byte naar HEX string
             StringBuilder hex = new StringBuilder(result.Length * 2);
             foreach (byte b in result)
+            {
                 hex.AppendFormat("{0:x2}", b);
+            }
             // HEX string hash
             return hex.ToString().ToUpper();
         }

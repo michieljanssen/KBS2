@@ -19,33 +19,14 @@ namespace KBS2.UI
         public StudentKijkt()
         {
             //InitializeComponent();
-
-            //Kiest welke student wordt opgehaald aan de hand van de id
-            //Verander om een andere student te zien
-
-            ToetsSql.connect();
-            StudentSql.connect();
-            //Maakt een connectie met de database
-
-            try {
-                Student student = StudentSql.getStudent(InlogSchermStudent.ingelogdID);
-                //Haalt de data van de student op
-
-                StudentView view = new StudentView(student, this);
-                //Maakt de studentview aan
-
-                this.SetBounds(100, 100, 1280, 960);
-                //Bepaald het formaat en de positie van het scherm
-            }
-            catch (InvalidOperationException)
-            {
-                //Als de student niet bestaat krijgt de gebruiker een bericht
-                //hiervan en wordt de applicatie afgesloten
-                string message = "Deze student bestaat niet.";
-                MessageBoxButtons knop = MessageBoxButtons.OK;
-                MessageBox.Show(message, "Student niet bekend", knop);
-                this.Close();
-            }            
+            
+            //Haalt de data van de student op
+            Student student = StudentSql.getStudent(InlogSchermStudent.ingelogdID);
+            //Maakt de studentview aan
+            StudentView view = new StudentView(student, this);
+            //Bepaald het formaat en de positie van het scherm    
+            this.SetBounds(100, 100, 1280, 960);
+            
         }
     }
 }

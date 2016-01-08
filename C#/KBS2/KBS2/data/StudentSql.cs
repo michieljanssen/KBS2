@@ -150,5 +150,16 @@ namespace KBS2.data
             reader.Close();
             return email;
         }
+
+        public static String getStudentNaam(int id)
+        {
+            String query = "select naam from Student where id = " + id;
+            SqlCommand com = new SqlCommand(query, con);
+            SqlDataReader reader = com.ExecuteReader();
+            reader.Read();
+            string naam = reader.GetString(0);
+            reader.Close();
+            return naam;
+        }
     }
 }

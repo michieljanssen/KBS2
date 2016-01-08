@@ -44,7 +44,6 @@
             this.lbl_studentnr.Size = new System.Drawing.Size(112, 26);
             this.lbl_studentnr.TabIndex = 0;
             this.lbl_studentnr.Text = "Studentnr:";
-            this.lbl_studentnr.Click += new System.EventHandler(this.lbl_email_Click);
             // 
             // lbl_wachtwoord
             // 
@@ -55,7 +54,6 @@
             this.lbl_wachtwoord.Size = new System.Drawing.Size(139, 26);
             this.lbl_wachtwoord.TabIndex = 1;
             this.lbl_wachtwoord.Text = "Wachtwoord:";
-            this.lbl_wachtwoord.Click += new System.EventHandler(this.lbl_wachtwoord_Click);
             // 
             // btn_inloggen
             // 
@@ -75,7 +73,6 @@
             this.txtbx_email.Name = "txtbx_email";
             this.txtbx_email.Size = new System.Drawing.Size(408, 32);
             this.txtbx_email.TabIndex = 3;
-            this.txtbx_email.TextChanged += new System.EventHandler(this.txtbx_email_TextChanged);
             // 
             // txtbx_wachtwoord
             // 
@@ -85,7 +82,6 @@
             this.txtbx_wachtwoord.PasswordChar = '*';
             this.txtbx_wachtwoord.Size = new System.Drawing.Size(408, 32);
             this.txtbx_wachtwoord.TabIndex = 4;
-            this.txtbx_wachtwoord.TextChanged += new System.EventHandler(this.txtbx_wachtwoord_TextChanged);
             // 
             // InlogSchermStudent
             // 
