@@ -19,11 +19,12 @@ namespace KBS2.UI
 
             //Juiste student weten
             //student.Cijfers
-            
+
             List<model.cijfer.VakCijfer> cijferLijst = student.Cijfers;
 
             String cijferTekst = "";
 
+<<<<<<< HEAD
             for (int i = 0; i < cijferLijst.Count; i++)
             {
                 Console.WriteLine(cijferLijst[i].VakNaam + "     " + cijferLijst[i].Cijfers[0].Cijfer);
@@ -36,8 +37,16 @@ namespace KBS2.UI
                     cijferTekst += '\t' + toetsen[b].ToetsNaam + '\t' + toetsen[b].Cijfer + Environment.NewLine;
                 }
                 //cijferTekst = cijferTekst + cijfer.VakNaam + " " + cijfer.Cijfers + Environment.NewLine;
+=======
+            if (cijferLijst.Count != 0)
+            {
+                for (int i = cijferLijst.Count - 1; i >= 0; i--)
+                {
+                    cijferTekst = cijferTekst + cijferLijst[i].VakNaam + "     " + cijferLijst[i].Cijfers[0].Cijfer + Environment.NewLine;
+                    //cijferTekst = cijferTekst + cijfer.VakNaam + " " + cijfer.Cijfers + Environment.NewLine;
+                }
+>>>>>>> origin/master
             }
-
             //cijferTekst.Replace("@", "@" + Environment.NewLine);
 
             //student.Cijfers.ToString();
@@ -62,11 +71,6 @@ namespace KBS2.UI
                 msg.From = new MailAddress("windesheimstudentvolg@gmail.com");
                 msg.Subject = this.txtbx_onderwerp.Text;
                 msg.Body = this.txtbx_bericht.Text + Environment.NewLine + cijferTekst;
-                //+
-                    
-                    
-                    
-                    ;
                 client.Send(msg);
                 MessageBox.Show("Successfully Sent Message.");
             }
@@ -75,7 +79,9 @@ namespace KBS2.UI
                 MessageBox.Show(ex.Message);
             }
         }
+            
 
+            
         private void VergaderVerzoek_FormClosed(object sender, FormClosedEventArgs e)
         {
             views.StudentView.has_been_shown = false;
