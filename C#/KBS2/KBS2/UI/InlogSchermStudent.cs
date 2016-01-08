@@ -64,8 +64,10 @@ namespace KBS2.UI
         {
             // Maken gebruik van SHA512 algoritme
             SHA512 alg = SHA512.Create();
+            // Voeg salt toe aan wachtwoord voordat het gehash word
+            string salted = text + StudentSql.getSalt(ingelogdID);
             // byte result is de hash
-            result = alg.ComputeHash(Encoding.UTF8.GetBytes(this.txtbx_wachtwoord.Text));
+            result = alg.ComputeHash(Encoding.UTF8.GetBytes(salted));
             // Convert byte naar HEX string
             StringBuilder hex = new StringBuilder(result.Length * 2);
             foreach (byte b in result)
@@ -75,6 +77,6 @@ namespace KBS2.UI
             // HEX string hash
             return hex.ToString().ToUpper();
         }
-
+        
     }
 }
