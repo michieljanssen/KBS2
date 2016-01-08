@@ -16,6 +16,7 @@ namespace KBS2.UI
     {
         private string wwHash;
         private byte[] result;
+        public static int ingelogdID;
 
         public InlogSchermStudent()
         {
@@ -45,13 +46,13 @@ namespace KBS2.UI
 
         private void btn_inloggen_Click(object sender, EventArgs e)
         {
-            int sNum = Convert.ToInt32(txtbx_email.Text);
-            bool studentExists = StudentSql.studentExists(sNum);
+            ingelogdID = Convert.ToInt32(txtbx_email.Text);
+            bool studentExists = StudentSql.studentExists(ingelogdID);
             if (studentExists)
             {
                 // Genereer hash van ingevoerde wachtwoord
                 wwHash = getHash(txtbx_wachtwoord.Text);
-                if (StudentSql.passwordCompare(sNum, wwHash))
+                if (StudentSql.passwordCompare(ingelogdID, wwHash))
                 {
                     //Verberg de huidige form
                     this.Hide();

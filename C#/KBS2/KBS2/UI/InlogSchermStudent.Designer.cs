@@ -82,6 +82,7 @@
             this.txtbx_wachtwoord.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.txtbx_wachtwoord.Location = new System.Drawing.Point(179, 206);
             this.txtbx_wachtwoord.Name = "txtbx_wachtwoord";
+            this.txtbx_wachtwoord.PasswordChar = '*';
             this.txtbx_wachtwoord.Size = new System.Drawing.Size(408, 32);
             this.txtbx_wachtwoord.TabIndex = 4;
             this.txtbx_wachtwoord.TextChanged += new System.EventHandler(this.txtbx_wachtwoord_TextChanged);
