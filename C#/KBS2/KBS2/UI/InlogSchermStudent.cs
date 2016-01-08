@@ -34,8 +34,11 @@ namespace KBS2.UI
             }
             else
             {
+                //Bool b, controle bool zodat de code op de correcte volgorde uitvoert
+                bool b = true;
                 try
                 {
+                    //Convert string studentnummer naar int
                     ingelogdID = Convert.ToInt32(txtbx_studentnr.Text);
                 }
                 catch(Exception)
@@ -44,42 +47,46 @@ namespace KBS2.UI
                         "Het gegeven studentnummer is te lang! Controleer of u het correct heeft ingevoerd.",
                         "Error",
                         MessageBoxButtons.OK);
+                    b = false;
                 }
-
-                bool studentExists = StudentSql.studentExists(ingelogdID);
-                if (studentExists)
+                if (b)
                 {
-                    // Genereer hash van ingevoerde wachtwoord
-                    wwHash = getHash(txtbx_wachtwoord.Text);
-                    if (StudentSql.passwordCompare(ingelogdID, wwHash))
+                    bool studentExists = StudentSql.studentExists(ingelogdID);
+                    if (studentExists)
                     {
-                        //Verberg de huidige form
-                        this.Hide();
+                        // Genereer hash van ingevoerde wachtwoord
+                        wwHash = getHash(txtbx_wachtwoord.Text);
+                        if (StudentSql.passwordCompare(ingelogdID, wwHash))
+                        {
+                            //Verberg de huidige form
+                            this.Hide();
 
-                        //Opent StudentKijkt als dialoog
-                        Form form = new StudentKijkt();
-                        form.ShowDialog();
+                            //Opent StudentKijkt als dialoog
+                            Form form = new StudentKijkt();
+                            form.ShowDialog();
 
-                        //Sluit de applicatie als StudentKijkt wordt afgesloten
-                        this.Close();
+                            //Sluit de applicatie als StudentKijkt wordt afgesloten
+                            this.Close();
+                        }
+                        else
+                        {
+                            //Als wachtwoord fout is krijg je deze melding
+                            MessageBox.Show(
+                                "Het gegeven wachtwoord is incorrect. Probeer het opnieuw.",
+                                "Incorrect wachtwoord",
+                                MessageBoxButtons.OK);
+                        }
+
                     }
                     else
                     {
-                        //Als wachtwoord fout is krijg je deze melding
+                        // Als studentnummer niet bestaat krijg je deze melding
                         MessageBox.Show(
-                            "Het gegeven wachtwoord is incorrect. Probeer het opnieuw.", 
-                            "Incorrect wachtwoord", 
+                            "Het gegeven studentnummer bestaat niet. Controleer of u het correct heeft ingevoerd." +
+                            Environment.NewLine + " Inloggen zónder S voor uw studentnummer.",
+                            "Studentnummer incorrect",
                             MessageBoxButtons.OK);
                     }
-
-                }
-                else
-                {
-                    // Als studentnummer niet bestaat krijg je deze melding
-                    MessageBox.Show(
-                         "Het gegeven studentnummer bestaat niet. Controleer of u het correct heeft ingevoerd." + Environment.NewLine + " Inloggen zónder S voor uw studentnummer.",
-                         "Studentnummer incorrect",
-                         MessageBoxButtons.OK);
                 }
             }
         }
