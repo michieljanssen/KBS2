@@ -130,7 +130,7 @@ namespace KBS2.data
 
         public static Boolean passwordCompare(int id, string hash)
         {
-            String query = "select hash from Email where studentid = " + id;
+            String query = "select hash from Email where id = " + id;
             SqlCommand com = new SqlCommand(query, con);
             SqlDataReader reader = com.ExecuteReader();
             reader.Read();
@@ -142,7 +142,7 @@ namespace KBS2.data
 
         public static String getEmail(int id)
         {
-            String query = "select email from Email where studentid = " + id;
+            String query = "select email from Email where id = " + id;
             SqlCommand com = new SqlCommand(query, con);
             SqlDataReader reader = com.ExecuteReader();
             reader.Read();
@@ -160,6 +160,16 @@ namespace KBS2.data
             string naam = reader.GetString(0);
             reader.Close();
             return naam;
+        }
+        public static String getSalt(int id)
+        {
+            String query = "select salt from Email where id = " + id;
+            SqlCommand com = new SqlCommand(query, con);
+            SqlDataReader reader = com.ExecuteReader();
+            reader.Read();
+            string salt = reader.GetString(0);
+            reader.Close();
+            return salt;
         }
     }
 }
