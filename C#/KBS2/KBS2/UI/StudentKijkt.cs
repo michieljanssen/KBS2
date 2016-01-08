@@ -15,11 +15,12 @@ namespace KBS2.UI
 {
     public partial class StudentKijkt : Form
     {
+        public int ingelogdId = 1;
+
         public StudentKijkt()
         {
             //InitializeComponent();
 
-            int id = 1;
             //Kiest welke student wordt opgehaald aan de hand van de id
             //Verander om een andere student te zien
 
@@ -28,7 +29,7 @@ namespace KBS2.UI
             //Maakt een connectie met de database
 
             try {
-                Student student = StudentSql.getStudent(id);
+                Student student = StudentSql.getStudent(ingelogdId);
                 //Haalt de data van de student op
 
                 StudentView view = new StudentView(student, this);

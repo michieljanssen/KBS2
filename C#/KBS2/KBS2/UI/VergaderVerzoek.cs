@@ -14,21 +14,36 @@ namespace KBS2.UI
 
         private void btn_verstuurBericht_Click(object sender, EventArgs e)
         {
-            try
+            
+            //Juiste student weten
+            //student.Cijfers
+            String cijferLijst;
+
+            //cijferLijst
+
+            //model.cijfer.VakCijfer Vak = 
+
+                try
             {
-                SmtpClient client = new SmtpClient("smtp.office365.com");
+                SmtpClient client = new SmtpClient("smtp.gmail.com");
                 client.Port = 587;
                 client.EnableSsl = true;
                 client.Timeout = 100000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
                 client.Credentials = new NetworkCredential(
-                  "s1082925@student.windesheim.nl", "Wachtwoordhier");
+                  "windesheimstudentvolg@gmail.com", "/,:vF4!NW&");
                 MailMessage msg = new MailMessage();
                 msg.To.Add(this.txtbx_emailOntvanger.Text);
-                msg.From = new MailAddress("s1082925@student.windesheim.nl", "Student naam hier");
+                //msg.From = new MailAddress("s1082925@student.windesheim.nl", "Student naam hier");
+                msg.From = new MailAddress("windesheimstudentvolg@gmail.com");
                 msg.Subject = this.txtbx_onderwerp.Text;
-                msg.Body = this.txtbx_bericht.Text;
+                msg.Body = this.txtbx_bericht.Text + Environment.NewLine;
+                //+
+                    
+                    
+                    
+                    ;
                 client.Send(msg);
                 MessageBox.Show("Successfully Sent Message.");
             }

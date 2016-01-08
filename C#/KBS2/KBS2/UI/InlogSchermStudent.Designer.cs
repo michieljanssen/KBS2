@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbl_email = new System.Windows.Forms.Label();
+            this.lbl_studentnr = new System.Windows.Forms.Label();
             this.lbl_wachtwoord = new System.Windows.Forms.Label();
             this.btn_inloggen = new System.Windows.Forms.Button();
             this.txtbx_email = new System.Windows.Forms.TextBox();
             this.txtbx_wachtwoord = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // lbl_email
+            // lbl_studentnr
             // 
-            this.lbl_email.AutoSize = true;
-            this.lbl_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lbl_email.Location = new System.Drawing.Point(32, 160);
-            this.lbl_email.Name = "lbl_email";
-            this.lbl_email.Size = new System.Drawing.Size(141, 26);
-            this.lbl_email.TabIndex = 0;
-            this.lbl_email.Text = "E-mail adres:";
-            this.lbl_email.Click += new System.EventHandler(this.lbl_email_Click);
+            this.lbl_studentnr.AutoSize = true;
+            this.lbl_studentnr.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.lbl_studentnr.Location = new System.Drawing.Point(32, 160);
+            this.lbl_studentnr.Name = "lbl_studentnr";
+            this.lbl_studentnr.Size = new System.Drawing.Size(112, 26);
+            this.lbl_studentnr.TabIndex = 0;
+            this.lbl_studentnr.Text = "Studentnr:";
+            this.lbl_studentnr.Click += new System.EventHandler(this.lbl_email_Click);
             // 
             // lbl_wachtwoord
             // 
@@ -95,7 +95,7 @@
             this.Controls.Add(this.txtbx_email);
             this.Controls.Add(this.btn_inloggen);
             this.Controls.Add(this.lbl_wachtwoord);
-            this.Controls.Add(this.lbl_email);
+            this.Controls.Add(this.lbl_studentnr);
             this.Name = "InlogSchermStudent";
             this.Text = "Inloggen";
             this.ResumeLayout(false);
@@ -105,7 +105,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lbl_email;
+        private System.Windows.Forms.Label lbl_studentnr;
         private System.Windows.Forms.Label lbl_wachtwoord;
         private System.Windows.Forms.Button btn_inloggen;
         private System.Windows.Forms.TextBox txtbx_email;
