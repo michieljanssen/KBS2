@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KBS2.model.cijfer
 {
-    public class VakCijfer:Gradable
+    public class VakCijfer : Gradable
     {
         //variablen van vak en cijfer + mogelijk EC's
         private String vaknaam;
@@ -18,7 +18,8 @@ namespace KBS2.model.cijfer
         public List<ToetsCijfer> Cijfers { get { return cijfers; } }
 
         //constructor
-        public VakCijfer(String vaknaam, int ec, List<ToetsCijfer> cijfers) {
+        public VakCijfer(String vaknaam, int ec, List<ToetsCijfer> cijfers)
+        {
             this.vaknaam = vaknaam;
             this.ec = ec;
             this.cijfers = cijfers;
@@ -27,14 +28,43 @@ namespace KBS2.model.cijfer
         public Boolean isVoldoende()
         {
             Boolean behaald = true;
-            ToetsCijfer[] cijfers = this.cijfers.ToArray();
-            for(int i = 0; i < cijfers.Length; i++){
+            ToetsCijfer[] cijfers = this.besteToetsen().ToArray();
+            for (int i = 0; i < cijfers.Length; i++)
+            {
                 if (!cijfers[i].isVoldoende())
                     behaald = false;
             }
             return behaald;
         }
 
+        public List<ToetsCijfer> besteToetsen()
+        {
+            List<ToetsCijfer> lijst = new List<ToetsCijfer>();
+            for (int i = 0; i < cijfers.Count; i++) {
+                if (lijst.Count > 0)
+                {
+                    Boolean heefttoets = false;
+                    for (int b = 0; b < lijst.Count; b++) {
+                        if (lijst[b].ToetsNaam.Equals(cijfers[i].ToetsNaam))
+                        {
+                            heefttoets = true;
+                            if (lijst[b].Cijfer < cijfers[i].Cijfer)
+                            {
+                                lijst[b] = cijfers[i];
+                            }
+                        }
+                      
+                    }
+                    if (!heefttoets) {
+                        lijst.Add(cijfers[i]);
+                    }
+                }
+                else {
+                    lijst.Add(cijfers[i]);
+                }
+            }
+            return lijst;
+        }
 
         //berekent het gemiddelde
         public double gemiddelde()
@@ -58,7 +88,8 @@ namespace KBS2.model.cijfer
 
                 return Math.Round(gemiddelde, 1);
             }
-            else {
+            else
+            {
                 //anders als er geen cijfers zijn: geef 0.0 terug
                 return 0.0;
             }
