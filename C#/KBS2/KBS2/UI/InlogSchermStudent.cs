@@ -28,34 +28,59 @@ namespace KBS2.UI
         private void btn_inloggen_Click(object sender, EventArgs e)
         {
             wwInput = this.txtbx_wachtwoord.Text;
-            ingelogdID = Convert.ToInt32(txtbx_email.Text);
-            bool studentExists = StudentSql.studentExists(ingelogdID);
-            if (studentExists)
+            if (string.IsNullOrWhiteSpace(txtbx_studentnr.Text))
             {
-                // Genereer hash van ingevoerde wachtwoord
-                wwHash = getHash(txtbx_wachtwoord.Text);
-                if (StudentSql.passwordCompare(ingelogdID, wwHash))
-                {
-                    //Verberg de huidige form
-                    this.Hide();
-
-                    //Opent StudentKijkt als dialoog
-                    Form form = new StudentKijkt();
-                    form.ShowDialog();
-
-                    //Sluit de applicatie als StudentKijkt wordt afgesloten
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Het gegeven wachtwoord is incorrect. Probeer het opnieuw.");
-                }
-
+                MessageBox.Show("U moet nog een studentnummer invoeren!", "Error", MessageBoxButtons.OK);
             }
             else
             {
-                // Als studentnummer niet bestaat krijg je deze melding
-                MessageBox.Show("Het gegeven studentnummer bestaat niet. Controleer of u het correct heeft ingevoerd.");
+                try
+                {
+                    ingelogdID = Convert.ToInt32(txtbx_studentnr.Text);
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show(
+                        "Het gegeven studentnummer is te lang! Controleer of u het correct heeft ingevoerd.",
+                        "Error",
+                        MessageBoxButtons.OK);
+                }
+
+                bool studentExists = StudentSql.studentExists(ingelogdID);
+                if (studentExists)
+                {
+                    // Genereer hash van ingevoerde wachtwoord
+                    wwHash = getHash(txtbx_wachtwoord.Text);
+                    if (StudentSql.passwordCompare(ingelogdID, wwHash))
+                    {
+                        //Verberg de huidige form
+                        this.Hide();
+
+                        //Opent StudentKijkt als dialoog
+                        Form form = new StudentKijkt();
+                        form.ShowDialog();
+
+                        //Sluit de applicatie als StudentKijkt wordt afgesloten
+                        this.Close();
+                    }
+                    else
+                    {
+                        //Als wachtwoord fout is krijg je deze melding
+                        MessageBox.Show(
+                            "Het gegeven wachtwoord is incorrect. Probeer het opnieuw.", 
+                            "Incorrect wachtwoord", 
+                            MessageBoxButtons.OK);
+                    }
+
+                }
+                else
+                {
+                    // Als studentnummer niet bestaat krijg je deze melding
+                    MessageBox.Show(
+                         "Het gegeven studentnummer bestaat niet. Controleer of u het correct heeft ingevoerd." + Environment.NewLine + " Inloggen zónder S voor uw studentnummer.",
+                         "Studentnummer incorrect",
+                         MessageBoxButtons.OK);
+                }
             }
         }
 

@@ -31,7 +31,7 @@
             this.lbl_studentnr = new System.Windows.Forms.Label();
             this.lbl_wachtwoord = new System.Windows.Forms.Label();
             this.btn_inloggen = new System.Windows.Forms.Button();
-            this.txtbx_email = new System.Windows.Forms.TextBox();
+            this.txtbx_studentnr = new System.Windows.Forms.TextBox();
             this.txtbx_wachtwoord = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -43,7 +43,7 @@
             this.lbl_studentnr.Name = "lbl_studentnr";
             this.lbl_studentnr.Size = new System.Drawing.Size(112, 26);
             this.lbl_studentnr.TabIndex = 0;
-            this.lbl_studentnr.Text = "Studentnr:";
+            this.lbl_studentnr.Text = "StudentNr:";
             // 
             // lbl_wachtwoord
             // 
@@ -66,13 +66,13 @@
             this.btn_inloggen.UseVisualStyleBackColor = true;
             this.btn_inloggen.Click += new System.EventHandler(this.btn_inloggen_Click);
             // 
-            // txtbx_email
+            // txtbx_studentnr
             // 
-            this.txtbx_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.txtbx_email.Location = new System.Drawing.Point(179, 157);
-            this.txtbx_email.Name = "txtbx_email";
-            this.txtbx_email.Size = new System.Drawing.Size(408, 32);
-            this.txtbx_email.TabIndex = 3;
+            this.txtbx_studentnr.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.txtbx_studentnr.Location = new System.Drawing.Point(179, 157);
+            this.txtbx_studentnr.Name = "txtbx_email";
+            this.txtbx_studentnr.Size = new System.Drawing.Size(408, 32);
+            this.txtbx_studentnr.TabIndex = 3;
             // 
             // txtbx_wachtwoord
             // 
@@ -89,7 +89,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 441);
             this.Controls.Add(this.txtbx_wachtwoord);
-            this.Controls.Add(this.txtbx_email);
+            this.Controls.Add(this.txtbx_studentnr);
             this.Controls.Add(this.btn_inloggen);
             this.Controls.Add(this.lbl_wachtwoord);
             this.Controls.Add(this.lbl_studentnr);
@@ -105,7 +105,7 @@
         private System.Windows.Forms.Label lbl_studentnr;
         private System.Windows.Forms.Label lbl_wachtwoord;
         private System.Windows.Forms.Button btn_inloggen;
-        private System.Windows.Forms.TextBox txtbx_email;
+        private System.Windows.Forms.TextBox txtbx_studentnr;
         private System.Windows.Forms.TextBox txtbx_wachtwoord;
     }
 }
