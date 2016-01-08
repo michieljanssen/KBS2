@@ -127,5 +127,28 @@ namespace KBS2.data
             reader.Close();
             return check;
         }
+
+        public static Boolean passwordCompare(int id, string hash)
+        {
+            String query = "select hash from Email where studentid = " + id;
+            SqlCommand com = new SqlCommand(query, con);
+            SqlDataReader reader = com.ExecuteReader();
+            reader.Read();
+            string storedHash = reader.GetString(0);
+            reader.Close();
+            bool check = storedHash.Equals(hash);           
+            return check;
+        }
+
+        public static String getEmail(int id)
+        {
+            String query = "select email from Email where studentid = " + id;
+            SqlCommand com = new SqlCommand(query, con);
+            SqlDataReader reader = com.ExecuteReader();
+            reader.Read();
+            string email = reader.GetString(0);
+            reader.Close();
+            return email;
+        }
     }
 }

@@ -8,17 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Windows.Forms;
+using KBS2.data;
 
 namespace KBS2.UI
 {
     public partial class InlogSchermStudent : Form
     {
-        private string wwInput;
+        private string wwHash;
         private byte[] result;
 
         public InlogSchermStudent()
         {
             InitializeComponent();
+            StudentSql.connect();
         }
 
         private void lbl_email_Click(object sender, EventArgs e)
@@ -43,40 +45,54 @@ namespace KBS2.UI
 
         private void btn_inloggen_Click(object sender, EventArgs e)
         {
-            string wwhash = getCrypt(txtbx_wachtwoord.Text);
-            Console.WriteLine(wwhash);
-            MessageBox.Show(wwhash);
-
-            //wwInput = "";
-            //SHA512 alg = SHA512.Create();
-            //result = alg.ComputeHash(Encoding.UTF8.GetBytes(this.txtbx_wachtwoord.Text));
-            //wwInput = Encoding.UTF8.GetString(result);
-            //Console.WriteLine(wwInput);
-
-            //Verberg de huidige form
-            this.Hide();
-
-            //Opent StudentKijkt als dialoog
-            Form form = new StudentKijkt();
-            form.ShowDialog();
-
-            //Sluit de applicatie als StudentKijkt wordt afgesloten
-            this.Close();
-        }
-
-        public string getCrypt(string text)
-        {
-            UnicodeEncoding UE = new UnicodeEncoding();
-            byte[] message = UE.GetBytes(text);
-            SHA512Managed hashString = new SHA512Managed();
-            string hexNumber = "";
-            byte[] hashValue = hashString.ComputeHash(message);
-            foreach (byte x in hashValue)
+            int sNum = Convert.ToInt32(txtbx_email.Text);
+            bool studentExists = StudentSql.studentExists(sNum);
+            if (studentExists)
             {
-                hexNumber += String.Format("{0:x2}", x);
+                // Genereer hash van ingevoerde wachtwoord
+                wwHash = getHash(txtbx_wachtwoord.Text);
+                if (StudentSql.passwordCompare(sNum, wwHash))
+                {
+                    //Verberg de huidige form
+                    this.Hide();
+
+                    //Opent StudentKijkt als dialoog
+                    Form form = new StudentKijkt();
+                    form.ShowDialog();
+
+                    //Sluit de applicatie als StudentKijkt wordt afgesloten
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Het gegeven wachtwoord is incorrect. Probeer het opnieuw.");
+                }
+                
             }
-            string hash = hexNumber;
-            return hash;
+            else
+            {
+                // Als studentnummer niet bestaat krijg je deze melding
+                MessageBox.Show("Het gegeven studentnummer bestaat niet. Controleer of u het correct heeft ingevoerd.");
+            }
+
+            
+            
         }
+
+        //Functie om hash te krijgen van ingevoerde wachtwoord
+        public string getHash(string text)
+        {
+            // Maken gebruik van SHA512 algoritme
+            SHA512 alg = SHA512.Create();
+            // byte result is de hash
+            result = alg.ComputeHash(Encoding.UTF8.GetBytes(this.txtbx_wachtwoord.Text));
+            // Convert byte naar HEX string
+            StringBuilder hex = new StringBuilder(result.Length * 2);
+            foreach (byte b in result)
+                hex.AppendFormat("{0:x2}", b);
+            // HEX string hash
+            return hex.ToString().ToUpper();
+        }
+
     }
 }
