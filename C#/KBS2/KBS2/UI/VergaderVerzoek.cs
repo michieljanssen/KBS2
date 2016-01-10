@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Mail;
 using System.Windows.Forms;
+using KBS2.data;
 
 namespace KBS2.UI
 {
@@ -53,27 +54,32 @@ namespace KBS2.UI
 
             try
             {
-                SmtpClient client = new SmtpClient("smtp.gmail.com");
+                //SmtpClient client = new SmtpClient("smtp.gmail.com");
+                SmtpClient client = new SmtpClient("smtp.office365.com");
                 client.Port = 587;
                 client.EnableSsl = true;
                 client.Timeout = 100000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
+                //client.Credentials = new NetworkCredential(
+                //  "windesheimstudentvolg@gmail.com", "/,:vF4!NW&");
                 client.Credentials = new NetworkCredential(
-                  "windesheimstudentvolg@gmail.com", "/,:vF4!NW&");
+                  StudentSql.getEmail(InlogSchermStudent.ingelogdID), InlogSchermStudent.wwInput);
                 MailMessage msg = new MailMessage();
                 msg.To.Add(this.txtbx_emailOntvanger.Text);
-                //msg.From = new MailAddress("s1082925@student.windesheim.nl", "Student naam hier");
-                msg.From = new MailAddress("windesheimstudentvolg@gmail.com");
+                msg.From = new MailAddress(StudentSql.getEmail(InlogSchermStudent.ingelogdID), StudentSql.getEmail(InlogSchermStudent.ingelogdID));
+                //msg.From = new MailAddress("windesheimstudentvolg@gmail.com");
                 msg.Subject = this.txtbx_onderwerp.Text;
                 msg.IsBodyHtml = true;
                 msg.Body = this.txtbx_bericht.Text + Environment.NewLine + cijferTekst;
                 client.Send(msg);
-                MessageBox.Show("Successfully Sent Message.");
+                MessageBox.Show("Bericht succesvol verzonden.");
             }
-            catch (Exception ex)
+            //catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
+                MessageBox.Show("Er is iets fout gegaan, probeer het opnieuw.", "Error", MessageBoxButtons.OK);
             }
         }
             
