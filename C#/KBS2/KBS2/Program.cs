@@ -18,16 +18,10 @@ namespace KBS2
         [STAThread]
         static void Main()
         {
-            bool a = true;
 
-            a = false;
-            //uitleg pls
-
- 
             //Als deze true is wordt de applicatie geopend als student.
             StudentView.studentKijkt = false;
-            StudentView.studentKijkt = true;
-
+            //StudentView.studentKijkt = true;
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -47,16 +41,7 @@ namespace KBS2
             }
             else
             {
-                if (a)
-                {
-                    Application.Run(new Form1());
-                    //Start de standaard applicatie
-                }
-                else
-                {
                     Application.Run(new Window());
-                    //Start de test met andere zoekmethodes
-                }
             }
         }
     }
