@@ -40,28 +40,26 @@ namespace KBS2.model.cijfer.Tests
             [TestMethod()]
             public void rtrnFalseWheNotAllGradesArePassable()
             {
+                bool expected = false;
                 ToetsCijfer cijfer1 = new ToetsCijfer("01", "o1", "praktijk", 9.4, "11-05-1995");
                 ToetsCijfer cijfer2 = new ToetsCijfer("01", "o1", "Theorie", 3.8, "11-05-1995");
                 ToetsCijfer cijfer3 = new ToetsCijfer("01", "o1", "multiple-choice", 5.5, "11-05-1995");
                 List<ToetsCijfer> cijfers = new List<ToetsCijfer> { cijfer1, cijfer2, cijfer3 };
                 VakCijfer test = new VakCijfer("C#", 4, cijfers);
-                if (test.ECsBehaald() == false)
-                {
-                    Assert.IsTrue(true);
-                }
+                bool actual = test.ECsBehaald();
+                Assert.AreEqual(expected, actual);
             }
             [TestMethod()]
             public void rtnrTrueWhenAllGradesArePassable()
             {
+                bool expected = true;
                 ToetsCijfer cijfer1 = new ToetsCijfer("01", "o1", "praktijk", 9.4, "11-05-1995");
                 ToetsCijfer cijfer2 = new ToetsCijfer("01", "o1", "Theorie", 6.8, "11-05-1995");
                 ToetsCijfer cijfer3 = new ToetsCijfer("01", "o1", "multiple-choice", 5.5, "11-05-1995");
                 List<ToetsCijfer> cijfers = new List<ToetsCijfer> { cijfer1, cijfer2, cijfer3 };
                 VakCijfer test = new VakCijfer("C#", 4, cijfers);
-                if (test.ECsBehaald() == true)
-                {
-                    Assert.IsTrue(true);
-                }
+                bool actual = test.ECsBehaald();
+                Assert.AreEqual(expected, actual);
             }
         }
 
@@ -71,19 +69,14 @@ namespace KBS2.model.cijfer.Tests
             [TestMethod()]
             public void rtrnfourpointfivegrade()
             {
+                double expected = 4.5;
                 ToetsCijfer cijfer1 = new ToetsCijfer("01", "o1", "praktijk", 4, "11-05-1995");
                 ToetsCijfer cijfer2 = new ToetsCijfer("01", "o1", "Theorie", 6.8, "11-05-1995");
                 ToetsCijfer cijfer3 = new ToetsCijfer("01", "o1", "multiple-choice", 2.7, "11-05-1995");
                 List<ToetsCijfer> cijfers = new List<ToetsCijfer> { cijfer1, cijfer2, cijfer3 };
                 VakCijfer test = new VakCijfer("C#", 4, cijfers);
-                if (test.gemiddelde() == 4.5)
-                {
-                    Assert.IsTrue(true);
-                }
-                else
-                {
-                    Assert.Fail();
-                }
+                double actual = test.gemiddelde();
+                Assert.AreEqual(expected, actual);
             }
         }
 
