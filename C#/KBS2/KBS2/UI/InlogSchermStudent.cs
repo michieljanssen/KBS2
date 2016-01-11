@@ -46,67 +46,84 @@ namespace KBS2.UI
         private void btn_inloggen_Click(object sender, EventArgs e)
         {
             wwInput = this.txtbx_wachtwoord.Text;
-            if (string.IsNullOrWhiteSpace(txtbx_studentnr.Text))
-            {
-                MessageBox.Show("U moet nog een studentnummer invoeren!", "Error", MessageBoxButtons.OK);
-            }
-            else
-            {
-                //Bool b, controle bool zodat de code op de correcte volgorde uitvoert
-                bool b = true;
-                try
-                {
-                    //Convert string studentnummer naar int
-                    ingelogdID = Convert.ToInt32(txtbx_studentnr.Text);
-                }
-                catch(Exception)
-                {
-                    MessageBox.Show(
-                        "Het gegeven studentnummer is te lang! Controleer of u het correct heeft ingevoerd.",
-                        "Error",
-                        MessageBoxButtons.OK);
-                    b = false;
-                }
-                if (b)
-                {
-                    bool studentExists = StudentSql.studentExists(ingelogdID);
-                    if (studentExists)
-                    {
-                        // Genereer hash van ingevoerde wachtwoord
-                        wwHash = getHash(txtbx_wachtwoord.Text);
-                        if (StudentSql.passwordCompare(ingelogdID, wwHash))
-                        {
-                            //Verberg de huidige form
-                            this.Hide();
 
-                            //Opent StudentKijkt als dialoog
-                            Form form = new StudentKijkt();
-                            form.ShowDialog();
 
-                            //Sluit de applicatie als StudentKijkt wordt afgesloten
-                            this.Close();
-                        }
-                        else
-                        {
-                            //Als wachtwoord fout is krijg je deze melding
-                            MessageBox.Show(
-                                "Het gegeven wachtwoord is incorrect. Probeer het opnieuw.",
-                                "Incorrect wachtwoord",
-                                MessageBoxButtons.OK);
-                        }
+            // START TEMP CODE
+            ingelogdID = Convert.ToInt32(txtbx_studentnr.Text);
+            //Verberg de huidige form
+            this.Hide();
 
-                    }
-                    else
-                    {
-                        // Als studentnummer niet bestaat krijg je deze melding
-                        MessageBox.Show(
-                            "Het gegeven studentnummer bestaat niet. Controleer of u het correct heeft ingevoerd." +
-                            Environment.NewLine + " Inloggen zónder S voor uw studentnummer.",
-                            "Studentnummer incorrect",
-                            MessageBoxButtons.OK);
-                    }
-                }
-            }
+            //Opent StudentKijkt als dialoog
+            Form form = new StudentKijkt();
+            form.ShowDialog();
+
+            //Sluit de applicatie als StudentKijkt wordt afgesloten
+            this.Close();
+            // END TEMP CODE
+
+            // DIT IS DE ECHTE CODE 
+            //if (string.IsNullOrWhiteSpace(txtbx_studentnr.Text))
+            //{
+            //    MessageBox.Show("U moet nog een studentnummer invoeren!", "Error", MessageBoxButtons.OK);
+            //}
+            //else
+            //{
+            //    //Bool b, controle bool zodat de code op de correcte volgorde uitvoert
+            //    bool b = true;
+            //    try
+            //    {
+            //        //Convert string studentnummer naar int
+            //        ingelogdID = Convert.ToInt32(txtbx_studentnr.Text);
+            //    }
+            //    catch(Exception)
+            //    {
+            //        MessageBox.Show(
+            //            "Het gegeven studentnummer is te lang! Controleer of u het correct heeft ingevoerd.",
+            //            "Error",
+            //            MessageBoxButtons.OK);
+            //        b = false;
+            //    }
+            //    if (b)
+            //    {
+            //        bool studentExists = StudentSql.studentExists(ingelogdID);
+            //        if (studentExists)
+            //        {
+            //            // Genereer hash van ingevoerde wachtwoord
+            //            wwHash = getHash(txtbx_wachtwoord.Text);
+            //            if (StudentSql.passwordCompare(ingelogdID, wwHash))
+            //            {
+            //                //Verberg de huidige form
+            //                this.Hide();
+
+            //                //Opent StudentKijkt als dialoog
+            //                Form form = new StudentKijkt();
+            //                form.ShowDialog();
+
+            //                //Sluit de applicatie als StudentKijkt wordt afgesloten
+            //                this.Close();
+            //            }
+            //            else
+            //            {
+            //                //Als wachtwoord fout is krijg je deze melding
+            //                MessageBox.Show(
+            //                    "Het gegeven wachtwoord is incorrect. Probeer het opnieuw.",
+            //                    "Incorrect wachtwoord",
+            //                    MessageBoxButtons.OK);
+            //            }
+
+            //        }
+            //        else
+            //        {
+            //            // Als studentnummer niet bestaat krijg je deze melding
+            //            MessageBox.Show(
+            //                "Het gegeven studentnummer bestaat niet. Controleer of u het correct heeft ingevoerd." +
+            //                Environment.NewLine + " Inloggen zónder S voor uw studentnummer.",
+            //                "Studentnummer incorrect",
+            //                MessageBoxButtons.OK);
+            //        }
+            //    }
+            //}
+            // END DIT IS DE ECHTE CODE
         }
 
         //Functie om hash te krijgen van ingevoerde wachtwoord
