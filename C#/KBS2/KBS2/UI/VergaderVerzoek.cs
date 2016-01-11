@@ -18,6 +18,8 @@ namespace KBS2.UI
         public VergaderVerzoek()
         {
             InitializeComponent();
+            //Zet focus op textbox email ontvanger zodat de gebruiker meteen kan typen
+            this.ActiveControl = txtbx_emailOntvanger;
         }
 
         private void btn_verstuurBericht_Click(object sender, EventArgs e)
@@ -40,16 +42,17 @@ namespace KBS2.UI
                     if (toetsen[b].toetsName.Length >= 8)
                     {
                         // Individuele toetsen toevoegen aan de output per vak
-                        cijferTekst += '\t' + toetsen[b].toetsName + '\t' + toetsen[b].Cijfer + Environment.NewLine;
+                        cijferTekst += '\t' + toetsen[b].toetsName + '\t' + toetsen[b].Cijfer + '\t' + cijferLijst[i].Cijfers + Environment.NewLine;
                     }
                     else
                     {
                         // Individuele toetsen toevoegen aan de output per vak
-                        cijferTekst += '\t' + toetsen[b].toetsName + '\t' + '\t' + toetsen[b].Cijfer + Environment.NewLine;
+                        cijferTekst += '\t' + toetsen[b].toetsName + '\t' + '\t' + toetsen[b].Cijfer + '\t' + cijferLijst[i].Cijfers + Environment.NewLine;
                     }
                 }
             }
 
+            //Probeer mail te versturen
             try
             {
                 //SmtpClient client = new SmtpClient("smtp.gmail.com");
@@ -61,15 +64,21 @@ namespace KBS2.UI
                 client.UseDefaultCredentials = false;
                 //client.Credentials = new NetworkCredential(
                 //  "windesheimstudentvolg@gmail.com", "/,:vF4!NW&");
+                // Student inloggen om mail te versturen, ingelogd student wordt hiervoor gebruikt
                 client.Credentials = new NetworkCredential(
                     StudentSql.getEmail(InlogSchermStudent.ingelogdID), InlogSchermStudent.wwInput);
+
+                //Achterhalen aan wie bericht verzonden wordt en bericht samenstellen met cijferlijst
                 MailMessage msg = new MailMessage();
                 msg.To.Add(this.txtbx_emailOntvanger.Text);
                 msg.From = new MailAddress(StudentSql.getEmail(InlogSchermStudent.ingelogdID), StudentSql.getStudentNaam(InlogSchermStudent.ingelogdID));
                 //msg.From = new MailAddress("windesheimstudentvolg@gmail.com");
                 msg.Subject = this.txtbx_onderwerp.Text;
                 msg.Body = this.txtbx_bericht.Text + Environment.NewLine + Environment.NewLine + cijferTekst;
+
+                //Verzend mail
                 client.Send(msg);
+                //Als er geen fouten optreden krijg je deze melding en is de mail verzonden
                 MessageBox.Show(
                     "Bericht succesvol verzonden.",
                     "Verzonden", 
@@ -77,6 +86,7 @@ namespace KBS2.UI
             }
             catch (Exception)
             {
+                //Als er een fout optreed krijg je deze melding
                 MessageBox.Show(
                     "Er is iets fout gegaan. Probeer het opnieuw.", 
                     "Error", 
