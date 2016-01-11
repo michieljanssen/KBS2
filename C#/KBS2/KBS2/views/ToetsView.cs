@@ -68,7 +68,7 @@ namespace KBS2.views
                         this.dgv_toets.Rows.Add(row);
 
                         //verandert de kleur van de text als voldoende is of niet
-                        if (toets.Cijfers[i].isVoldoende())
+                        if (toets.Cijfers[i].ECsBehaald())
                         {
                             //groen voor voldoende
                             this.dgv_toets.Rows[i].Cells[2].Style.ForeColor = Color.Green;

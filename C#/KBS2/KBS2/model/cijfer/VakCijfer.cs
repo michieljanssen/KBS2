@@ -25,13 +25,13 @@ namespace KBS2.model.cijfer
             this.cijfers = cijfers;
         }
         //checkt of het cijfer een voldoende is
-        public Boolean isVoldoende()
+        public Boolean ECsBehaald()
         {
             Boolean behaald = true;
             ToetsCijfer[] cijfers = this.besteToetsen().ToArray();
             for (int i = 0; i < cijfers.Length; i++)
             {
-                if (!cijfers[i].isVoldoende())
+                if (!cijfers[i].ECsBehaald())
                     behaald = false;
             }
             return behaald;
@@ -39,31 +39,31 @@ namespace KBS2.model.cijfer
 
         public List<ToetsCijfer> besteToetsen()
         {
-            List<ToetsCijfer> lijst = new List<ToetsCijfer>();
+            List<ToetsCijfer> list = new List<ToetsCijfer>();
             for (int i = 0; i < cijfers.Count; i++) {
-                if (lijst.Count > 0)
+                if (list.Count > 0) //IF list contains grades
                 {
-                    Boolean heefttoets = false;
-                    for (int b = 0; b < lijst.Count; b++) {
-                        if (lijst[b].ToetsNaam.Equals(cijfers[i].ToetsNaam))
+                    Boolean hasToets = false; //THEN hastToets = false
+                    for (int b = 0; b < list.Count; b++) {
+                        if (list[b].toetsName.Equals(cijfers[i].toetsName))//loop to find the highest grade from that toetstype
                         {
-                            heefttoets = true;
-                            if (lijst[b].Cijfer < cijfers[i].Cijfer)
+                            hasToets = true;
+                            if (list[b].Cijfer < cijfers[i].Cijfer)
                             {
-                                lijst[b] = cijfers[i];
+                                list[b] = cijfers[i];
                             }
                         }
                       
                     }
-                    if (!heefttoets) {
-                        lijst.Add(cijfers[i]);
+                    if (!hasToets) {
+                        list.Add(cijfers[i]);
                     }
                 }
-                else {
-                    lijst.Add(cijfers[i]);
+                else { //IF list is empty add first grade
+                    list.Add(cijfers[i]);
                 }
             }
-            return lijst;
+            return list;
         }
 
         //berekent het gemiddelde

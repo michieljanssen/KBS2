@@ -19,7 +19,7 @@ namespace KBS2.model.cijfer
         public String Datum { get { return datum; } }
         public String Naam { get { return leerlingnaam; } }
         public String ID { get { return leerlingid; } }
-        public String ToetsNaam { get { return toetsnaam; } }
+        public String toetsName { get { return toetsnaam; } }
         
         //constructor
         public ToetsCijfer(String leerlingid, String leerlingnaam, String toetsnaam, double cijfer, String datum) {
@@ -31,7 +31,7 @@ namespace KBS2.model.cijfer
         }
         
         //check voor voldoende
-        public Boolean isVoldoende() {
+        public Boolean ECsBehaald() {
             return cijfer >= 5.5;
         }
     }

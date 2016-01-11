@@ -99,7 +99,7 @@ namespace KBS2.UI
                     this.dgv_toets.Rows.Add(row);   //add new rows to the table
                     this.dgv_toets.Rows[i].Cells[2].Style.ForeColor = Color.Red; // default color is red
                     //verandert de kleur van de text als voldoende is of niet
-                    if (toets.Cijfers[i].isVoldoende())
+                    if (toets.Cijfers[i].ECsBehaald())
                     {
                         this.dgv_toets.Rows[i].Cells[2].Style.ForeColor = Color.Green; // acceptable grades are green
                     }
