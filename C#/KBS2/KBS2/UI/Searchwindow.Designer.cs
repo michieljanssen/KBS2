@@ -48,9 +48,9 @@
             // Zk_Bx
             // 
             this.Zk_Bx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.Zk_Bx.Location = new System.Drawing.Point(235, 283);
+            this.Zk_Bx.Location = new System.Drawing.Point(61, 283);
             this.Zk_Bx.Name = "Zk_Bx";
-            this.Zk_Bx.Size = new System.Drawing.Size(430, 26);
+            this.Zk_Bx.Size = new System.Drawing.Size(604, 26);
             this.Zk_Bx.TabIndex = 1;
             this.Zk_Bx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Zk_Bx_KeyPress);
             // 

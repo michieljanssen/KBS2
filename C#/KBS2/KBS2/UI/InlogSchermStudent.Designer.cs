@@ -39,11 +39,11 @@
             // 
             this.lbl_studentnr.AutoSize = true;
             this.lbl_studentnr.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lbl_studentnr.Location = new System.Drawing.Point(22, 160);
+            this.lbl_studentnr.Location = new System.Drawing.Point(28, 160);
             this.lbl_studentnr.Name = "lbl_studentnr";
-            this.lbl_studentnr.Size = new System.Drawing.Size(180, 26);
+            this.lbl_studentnr.Size = new System.Drawing.Size(174, 26);
             this.lbl_studentnr.TabIndex = 0;
-            this.lbl_studentnr.Text = "Student nummer:";
+            this.lbl_studentnr.Text = "Studentnummer:";
             // 
             // lbl_wachtwoord
             // 
