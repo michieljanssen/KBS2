@@ -66,6 +66,28 @@ namespace KBS2.model.Tests
                 int actual = teststudent.getVakCijfer("UML").Cijfers.Count();
                 Assert.AreEqual(expected, actual);
             }
+            [TestMethod()]
+            public void rtrnthreeCsharpgrades()
+            {
+                int expected = 3;
+                VakCijfer Vc1 = new VakCijfer("C#", 2, new List<ToetsCijfer> { t1, t2, t3 });
+                VakCijfer Vc2 = new VakCijfer("UML", 4, new List<ToetsCijfer> { aa, ab, ac, ad });
+                VakCijfer Vc3 = new VakCijfer("DB", 4, new List<ToetsCijfer> { ba, bb, bc, bd });
+                Student teststudent = new Student("nm1", "01", new List<VakCijfer> { Vc1, Vc2, Vc3 });
+                int actual = teststudent.getVakCijfer("C#").Cijfers.Count();
+                Assert.AreEqual(expected, actual);
+            }
+            [TestMethod()]
+            public void rtrnfourDBgrades()
+            {
+                int expected = 4;
+                VakCijfer Vc1 = new VakCijfer("C#", 2, new List<ToetsCijfer> { t1, t2, t3 });
+                VakCijfer Vc2 = new VakCijfer("UML", 4, new List<ToetsCijfer> { aa, ab, ac, ad });
+                VakCijfer Vc3 = new VakCijfer("DB", 4, new List<ToetsCijfer> { ba, bb, bc, bd });
+                Student teststudent = new Student("nm1", "01", new List<VakCijfer> { Vc1, Vc2, Vc3 });
+                int actual = teststudent.getVakCijfer("DB").Cijfers.Count();
+                Assert.AreEqual(expected, actual);
+            }
         }
 
         [TestClass()]
