@@ -23,6 +23,7 @@ namespace KBS2.UI
         {
             InitializeComponent();
             StudentSql.connect();
+            this.ActiveControl = txtbx_studentnr;
         }
 
         // Op enter drukken heeft hetzelfde effect als op de knop "Inloggen" klikken.
@@ -126,6 +127,5 @@ namespace KBS2.UI
             // HEX string hash
             return hex.ToString().ToUpper();
         }
-        
     }
 }
