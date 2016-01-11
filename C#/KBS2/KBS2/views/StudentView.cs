@@ -74,7 +74,7 @@ namespace KBS2.views
                     VakCijfer vak = student.Cijfers[i];
                     //Als het vak niet voldoende is word er geen gemiddelde gegeven en 'niet behaald' ingevuld 
                     //Als het vak wel voldoende is word het gemiddelde ingevuld en 'behaald' ingevuld
-                    if (vak.isVoldoende() == false)
+                    if (vak.ECsBehaald() == false)
                     {
                         object[] obj = { vak.VakNaam, "", "Niet Behaald", vak.EC };
 
@@ -326,10 +326,10 @@ namespace KBS2.views
                 for (int i = 0; i < vak.Cijfers.Count; i++)
                 {
                     ToetsCijfer cijfer = vak.Cijfers[i];
-                    if (!added.Contains(cijfer.ToetsNaam))
+                    if (!added.Contains(cijfer.toetsName))
                     {
-                        added.Add(cijfer.ToetsNaam);
-                        object[] row = { cijfer.ToetsNaam };
+                        added.Add(cijfer.toetsName);
+                        object[] row = { cijfer.toetsName };
                         dgv_toetsen.Rows.Add(row);
                     }
                 }
@@ -340,7 +340,7 @@ namespace KBS2.views
                     for (int i = 0; i < vak.Cijfers.Count; i++)
                     {
                         ToetsCijfer cijfer = vak.Cijfers[i];
-                        if ((String)dgv_toetsen.Rows[x].Cells[0].Value == cijfer.ToetsNaam)
+                        if ((String)dgv_toetsen.Rows[x].Cells[0].Value == cijfer.toetsName)
                         {
                             cell.Items.Add(cijfer.Cijfer);
                         }

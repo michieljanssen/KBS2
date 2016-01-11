@@ -9,6 +9,6 @@ namespace KBS2.model.cijfer
     interface Gradable
     {
         //abstracte methode om te checken of een cijfer voldoende is
-        Boolean isVoldoende();
+        Boolean ECsBehaald();
     }
 }

@@ -15,7 +15,7 @@ namespace KBS2.model.Tests
         public class StudentTest
         {
             [TestMethod()]
-            public void StuntTest()
+            public void Constructor()
             {
                 Assert.Fail();
             }

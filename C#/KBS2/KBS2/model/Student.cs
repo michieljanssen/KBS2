@@ -45,7 +45,7 @@ namespace KBS2.model
             //gaat door alle cijfers heen
             for (int i = 0; i < cijfers.Count; i++) {
                 //checkt of het cijfer een voldoende is
-                if (cijfers[i].isVoldoende()) {
+                if (cijfers[i].ECsBehaald()) {
                     //voegt EC's toe
                     amount += cijfers[i].EC;
                 }
@@ -63,7 +63,7 @@ namespace KBS2.model
             for (int i = 0; i < cijfers.Count; i++)
             {
                 //checkt of het cijfer een onvoldoende is
-                if (!cijfers[i].isVoldoende())
+                if (!cijfers[i].ECsBehaald())
                 {
                     //voegt EC's toe
                     amount += cijfers[i].EC;
