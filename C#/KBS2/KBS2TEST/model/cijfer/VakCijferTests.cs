@@ -12,12 +12,24 @@ namespace KBS2.model.cijfer.Tests
     public class VakCijferTests
     {
         [TestClass()]
-        public class VakCijferTest
+        public class constructortest
         {
             [TestMethod()]
-            public void method()
+            public void Constructor()
             {
-                Assert.Fail();
+                ToetsCijfer cijfer1 = new ToetsCijfer("01", "o1", "praktijk", 9.4, "11-05-1995");
+                ToetsCijfer cijfer2 = new ToetsCijfer("01", "o1", "Theorie", 3.8, "11-05-1995");
+                ToetsCijfer cijfer3 = new ToetsCijfer("01", "o1", "multiple-choice", 5.5, "11-05-1995");
+                List<ToetsCijfer> cijfers = new List<ToetsCijfer>{ cijfer1, cijfer2, cijfer3 };
+                VakCijfer test = new VakCijfer("C#", 4, cijfers);
+                if (test != null)
+                {
+                    Assert.IsTrue(true);
+                }
+                else
+                {
+                    Assert.Fail();
+                }
             }
 
         }
@@ -26,9 +38,30 @@ namespace KBS2.model.cijfer.Tests
         public class isVoldoendeTest
         {
             [TestMethod()]
-            public void Watdoetdezefuntie()
+            public void rtrnFalseWheNotAllGradesArePassable()
             {
-                Assert.Fail();
+                ToetsCijfer cijfer1 = new ToetsCijfer("01", "o1", "praktijk", 9.4, "11-05-1995");
+                ToetsCijfer cijfer2 = new ToetsCijfer("01", "o1", "Theorie", 3.8, "11-05-1995");
+                ToetsCijfer cijfer3 = new ToetsCijfer("01", "o1", "multiple-choice", 5.5, "11-05-1995");
+                List<ToetsCijfer> cijfers = new List<ToetsCijfer> { cijfer1, cijfer2, cijfer3 };
+                VakCijfer test = new VakCijfer("C#", 4, cijfers);
+                if(test.isVoldoende() == false)
+                {
+                    Assert.IsTrue(true);
+                }
+            }
+            [TestMethod()]
+            public void rtnrTrueWhenAllGradesArePassable()
+            {
+                ToetsCijfer cijfer1 = new ToetsCijfer("01", "o1", "praktijk", 9.4, "11-05-1995");
+                ToetsCijfer cijfer2 = new ToetsCijfer("01", "o1", "Theorie", 6.8, "11-05-1995");
+                ToetsCijfer cijfer3 = new ToetsCijfer("01", "o1", "multiple-choice", 5.5, "11-05-1995");
+                List<ToetsCijfer> cijfers = new List<ToetsCijfer> { cijfer1, cijfer2, cijfer3 };
+                VakCijfer test = new VakCijfer("C#", 4, cijfers);
+                if (test.isVoldoende() == true)
+                {
+                    Assert.IsTrue(true);
+                }
             }
         }
 
