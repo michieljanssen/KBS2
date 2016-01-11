@@ -42,12 +42,12 @@ namespace KBS2.UI
                     if (toetsen[b].toetsName.Length >= 8)
                     {
                         // Individuele toetsen toevoegen aan de output per vak
-                        cijferTekst += '\t' + toetsen[b].toetsName + '\t' + toetsen[b].Cijfer + '\t' + cijferLijst[i].Cijfers + Environment.NewLine;
+                        cijferTekst += '\t' + toetsen[b].toetsName + '\t' + toetsen[b].Cijfer + Environment.NewLine;
                     }
                     else
                     {
                         // Individuele toetsen toevoegen aan de output per vak
-                        cijferTekst += '\t' + toetsen[b].toetsName + '\t' + '\t' + toetsen[b].Cijfer + '\t' + cijferLijst[i].Cijfers + Environment.NewLine;
+                        cijferTekst += '\t' + toetsen[b].toetsName + '\t' + '\t' + toetsen[b].Cijfer + Environment.NewLine;
                     }
                 }
             }
