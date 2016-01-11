@@ -25,6 +25,23 @@ namespace KBS2.UI
             StudentSql.connect();
         }
 
+        // Op enter drukken heeft hetzelfde effect als op de knop "Inloggen" klikken.
+        private void txtbx_wachtwoord_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                btn_inloggen.PerformClick();
+            }
+        }
+        // Op enter drukken heeft hetzelfde effect als op de knop "Inloggen" klikken.
+        private void txtbx_studentnr_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                btn_inloggen.PerformClick();
+            }
+        }
+
         private void btn_inloggen_Click(object sender, EventArgs e)
         {
             wwInput = this.txtbx_wachtwoord.Text;

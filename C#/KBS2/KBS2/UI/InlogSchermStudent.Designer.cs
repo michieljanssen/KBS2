@@ -73,6 +73,7 @@
             this.txtbx_studentnr.Name = "txtbx_email";
             this.txtbx_studentnr.Size = new System.Drawing.Size(408, 32);
             this.txtbx_studentnr.TabIndex = 3;
+            this.txtbx_studentnr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbx_studentnr_KeyPress);
             // 
             // txtbx_wachtwoord
             // 
@@ -82,6 +83,7 @@
             this.txtbx_wachtwoord.PasswordChar = '*';
             this.txtbx_wachtwoord.Size = new System.Drawing.Size(408, 32);
             this.txtbx_wachtwoord.TabIndex = 4;
+            this.txtbx_wachtwoord.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbx_wachtwoord_KeyPress);
             // 
             // InlogSchermStudent
             // 
