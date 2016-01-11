@@ -39,17 +39,17 @@
             // 
             this.lbl_studentnr.AutoSize = true;
             this.lbl_studentnr.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lbl_studentnr.Location = new System.Drawing.Point(32, 160);
+            this.lbl_studentnr.Location = new System.Drawing.Point(22, 160);
             this.lbl_studentnr.Name = "lbl_studentnr";
-            this.lbl_studentnr.Size = new System.Drawing.Size(112, 26);
+            this.lbl_studentnr.Size = new System.Drawing.Size(180, 26);
             this.lbl_studentnr.TabIndex = 0;
-            this.lbl_studentnr.Text = "StudentNr:";
+            this.lbl_studentnr.Text = "Student nummer:";
             // 
             // lbl_wachtwoord
             // 
             this.lbl_wachtwoord.AutoSize = true;
             this.lbl_wachtwoord.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lbl_wachtwoord.Location = new System.Drawing.Point(32, 206);
+            this.lbl_wachtwoord.Location = new System.Drawing.Point(63, 209);
             this.lbl_wachtwoord.Name = "lbl_wachtwoord";
             this.lbl_wachtwoord.Size = new System.Drawing.Size(139, 26);
             this.lbl_wachtwoord.TabIndex = 1;
@@ -69,19 +69,19 @@
             // txtbx_studentnr
             // 
             this.txtbx_studentnr.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.txtbx_studentnr.Location = new System.Drawing.Point(179, 157);
-            this.txtbx_studentnr.Name = "txtbx_email";
-            this.txtbx_studentnr.Size = new System.Drawing.Size(408, 32);
+            this.txtbx_studentnr.Location = new System.Drawing.Point(208, 157);
+            this.txtbx_studentnr.Name = "txtbx_studentnr";
+            this.txtbx_studentnr.Size = new System.Drawing.Size(379, 32);
             this.txtbx_studentnr.TabIndex = 3;
             this.txtbx_studentnr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbx_studentnr_KeyPress);
             // 
             // txtbx_wachtwoord
             // 
             this.txtbx_wachtwoord.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.txtbx_wachtwoord.Location = new System.Drawing.Point(179, 206);
+            this.txtbx_wachtwoord.Location = new System.Drawing.Point(208, 206);
             this.txtbx_wachtwoord.Name = "txtbx_wachtwoord";
             this.txtbx_wachtwoord.PasswordChar = '*';
-            this.txtbx_wachtwoord.Size = new System.Drawing.Size(408, 32);
+            this.txtbx_wachtwoord.Size = new System.Drawing.Size(379, 32);
             this.txtbx_wachtwoord.TabIndex = 4;
             this.txtbx_wachtwoord.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbx_wachtwoord_KeyPress);
             // 
