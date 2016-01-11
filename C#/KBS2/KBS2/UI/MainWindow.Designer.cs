@@ -68,7 +68,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txbx_zoek.Location = new System.Drawing.Point(247, 9);
             this.txbx_zoek.Name = "txbx_zoek";
-            this.txbx_zoek.Size = new System.Drawing.Size(418, 35);
+            this.txbx_zoek.Size = new System.Drawing.Size(418, 26);
             this.txbx_zoek.TabIndex = 1;
             this.txbx_zoek.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbx_zoek_KeyPress);
             // 
@@ -78,7 +78,7 @@
             this.lbl_name.AutoSize = true;
             this.lbl_name.Location = new System.Drawing.Point(362, 81);
             this.lbl_name.Name = "lbl_name";
-            this.lbl_name.Size = new System.Drawing.Size(77, 29);
+            this.lbl_name.Size = new System.Drawing.Size(51, 20);
             this.lbl_name.TabIndex = 2;
             this.lbl_name.Text = "Naam";
             // 
@@ -119,7 +119,7 @@
             this.dgv_toets.Location = new System.Drawing.Point(55, 474);
             this.dgv_toets.Name = "dgv_toets";
             this.dgv_toets.RowTemplate.Height = 28;
-            this.dgv_toets.Size = new System.Drawing.Size(691, 117);
+            this.dgv_toets.Size = new System.Drawing.Size(691, 103);
             this.dgv_toets.TabIndex = 5;
             this.dgv_toets.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_toets_CellDoubleClick);
             // 
@@ -128,7 +128,7 @@
             this.lbl_behaald.AutoSize = true;
             this.lbl_behaald.Location = new System.Drawing.Point(50, 121);
             this.lbl_behaald.Name = "lbl_behaald";
-            this.lbl_behaald.Size = new System.Drawing.Size(208, 29);
+            this.lbl_behaald.Size = new System.Drawing.Size(145, 20);
             this.lbl_behaald.TabIndex = 6;
             this.lbl_behaald.Text = "BEHAALDERROR";
             // 
@@ -139,7 +139,7 @@
             this.lbl_nietbehaald.Location = new System.Drawing.Point(299, 121);
             this.lbl_nietbehaald.Name = "lbl_nietbehaald";
             this.lbl_nietbehaald.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbl_nietbehaald.Size = new System.Drawing.Size(226, 29);
+            this.lbl_nietbehaald.Size = new System.Drawing.Size(156, 20);
             this.lbl_nietbehaald.TabIndex = 7;
             this.lbl_nietbehaald.Text = "NBEHAALDERROR";
             // 
@@ -149,7 +149,7 @@
             this.lbl_perc.AutoSize = true;
             this.lbl_perc.Location = new System.Drawing.Point(581, 121);
             this.lbl_perc.Name = "lbl_perc";
-            this.lbl_perc.Size = new System.Drawing.Size(165, 29);
+            this.lbl_perc.Size = new System.Drawing.Size(112, 20);
             this.lbl_perc.TabIndex = 8;
             this.lbl_perc.Text = "PERCERROR";
             // 
@@ -160,7 +160,7 @@
             "ToetsID"});
             this.cb_Zoek.Location = new System.Drawing.Point(55, 9);
             this.cb_Zoek.Name = "cb_Zoek";
-            this.cb_Zoek.Size = new System.Drawing.Size(186, 37);
+            this.cb_Zoek.Size = new System.Drawing.Size(186, 28);
             this.cb_Zoek.TabIndex = 9;
             this.cb_Zoek.Text = "ToetsID";
             // 
@@ -169,7 +169,7 @@
             this.lbl_gem.AutoSize = true;
             this.lbl_gem.Location = new System.Drawing.Point(55, 189);
             this.lbl_gem.Name = "lbl_gem";
-            this.lbl_gem.Size = new System.Drawing.Size(172, 29);
+            this.lbl_gem.Size = new System.Drawing.Size(119, 20);
             this.lbl_gem.TabIndex = 10;
             this.lbl_gem.Text = "LABELERROR";
             // 
@@ -179,7 +179,7 @@
             this.lbl_type.AutoSize = true;
             this.lbl_type.Location = new System.Drawing.Point(247, 185);
             this.lbl_type.Name = "lbl_type";
-            this.lbl_type.Size = new System.Drawing.Size(147, 29);
+            this.lbl_type.Size = new System.Drawing.Size(98, 20);
             this.lbl_type.TabIndex = 11;
             this.lbl_type.Text = "TYPERROR";
             // 
@@ -189,7 +189,7 @@
             this.lbl_err.ForeColor = System.Drawing.Color.OrangeRed;
             this.lbl_err.Location = new System.Drawing.Point(247, 51);
             this.lbl_err.Name = "lbl_err";
-            this.lbl_err.Size = new System.Drawing.Size(99, 29);
+            this.lbl_err.Size = new System.Drawing.Size(68, 20);
             this.lbl_err.TabIndex = 12;
             this.lbl_err.Text = "ERROR";
             // 
@@ -199,7 +199,7 @@
             this.cb_datum.FormattingEnabled = true;
             this.cb_datum.Location = new System.Drawing.Point(425, 189);
             this.cb_datum.Name = "cb_datum";
-            this.cb_datum.Size = new System.Drawing.Size(155, 37);
+            this.cb_datum.Size = new System.Drawing.Size(155, 28);
             this.cb_datum.TabIndex = 13;
             this.cb_datum.SelectionChangeCommitted += new System.EventHandler(this.cb_datum_SelectionChangeCommitted);
             // 
@@ -209,13 +209,13 @@
             this.cb_jaar.FormattingEnabled = true;
             this.cb_jaar.Location = new System.Drawing.Point(586, 188);
             this.cb_jaar.Name = "cb_jaar";
-            this.cb_jaar.Size = new System.Drawing.Size(160, 37);
+            this.cb_jaar.Size = new System.Drawing.Size(160, 28);
             this.cb_jaar.TabIndex = 14;
             this.cb_jaar.SelectionChangeCommitted += new System.EventHandler(this.cb_jaar_SelectionChangeCommitted);
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.cb_jaar);
             this.Controls.Add(this.cb_datum);
@@ -234,9 +234,8 @@
             this.Controls.Add(this.btn_zoek);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "MainWindow";
-            this.Size = new System.Drawing.Size(800, 614);
+            this.Size = new System.Drawing.Size(800, 600);
             ((System.ComponentModel.ISupportInitialize)(this.chrt_)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_toets)).EndInit();
             this.ResumeLayout(false);

@@ -233,7 +233,7 @@ namespace KBS2.UI
                     Student student = StudentSql.getStudent(id);
                     Form form = new Form();
                     StudentView view = new StudentView(student, form);
-                    form.SetBounds(form.Bounds.X + 100,form.Bounds.Y + 100,form.Bounds.Width,form.Bounds.Height);
+                    form.SetBounds(form.Bounds.X + 100,form.Bounds.Y + 100, 1280, 800);
                     form.Show();
                 }
             }

@@ -52,7 +52,8 @@ namespace KBS2.UI
                 //msg.From = new MailAddress("s1082925@student.windesheim.nl", "Student naam hier");
                 msg.From = new MailAddress("windesheimstudentvolg@gmail.com");
                 msg.Subject = this.txtbx_onderwerp.Text;
-                msg.Body = this.txtbx_bericht.Text + Environment.NewLine + cijferTekst;
+                msg.Body = this.txtbx_bericht.Text + Environment.NewLine + Environment.NewLine + cijferTekst
+                    + Environment.NewLine + student.ID + Environment.NewLine + student.Naam;
                 client.Send(msg);
                 MessageBox.Show("Successfully Sent Message.");
             }
