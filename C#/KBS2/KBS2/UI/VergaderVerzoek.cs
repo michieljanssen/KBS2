@@ -35,7 +35,7 @@ namespace KBS2.UI
                 List<model.cijfer.ToetsCijfer> toetsen = cijferLijst[i].besteToetsen();
                 for (int b = 0; b < toetsen.Count; b++)
                 {
-                    cijferTekst += '\t' + toetsen[b].ToetsNaam + '\t' + toetsen[b].Cijfer + Environment.NewLine;
+                    cijferTekst += '\t' + toetsen[b].toetsName + '\t' + toetsen[b].Cijfer + Environment.NewLine;
                 }
             }
 

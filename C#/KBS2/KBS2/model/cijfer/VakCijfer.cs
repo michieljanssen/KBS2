@@ -40,11 +40,13 @@ namespace KBS2.model.cijfer
         public List<ToetsCijfer> besteToetsen()
         {
             List<ToetsCijfer> list = new List<ToetsCijfer>();
-            for (int i = 0; i < cijfers.Count; i++) {
+            for (int i = 0; i < cijfers.Count; i++)
+            {
                 if (list.Count > 0) //IF list contains grades
                 {
                     Boolean hasToets = false; //THEN hastToets = false
-                    for (int b = 0; b < list.Count; b++) {
+                    for (int b = 0; b < list.Count; b++)
+                    {
                         if (list[b].toetsName.Equals(cijfers[i].toetsName))//loop to find the highest grade from that toetstype
                         {
                             hasToets = true;
@@ -53,9 +55,10 @@ namespace KBS2.model.cijfer
                                 list[b] = cijfers[i];
                             }
                         }
-                      
+
                     }
-                    if (!hasToets) {
+                    if (!hasToets)
+                    {
                         list.Add(cijfers[i]);
                     }
                 }
@@ -69,6 +72,7 @@ namespace KBS2.model.cijfer
         //berekent het gemiddelde
         public double gemiddelde()
         {
+            List<ToetsCijfer> cijfers = this.besteToetsen();
             //checkt of er cijfers zijn
             if (cijfers.Count > 0)
             {
