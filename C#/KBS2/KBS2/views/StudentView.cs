@@ -44,7 +44,7 @@ namespace KBS2.views
         private Label lbl_hulpNodig;
         private Button btn_stuurVergaderVerzoek;
         public static bool studentKijkt;
-        
+
         public StudentView(Student student, Form form)
             : base()
         {
@@ -76,14 +76,14 @@ namespace KBS2.views
                     //Als het vak wel voldoende is word het gemiddelde ingevuld en 'behaald' ingevuld
                     if (vak.ECsBehaald() == false)
                     {
-                        object[] obj = { vak.VakNaam, "", "Niet Behaald", vak.EC };
+                        object[] obj = { vak.VakNaam, vak.gemiddelde(), "Niet Behaald", vak.EC };
 
                         this.dgv_vakken.Rows.Add(obj);
                     }
                     else
                     {
                         object[] obj = { vak.VakNaam, vak.gemiddelde(), "Behaald", vak.EC };
-
+                        Console.WriteLine(vak.gemiddelde());
                         this.dgv_vakken.Rows.Add(obj);
                     }
                 }
@@ -198,7 +198,7 @@ namespace KBS2.views
             this.dgv_vakken.TabIndex = 7;
             this.dgv_vakken.CellClick += Dgv_vakken_CellClick;
             this.dgv_vakken.AllowUserToAddRows = false;
-            
+
             //vakgemist
             this.vak.HeaderText = "Vak";
             this.vak.Name = "Vak";
@@ -233,7 +233,7 @@ namespace KBS2.views
             this.dgv_toetsen.Size = new System.Drawing.Size(1089, 230);
             this.dgv_toetsen.TabIndex = 8;
             this.dgv_toetsen.AllowUserToAddRows = false;
-            
+
             //vakgehaald
             this.toets.HeaderText = "Toets";
             this.toets.Name = "dataGridViewTextBoxColumn1";
@@ -266,7 +266,7 @@ namespace KBS2.views
             this.lbl_vak.TabIndex = 10;
             this.lbl_vak.Text = "Vakken";
 
-            
+
             // If student applicatie, dit aanmaken
             if (studentKijkt)
             {
@@ -345,6 +345,8 @@ namespace KBS2.views
                             cell.Items.Add(cijfer.Cijfer);
                         }
                     }
+                    cell.ValueType = typeof(double);
+
                     for (int i = 0; i < cell.Items.Count; i++)
                     {
                         if (cell.Value == null)
