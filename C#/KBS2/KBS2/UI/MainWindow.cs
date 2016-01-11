@@ -80,35 +80,39 @@ namespace KBS2.UI
         {
             this.toets = toets;
             dgv_toets.Rows.Clear();
-            this.lbl_name.Text = toets.Naam;        // changes the name label
-            this.lbl_behaald.Text = "Behaald: " + toets.voldoendes();   //change the voldoende label
-            this.lbl_nietbehaald.Text = "Niet behaald: " + toets.onvoldoendes(); // change the onvoldoende label
-            this.lbl_perc.Text = "Percentage: " + toets.percentageVold(); //change the percentage label
-            this.lbl_err.Text = "";
-            this.lbl_gem.Text = "Gemiddelde: " + toets.gemiddelde(); // change the gemiddlede label
-            this.lbl_type.Text = "type: " + toets.Type;
-            this.progressBar1.Value = toets.percentageVold();
-            this.dgv_toets.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_toets.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            if (toets.Cijfers.Count > 0)
+            if (toets != null)
             {
-                chrtreset(toets.Cijfers);   //refresh the grades diagram
-                for (int i = 0; i < toets.Cijfers.Count; i++)
+                this.lbl_name.Text = toets.Naam;        // changes the name label
+                this.lbl_behaald.Text = "Behaald: " + toets.voldoendes();   //change the voldoende label
+                this.lbl_nietbehaald.Text = "Niet behaald: " + toets.onvoldoendes(); // change the onvoldoende label
+                this.lbl_perc.Text = "Percentage: " + toets.percentageVold(); //change the percentage label
+                this.lbl_err.Text = "";
+                this.lbl_gem.Text = "Gemiddelde: " + toets.gemiddelde(); // change the gemiddlede label
+                this.lbl_type.Text = "type: " + toets.Type;
+                this.progressBar1.Value = toets.percentageVold();
+                this.dgv_toets.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                this.dgv_toets.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                if (toets.Cijfers.Count > 0)
                 {
-                    object[] row = { toets.Cijfers[i].ID, toets.Cijfers[i].Naam, toets.Cijfers[i].Cijfer, toets.Cijfers[i].Datum };
-                    this.dgv_toets.Rows.Add(row);   //add new rows to the table
-                    this.dgv_toets.Rows[i].Cells[2].Style.ForeColor = Color.Red; // default color is red
-                    //verandert de kleur van de text als voldoende is of niet
-                    if (toets.Cijfers[i].ECsBehaald())
+                    chrtreset(toets.Cijfers);   //refresh the grades diagram
+                    for (int i = 0; i < toets.Cijfers.Count; i++)
                     {
-                        this.dgv_toets.Rows[i].Cells[2].Style.ForeColor = Color.Green; // acceptable grades are green
+                        object[] row = { toets.Cijfers[i].ID, toets.Cijfers[i].Naam, toets.Cijfers[i].Cijfer, toets.Cijfers[i].Datum };
+                        this.dgv_toets.Rows.Add(row);   //add new rows to the table
+                        this.dgv_toets.Rows[i].Cells[2].Style.ForeColor = Color.Red; // default color is red
+                                                                                     //verandert de kleur van de text als voldoende is of niet
+                        if (toets.Cijfers[i].ECsBehaald())
+                        {
+                            this.dgv_toets.Rows[i].Cells[2].Style.ForeColor = Color.Green; // acceptable grades are green
+                        }
                     }
                 }
-            }
-            else
-            {
-                //anders laat een melding zien
-                this.lbl_err.Text = "Deze toets heeft geen cijfers";
+                else
+                {
+                    //anders laat een melding zien
+                    this.lbl_err.Text = "Deze toets heeft geen cijfers";
+                    chrtreset(null);
+                }
             }
         }
         internal void txbx_zoek_refresh(List<String> data)
@@ -119,26 +123,29 @@ namespace KBS2.UI
         internal void chrtreset(List<model.cijfer.ToetsCijfer> Cijferlijst)
         {
             chrt_.Series[0].Points.Clear();                 // clear old data
-            List<double> ccijfers = new List<Double>();
-            foreach (ToetsCijfer tc in Cijferlijst)         //round grades down to .5 increments
+            if (Cijferlijst != null)
             {
-                double a = tc.Cijfer;
-                double b = topointfiveincrement(a);
-                ccijfers.Add(b);
-            }
-            ccijfers.Sort();
-            int yval = 0;
-            for(double xval = 2; xval < 21; xval++)
-            {
-                yval = 0;
-                foreach(double cijfer in ccijfers)
+                List<double> ccijfers = new List<Double>();
+                foreach (ToetsCijfer tc in Cijferlijst)         //round grades down to .5 increments
                 {
-                    if(xval/2 == cijfer)
-                    {
-                        yval++;
-                    }
+                    double a = tc.Cijfer;
+                    double b = topointfiveincrement(a);
+                    ccijfers.Add(b);
                 }
-                chrt_.Series[0].Points.AddXY(xval / 2, yval);
+                ccijfers.Sort();
+                int yval = 0;
+                for (double xval = 2; xval < 21; xval++)
+                {
+                    yval = 0;
+                    foreach (double cijfer in ccijfers)
+                    {
+                        if (xval / 2 == cijfer)
+                        {
+                            yval++;
+                        }
+                    }
+                    chrt_.Series[0].Points.AddXY(xval / 2, yval);
+                }
             }
         }
         internal double topointfiveincrement(double a) //rounds grades to .5 incements
