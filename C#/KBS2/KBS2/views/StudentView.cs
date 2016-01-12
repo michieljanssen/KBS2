@@ -380,14 +380,6 @@ namespace KBS2.views
                 }
             }
         }
-        private void SystemParametersClick(object sender, EventArgs e)
-        {
-            //checked of het scherm niet zichtbaar is, als dat zo is dan wordt het zichtbaar gezet 
-            if (!has_been_shown)
-            {
-                has_been_shown = true;
-            }
-        }
 
         // On Click opent e-mail form om bericht te sturen
         private void stuurVergaderVerzoek_Click(object sender, EventArgs e)
