@@ -59,7 +59,7 @@ namespace KBS2.UI
                     //Convert string studentnummer naar int
                     ingelogdID = Convert.ToInt32(txtbx_studentnr.Text);
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     MessageBox.Show(
                         "Het gegeven studentnummer is te lang! Controleer of u het correct heeft ingevoerd.",

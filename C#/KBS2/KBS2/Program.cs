@@ -20,7 +20,8 @@ namespace KBS2
         {
 
             //Als deze true is wordt de applicatie geopend als student.
-            StudentView.studentKijkt = true;
+            StudentView.studentKijkt = false;
+            //StudentView.studentKijkt = true;
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
