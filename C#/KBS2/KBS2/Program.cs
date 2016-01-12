@@ -35,13 +35,17 @@ namespace KBS2
                 //proberen de studentenversie te openenen
                 try
                 {
-                    Application.Run(new InlogSchermStudent());
                     //Draai de versie voor studenten
+                    Application.Run(new InlogSchermStudent());                    
                 }
                 catch (ObjectDisposedException)
                 {
-                    Environment.Exit(0);
+                    //Bericht dat je krijgt als exception optreed
+                    MessageBox.Show("Student niet gevonden",
+                        "Error",
+                        MessageBoxButtons.OK);
                     //Zorgt dat de applicatie afsluit als er geen student wordt gevonden
+                    Environment.Exit(0);
                 }
             }
             //anders open de docenten versie

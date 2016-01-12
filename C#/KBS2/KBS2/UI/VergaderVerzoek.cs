@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Windows.Forms;
@@ -55,21 +56,24 @@ namespace KBS2.UI
             //Probeer mail te versturen
             try
             {
-                //email gegevens 
-                SmtpClient client = new SmtpClient("smtp.office365.com");
+                //email gegevens
+                //De stukjes code in comments is hoe het zou zijn als het systeem in plaats is. Om te kunnen beoordelen is er tijdelijk een gmail gebruikt
+                //SmtpClient client = new SmtpClient("smtp.office365.com");
+                SmtpClient client = new SmtpClient("smtp.gmail.com"); // Deze is er alleen vanwege het beoordelen
                 client.Port = 587;
                 client.EnableSsl = true;
                 client.Timeout = 100000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
+                //client.Credentials = new NetworkCredential(
+                //    StudentSql.getEmail(InlogSchermStudent.ingelogdID), InlogSchermStudent.wwInput);
                 client.Credentials = new NetworkCredential(
-                    StudentSql.getEmail(InlogSchermStudent.ingelogdID), InlogSchermStudent.wwInput);
-
+                    "windesheimstudentvolg@gmail.com", "/,:vF4!NW&"); //Hard-coded email adres en wachtwoord voor het beoordelen
                 //Achterhalen aan wie bericht verzonden wordt en bericht samenstellen met cijferlijst
                 MailMessage msg = new MailMessage();
                 msg.To.Add(this.txtbx_emailOntvanger.Text);
-                msg.From = new MailAddress(StudentSql.getEmail(InlogSchermStudent.ingelogdID), StudentSql.getStudentNaam(InlogSchermStudent.ingelogdID));
-                //msg.From = new MailAddress("windesheimstudentvolg@gmail.com");
+                //msg.From = new MailAddress(StudentSql.getEmail(InlogSchermStudent.ingelogdID), StudentSql.getStudentNaam(InlogSchermStudent.ingelogdID));
+                msg.From = new MailAddress("windesheimstudentvolg@gmail.com", "Student Volg Systeem"); //Hard-coded email en naam voor het beoordelen
                 msg.Subject = this.txtbx_onderwerp.Text;
                 msg.Body = this.txtbx_bericht.Text + Environment.NewLine + Environment.NewLine + cijferTekst;
 
