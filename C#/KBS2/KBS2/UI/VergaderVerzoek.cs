@@ -55,16 +55,13 @@ namespace KBS2.UI
             //Probeer mail te versturen
             try
             {
-                //SmtpClient client = new SmtpClient("smtp.gmail.com");
+                //email gegevens 
                 SmtpClient client = new SmtpClient("smtp.office365.com");
                 client.Port = 587;
                 client.EnableSsl = true;
                 client.Timeout = 100000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
-                //client.Credentials = new NetworkCredential(
-                //  "windesheimstudentvolg@gmail.com", "/,:vF4!NW&");
-                // Student inloggen om mail te versturen, ingelogd student wordt hiervoor gebruikt
                 client.Credentials = new NetworkCredential(
                     StudentSql.getEmail(InlogSchermStudent.ingelogdID), InlogSchermStudent.wwInput);
 
@@ -95,7 +92,7 @@ namespace KBS2.UI
         }
             
 
-            
+        //als het scherm vergaderverozek wordt gesloten(event)            
         private void VergaderVerzoek_FormClosed(object sender, FormClosedEventArgs e)
         {
             StudentView.has_been_shown = false;

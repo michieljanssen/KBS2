@@ -23,11 +23,16 @@ namespace KBS2
             StudentView.studentKijkt = false;
             //StudentView.studentKijkt = true;
 
+            //Visuale instellinging
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+
+            //kijken of het programma voor een student is
             if (StudentView.studentKijkt)
             {
+
+                //proberen de studentenversie te openenen
                 try
                 {
                     Application.Run(new InlogSchermStudent());
@@ -39,6 +44,7 @@ namespace KBS2
                     //Zorgt dat de applicatie afsluit als er geen student wordt gevonden
                 }
             }
+            //anders open de docenten versie
             else
             {
                     Application.Run(new Window());

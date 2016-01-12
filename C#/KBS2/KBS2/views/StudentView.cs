@@ -22,8 +22,8 @@ namespace KBS2.views
         //UI variablenen
         private Label lbl_naam;
         private Label lbl_id;
-        private Label lbl_GemisteEC;
-        private Label lbl_BehaaldeEC;
+        private Label lbl_gemisteEC;
+        private Label lbl_behaaldeEC;
         private ProgressBar testprb_behaald;
         private Label lbl_totaalEC;
         private DataGridView dgv_vakken;
@@ -58,8 +58,8 @@ namespace KBS2.views
                 //zet alle variablen in de UI elementen
                 this.lbl_naam.Text = student.Naam;
                 this.lbl_id.Text = student.ID;
-                this.lbl_GemisteEC.Text = "Gemiste EC\'s: " + student.gemisteEC();
-                this.lbl_BehaaldeEC.Text = "Behaalde EC\'s dit jaar:" + student.gehaaldeEC();
+                this.lbl_gemisteEC.Text = "Gemiste EC\'s: " + student.gemisteEC();
+                this.lbl_behaaldeEC.Text = "Behaalde EC\'s dit jaar:" + student.gehaaldeEC();
                 if (student.totaalEC() != 0)
                 {
                     this.testprb_behaald.Value = student.gehaaldeEC() * 100 / student.totaalEC();
@@ -71,31 +71,30 @@ namespace KBS2.views
                 //gaat door alle cijfers heen
                 for (int i = 0; i < student.Cijfers.Count; i++)
                 {
+                    //tijdenlijke geselecteerde vak
                     VakCijfer vak = student.Cijfers[i];
                     //Als het vak niet voldoende is word er geen gemiddelde gegeven en 'niet behaald' ingevuld 
-                    //Als het vak wel voldoende is word het gemiddelde ingevuld en 'behaald' ingevuld
                     if (vak.ECsBehaald() == false)
                     {
-                        object[] obj = { vak.VakNaam, vak.gemiddelde(), "Niet Behaald", vak.EC };
-
+                        object[] obj = { vak.VakNaam, "", "Niet Behaald", vak.EC };
                         this.dgv_vakken.Rows.Add(obj);
                     }
+                    //Als het vak wel voldoende is word het gemiddelde ingevuld en 'behaald' ingevuld
                     else
                     {
                         object[] obj = { vak.VakNaam, vak.gemiddelde(), "Behaald", vak.EC };
-                        Console.WriteLine(vak.gemiddelde());
                         this.dgv_vakken.Rows.Add(obj);
                     }
                 }
-
             }
+            //als de student null is vul de standaard waardes in
             else
             {
                 //als Student null is: zet standaard waardes in de UI
                 this.lbl_naam.Text = "Naam";
                 this.lbl_id.Text = "ID";
-                this.lbl_GemisteEC.Text = "Gemiste EC\'s:";
-                this.lbl_BehaaldeEC.Text = "Behaalde EC\'s dit jaar:";
+                this.lbl_gemisteEC.Text = "Gemiste EC\'s:";
+                this.lbl_behaaldeEC.Text = "Behaalde EC\'s dit jaar:";
                 this.testprb_behaald.Value = 0;
                 this.lbl_totaalEC.Text = "Van:";
             }
@@ -106,8 +105,8 @@ namespace KBS2.views
         {
             this.lbl_naam = new Label();
             this.lbl_id = new Label();
-            this.lbl_GemisteEC = new Label();
-            this.lbl_BehaaldeEC = new Label();
+            this.lbl_gemisteEC = new Label();
+            this.lbl_behaaldeEC = new Label();
             this.testprb_behaald = new ProgressBar();
             this.lbl_totaalEC = new Label();
             this.dgv_vakken = new DataGridView();
@@ -151,20 +150,20 @@ namespace KBS2.views
             this.lbl_id.TabIndex = 4;
 
             //lbl_gemisteEC
-            this.lbl_GemisteEC.AutoSize = true;
-            this.lbl_GemisteEC.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lbl_GemisteEC.Location = new System.Drawing.Point(951, 127);
-            this.lbl_GemisteEC.Name = "lbl_gemisteEC";
-            this.lbl_GemisteEC.Size = new System.Drawing.Size(152, 26);
-            this.lbl_GemisteEC.TabIndex = 5;
+            this.lbl_gemisteEC.AutoSize = true;
+            this.lbl_gemisteEC.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.lbl_gemisteEC.Location = new System.Drawing.Point(951, 127);
+            this.lbl_gemisteEC.Name = "lbl_gemisteEC";
+            this.lbl_gemisteEC.Size = new System.Drawing.Size(152, 26);
+            this.lbl_gemisteEC.TabIndex = 5;
 
             //lbl_behaaldeEC
-            this.lbl_BehaaldeEC.AutoSize = true;
-            this.lbl_BehaaldeEC.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lbl_BehaaldeEC.Location = new System.Drawing.Point(95, 127);
-            this.lbl_BehaaldeEC.Name = "lbl_behaaldeEC";
-            this.lbl_BehaaldeEC.Size = new System.Drawing.Size(233, 26);
-            this.lbl_BehaaldeEC.TabIndex = 3;
+            this.lbl_behaaldeEC.AutoSize = true;
+            this.lbl_behaaldeEC.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.lbl_behaaldeEC.Location = new System.Drawing.Point(95, 127);
+            this.lbl_behaaldeEC.Name = "lbl_behaaldeEC";
+            this.lbl_behaaldeEC.Size = new System.Drawing.Size(233, 26);
+            this.lbl_behaaldeEC.TabIndex = 3;
 
             //testprb_behaald
             this.testprb_behaald.ForeColor = System.Drawing.Color.Lime;
@@ -299,9 +298,9 @@ namespace KBS2.views
             this.Controls.Add(this.dgv_toetsen);
             this.Controls.Add(this.dgv_vakken);
             this.Controls.Add(this.testprb_behaald);
-            this.Controls.Add(this.lbl_GemisteEC);
+            this.Controls.Add(this.lbl_gemisteEC);
             this.Controls.Add(this.lbl_totaalEC);
-            this.Controls.Add(this.lbl_BehaaldeEC);
+            this.Controls.Add(this.lbl_behaaldeEC);
             // Deze alleen samenvoegen als studentKijkt true is, ofwel als de student de studentapplicatie gebruikt.
             if (studentKijkt)
             {
@@ -317,15 +316,21 @@ namespace KBS2.views
 
         private void Dgv_vakken_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            //kijken of een row met data is geklikt(-1 is namelijk de invoeg row)
             if (e.RowIndex >= 0)
             {
+                //leegt de toetsen zodat er geen duplicaties komenen
                 this.dgv_toetsen.Rows.Clear();
+                //verkrijgt het benodige vak
                 VakCijfer vak = student.getVakCijfer((String)dgv_vakken.Rows[e.RowIndex].Cells[0].Value);
-
+                //maakt een lijst aan toetsnamen
                 List<string> added = new List<string>();
+                //gaat door alle cijfers heen
                 for (int i = 0; i < vak.Cijfers.Count; i++)
                 {
+                    //verkijgt het cijfer
                     ToetsCijfer cijfer = vak.Cijfers[i];
+                    //voegt de toetsnaam toe aan de lijst en de tabel als hij niet in de lijst staat
                     if (!added.Contains(cijfer.toetsName))
                     {
                         added.Add(cijfer.toetsName);
@@ -333,22 +338,28 @@ namespace KBS2.views
                         dgv_toetsen.Rows.Add(row);
                     }
                 }
+                //gaat door de toetstabel heen
                 for (int x = 0; x < dgv_toetsen.Rows.Count; x++)
                 {
+                    //combo box voor de lijst van cijfers
                     DataGridViewComboBoxCell cell = (DataGridViewComboBoxCell)dgv_toetsen.Rows[x].Cells[1];
                     cell.ReadOnly = false;
+                    //gaat door de cijfers heen
                     for (int i = 0; i < vak.Cijfers.Count; i++)
                     {
+                        //voegt cijfers toe aan de combobox als de toetsnamen overeen komenen
                         ToetsCijfer cijfer = vak.Cijfers[i];
                         if ((String)dgv_toetsen.Rows[x].Cells[0].Value == cijfer.toetsName)
                         {
                             cell.Items.Add(cijfer.Cijfer);
                         }
                     }
+                    //type van de combox word naar double gezet
                     cell.ValueType = typeof(double);
-
+                    //gaat door alle items heen van de combobox
                     for (int i = 0; i < cell.Items.Count; i++)
                     {
+                        //zet de geselecteerde waarde op het hogere cijfer
                         if (cell.Value == null)
                         {
                             cell.Value = cell.Items[i];
@@ -358,7 +369,7 @@ namespace KBS2.views
                             cell.Value = cell.Items[i];
                         }
                     }
-
+                    //checked of het cijfer is behaald of niet en past dit toe
                     if ((double)cell.Value >= 5.5)
                     {
                         dgv_toetsen.Rows[x].Cells[2].Value = "Behaald";
@@ -369,9 +380,9 @@ namespace KBS2.views
                 }
             }
         }
-
         private void SystemParametersClick(object sender, EventArgs e)
         {
+            //checked of het scherm niet zichtbaar is, als dat zo is dan wordt het zichtbaar gezet 
             if (!has_been_shown)
             {
                 has_been_shown = true;
@@ -381,11 +392,8 @@ namespace KBS2.views
         // On Click opent e-mail form om bericht te sturen
         private void stuurVergaderVerzoek_Click(object sender, EventArgs e)
         {
-            if (has_been_shown)
-            {
-
-            }
-            else
+            //als het scherm vergaderverzoek niet open is wordt het geopent.
+            if (!has_been_shown)
             {
                 Form form = new VergaderVerzoek();
                 form.Show();

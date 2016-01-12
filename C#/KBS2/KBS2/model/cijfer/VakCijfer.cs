@@ -36,20 +36,21 @@ namespace KBS2.model.cijfer
             }
             return behaald;
         }
-
+        //verkrijgt een lijst van unique toetsen met de hoogste cijfers
         public List<ToetsCijfer> besteToetsen()
         {
             List<ToetsCijfer> list = new List<ToetsCijfer>();
             for (int i = 0; i < cijfers.Count; i++)
             {
-                if (list.Count > 0) //IF list contains grades
+                if (list.Count > 0) //checked of de lijst iets bevat
                 {
-                    Boolean hasToets = false; //THEN hastToets = false
+                    Boolean hasToets = false; //variable die bij houdt of de huidige toets er al inzit
                     for (int b = 0; b < list.Count; b++)
                     {
-                        if (list[b].toetsName.Equals(cijfers[i].toetsName))//loop to find the highest grade from that toetstype
+                        if (list[b].toetsName.Equals(cijfers[i].toetsName))//checked of de toets er in zit
                         {
                             hasToets = true;
+                            //vervangt de toets als de huidige toets zijn cijfer hoger is
                             if (list[b].Cijfer < cijfers[i].Cijfer)
                             {
                                 list[b] = cijfers[i];
@@ -57,6 +58,7 @@ namespace KBS2.model.cijfer
                         }
 
                     }
+                    //als de toets er niet inzit voeg hem toe
                     if (!hasToets)
                     {
                         list.Add(cijfers[i]);

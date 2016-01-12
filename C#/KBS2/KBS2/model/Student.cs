@@ -26,7 +26,7 @@ namespace KBS2.model
             this.id = id;
             this.cijfers = cijfers;
         }
-        
+        //verkrijg de vakcijfer met een meegegeven naam
         public VakCijfer getVakCijfer(String vakNaam) {
             for(int i =0; i < cijfers.Count; i++)
             {
